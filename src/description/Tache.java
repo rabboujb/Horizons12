@@ -1,3 +1,5 @@
+package description;
+
 import java.util.Collection;
 
 public interface Tache {
