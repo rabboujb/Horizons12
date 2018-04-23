@@ -64,8 +64,8 @@ import java.util.Random;
                     System.out.println(Couleur.ROUGE);
                 break;
             case VERT:
-                  p1=(2/6)+(1/6);
-                if(choix<p1)
+                  p2=(2/6)+(1/6)+(3/6);
+                if(choix<=p2)
                     System.out.println(Couleur.VERT);
                 break;
             default:
