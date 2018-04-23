@@ -12,30 +12,12 @@ package description;
 
    
     public enum TypeAlea{
-              DELAI,COUT,QUALITE;
+              DELAI,EUROS,QUALITE;
 
-    public static TypeAlea getCOUT() {
-        TypeAlea typeAlea= TypeAlea.valueOf("DELAI");
-        int cout=300, tour=0;
-       tour++;
-       
-        return COUT;
-    }
-              
-    
-
-    private  TypeAlea() {
-    }
-    public  static TypeAlea valueOf(){
-        
-        return typeAlea;
-       
-        
-    
     
     }
     
     
             
     
-}
+
