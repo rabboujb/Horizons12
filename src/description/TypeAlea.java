@@ -10,12 +10,12 @@ package description;
  * @author diallo
  */
 
-   
-    public enum TypeAlea{
-              DELAI,EUROS,QUALITE;
 
-    
-    }
+public enum TypeAlea{
+    DELAI,EUROS,QUALITE;
+
+
+}
     
     
             
