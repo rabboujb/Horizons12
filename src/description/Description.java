@@ -29,6 +29,7 @@ public class Description implements Alea, Tache {
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
 
+		//  Constructeur sans paramètre
     public Description() {
         List<Alea> aleas = new ArrayList<>();
             // Alea - Tache 1
@@ -84,13 +85,16 @@ public class Description implements Alea, Tache {
         taches.add(t7);
         taches.add(t8);
 
+/*  Predecesseurs - Successeurs
         t2.predecesseurs.add(t1);
         t3.predecesseurs.add(t1);
         t3.predecesseurs.add(t2);
-//        successeurs = new ArrayList<>();
-//        successeurs.addAll(taches.subList(p,taches.size()));
+        successeurs = new ArrayList<>();
+        successeurs.addAll(taches.subList(p,taches.size()));
+*/
     }
 
+		// Constructeur aleas
     private Description(Couleur couleur, String nom, TypeAlea type, int gravite) {
         this.couleur = couleur;
         this.nom = nom;
@@ -98,6 +102,7 @@ public class Description implements Alea, Tache {
         this.gravite = gravite;
     }
 
+		// Constructeur taches
     private Description(String idTache, String description, int cout, int
         dureeInitiale, int dureeMax, Alea alea1, Alea alea2, Alea alea3) {
         this.idTache = idTache;
