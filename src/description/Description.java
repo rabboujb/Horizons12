@@ -25,7 +25,6 @@ public class Description implements Alea, Tache {
     private Alea alea1, alea2, alea3;
     private List<Tache> taches;
     private Collection<Tache> predecesseurs;
-    private Collection<Tache> tachesI;
     private List<Tache> successeurs;
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
