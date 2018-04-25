@@ -29,7 +29,7 @@ public class Description implements Alea, Tache {
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
 
-		//  Constructeur sans paramètre
+			//  Constructeur sans paramètre
     public Description() {
         List<Alea> aleas = new ArrayList<>();
             // Alea - Tache 1
@@ -188,7 +188,7 @@ public class Description implements Alea, Tache {
 	public Tache getTacheById(String id) {
 		for(Tache t: taches) {
 			if(t.getId().equals(id))
-				return t;
+			return t;
 		}
 		return null;
 	}
