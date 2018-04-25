@@ -25,7 +25,7 @@ public class Description implements Alea, Tache {
     private Alea alea1, alea2, alea3;
     private List<Tache> taches;
     private Collection<Tache> predecesseurs;
-    private List<Tache> successeurs;
+    private Collection<Tache> successeurs;
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
 
@@ -66,7 +66,7 @@ public class Description implements Alea, Tache {
         aleas.add(new Description(VERT, "zz", QUALITE, 2));
 
         taches = new ArrayList<>();
-            // Taches
+            // Instanciation des taches
         t1 = new Description("1", "Réfléchir", 10, 2, 4, aleas.get(0), aleas.get(1), aleas.get(2));
         t2 = new Description("2", "Dire", 20, 3, 4, aleas.get(3), aleas.get(4), aleas.get(5));
         t3 = new Description("3", "Ecouter", 10, 2, 4, aleas.get(6), aleas.get(7), aleas.get(8));
@@ -75,7 +75,7 @@ public class Description implements Alea, Tache {
         t6 = new Description("6", "Contrôler", 10, 3, 4, aleas.get(15), aleas.get(16), aleas.get(17));
         t7 = new Description("7", "Planifier", 20, 3, 6, aleas.get(18), aleas.get(19), aleas.get(20));
         t8 = new Description("8", "Présenter", 10, 2, 4, aleas.get(21), aleas.get(22), aleas.get(23));
-
+            // Ajout des Taches à la liste
         taches.add(t1);
         taches.add(t2);
         taches.add(t3);
@@ -85,13 +85,23 @@ public class Description implements Alea, Tache {
         taches.add(t7);
         taches.add(t8);
 
-/*  Predecesseurs - Successeurs
+            // Predecesseurs
         t2.predecesseurs.add(t1);
-        t3.predecesseurs.add(t1);
-        t3.predecesseurs.add(t2);
-        successeurs = new ArrayList<>();
-        successeurs.addAll(taches.subList(p,taches.size()));
-*/
+        t3.predecesseurs.addAll(taches.subList(0,taches.indexOf(t3)));
+        t4.predecesseurs.addAll(taches.subList(0,taches.indexOf(t4)));
+        t5.predecesseurs.addAll(taches.subList(0,taches.indexOf(t5)));
+        t6.predecesseurs.addAll(taches.subList(0,taches.indexOf(t6)));
+        t7.predecesseurs.addAll(taches.subList(0,taches.indexOf(t7)));
+        t8.predecesseurs.addAll(taches.subList(0,taches.indexOf(t8)));
+
+            // Successeurs
+        t1.successeurs.addAll(taches.subList(taches.indexOf(t2),taches.size()));
+        t2.successeurs.addAll(taches.subList(taches.indexOf(t3),taches.size()));
+        t3.successeurs.addAll(taches.subList(taches.indexOf(t4),taches.size()));
+        t4.successeurs.addAll(taches.subList(taches.indexOf(t5),taches.size()));
+        t5.successeurs.addAll(taches.subList(taches.indexOf(t6),taches.size()));
+        t6.successeurs.addAll(taches.subList(taches.indexOf(t7),taches.size()));
+        t7.successeurs.add(t8);
     }
 
 		// Constructeur aleas
@@ -114,6 +124,7 @@ public class Description implements Alea, Tache {
         this.alea2 = alea2;
         this.alea3 = alea3;
         predecesseurs = new ArrayList<>();
+        successeurs = new ArrayList<>();
     }
 
 /**
@@ -187,6 +198,8 @@ public class Description implements Alea, Tache {
 **/
     public String toString() {
         return "Aléa {" +
+                "id=" + idTache +
+                "description=" + description +
                 "couleur=" + couleur +
                 ", nom='" + nom + '\'' +
                 ", type=" + type +
