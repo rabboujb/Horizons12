@@ -1,38 +1,81 @@
 package partie;
 
+import description.Couleur;
+import description.Description;
+
+/**
+ * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (Robot ou Joueur via son IHM) lors du
+ * jeu. Ces opérations sont formées en 3 groupes:
+ *
+ * @author mickael
+ */
+
 public interface VueJoueur {
 
-    /** Termine le tour pour le joueur courant.*/
+    /**Termine le tour pour le joueur courant.*/
     public void FinDuTour();
 
-    /** Fournit le montant actuel de la caisse de l'équipe (en euros). */
+    /**
+     * Fournit le montant actuel de la caisse de l'équipe (en euros).
+     * @return Le montant de la caisse de l'équipe.
+     */
     public int getCaisse();
 
-    /** Fournit l'état d'avancement de la réalisation d'une tâche pour l'équipe (en semaines). */
+    /**
+     * Fournit l'état d'avancement de la réalisation d'une tâche pour l'équipe (en semaines).
+     * @param id - l'identifiant de la tâche
+     * @return la durée réelle de la tâche
+     */
     public int getCurrent(String id);
 
-    /** Fournit l'identifiant de la première tâche du PERT. */
+    /**
+     * Fournit l'identifiant de la première tâche du PERT.
+     * @return l'indentifiant de la première tâche du pert
+     */
     public String getDebutId();
 
-    /** Retourne l'objet permettant d'acquérir la description de la configuration de jeu. */
+    /**
+     * Retourne l'objet permettant d'acquérir la description de la configuration de jeu.
+     * @return L'objet contenant la description statique du jeu.
+     */
     public Description getDescription();
 
-    /** Fournit la durée réelle d'une tâche pour l'équipe. */
+    /**
+     * Fournit la durée réelle d'une tâche pour l'équipe.
+     * @param id - l'identifiant de la tâche
+     * @return La durée réelle d'une tâche pour l'équipe (en semaines).
+     */
     public int getDuree(String id);
 
-    /** Fournit l'état courant de la réalisation. */
+    /**
+     * Fournit l'état courant de la réalisation.
+     * @param id - l'identifiant de la tâche
+     * @return l'état courant de la réalisation.
+     */
     public Etat getEtat(String id);
 
-    /** Fournit l'identifiant de la dernière tâche du PERT. */
+    /**
+     * Fournit l'identifiant de la dernière tâche du PERT.
+     * @return l'identifiant de la dernière tâche.
+     */
     public String getFinId();
 
-    /** Fournit le nom de l'équipe. */
+    /**
+     * Fournit le nom de l'équipe.
+     * @return le nom de l'équipe
+     */
     public String getNom();
 
-    /** Fournit le numéro du tour courant. */
+    /**
+     * Fournit le numéro du tour courant.
+     * @return le numéro du tour courant
+     */
     public int getNumeroTour();
 
-    /** Fournit la qualité actuelle du produit. */
+    /**
+     * Fournit la qualité actuelle du produit.
+     * @return le pourcentage de qualité du produit
+     */
     public int getQualite();
 
     /** Active ou désactive l'accélération de la tâche (réducton de 1 de la durée réelle). */
