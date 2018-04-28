@@ -48,13 +48,6 @@ public interface VueJoueur {
     public int getDuree(String id);
 
     /**
-     * Fournit l'état courant de la réalisation.
-     * @param id - l'identifiant de la tâche
-     * @return l'état courant de la réalisation.
-     */
-    public Etat getEtat(String id);
-
-    /**
      * Fournit l'identifiant de la dernière tâche du PERT.
      * @return l'identifiant de la dernière tâche.
      */

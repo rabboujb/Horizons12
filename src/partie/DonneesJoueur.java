@@ -35,16 +35,4 @@ public interface DonneesJoueur {
      */
     public int getQualite();
 
-    /**
-     * Fournit le l'état de réalisation de la tâche.
-     * @param id - L'identifiant de la tâche réalisée.
-     * @return La réalisation de la tâche (pour l'équipe courante)
-     */
-    public Realisation getRealisation(String id);
-
-    /**
-     * Fournit l'objet qui prend les décisions pour l'équipe.
-     * @return IHM ou Robot
-     */
-    public Strategie getStrategie();
 }
