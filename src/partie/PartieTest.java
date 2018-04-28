@@ -40,13 +40,6 @@ public class PartieTest implements VueJoueur, DonneesJoueur {
 	public int getQualite()                 { return qualite; }
 
 	public List<DonneesJoueur> getEquipes() { return equipes; }
-	public DonneesJoueur getEquipeByNom(String id) {
-		for(DonneesJoueur e: equipes) {
-			if(e.getNom().equals(id))
-			return e;
-		}
-		return null;
-	}
 
 	public void setAcceleration(String id, boolean active)  {
 	}
