@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package description;
 
 
@@ -14,65 +9,27 @@ import java.util.Random;
  * @author diallo
  */
 
-
-
 /**
  *
- * déclaration des liste des couleurs
+ * Déclaration de la liste des couleurs
  */
-public enum Couleur{
-    JAUNE, ORANGE,ROUGE,VERT;
+public enum Couleur {
+    ROUGE, ORANGE, VERT;
 
+	/**
+	 * Choisit aléatoirement une couleur avec les probabilités associées.
+	 * @return Couleur choisie.
+	 */
+	public static Couleur tirage() {
+        Random rand = new Random();
 
+        int nb = rand.nextInt(6);
 
-
-
-
-    private Couleur couleurName;
-
-
-
-
-    private Couleur() {
-        this.couleurName = couleurName;
-    }
-
-    public Couleur getCouleur() {
-        return couleurName;
-    }
-
-    public static Couleur tirage(){
-        Random random = new Random();
-        int p0 ,p1,p2;
-        Couleur couleurName = null;
-
-        int choix = random.nextInt(1);
-        switch(couleurName){
-            case JAUNE:
-            case ORANGE:
-
-                p0=2/6;
-                if(choix<p0)
-                    System.out.println(Couleur.ORANGE);
-
-                break;
-
-
-            case ROUGE:
-                p1=(2/6)+(1/6);
-                if(choix<p1)
-                    System.out.println(Couleur.ROUGE);
-                break;
-            case VERT:
-                p2=(2/6)+(1/6)+(3/6);
-                if(choix<=p2)
-                    System.out.println(Couleur.VERT);
-                break;
-            default:
-                System.out.println("faite un choix");
-
-
-        }
-        return couleurName;
+        if(nb >= 0 && nb < 3)
+			return ROUGE;
+		else if(nb > 2 && nb < 5)
+			return ORANGE;
+		else
+			return VERT;
     }
 }
