@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>description</OriginalElement>
+  <nodes>
+    <node x="0.0" y="582.0">description.Description</node>
+    <node x="24.03392857142859" y="0.0">description.TypeAlea</node>
+    <node x="130.8041666666667" y="315.0">description.Tache</node>
+    <node x="70.1791666666667" y="168.5">description.Alea</node>
+    <node x="284.6172619047619" y="146.0">description.Couleur</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="description.Description" target="description.Alea">
+      <point x="-17.44999999999999" y="-346.5" />
+      <point x="157.05" y="552.0" />
+      <point x="120.3041666666667" y="552.0" />
+      <point x="120.3041666666667" y="295.0" />
+      <point x="148.3041666666667" y="295.0" />
+      <point x="15.625" y="37.0" />
+    </edge>
+    <edge source="description.Tache" target="description.Couleur">
+      <point x="56.5" y="-103.5" />
+      <point x="300.3041666666667" y="295.0" />
+      <point x="308.9505952380953" y="295.0" />
+      <point x="-48.666666666666664" y="59.5" />
+    </edge>
+    <edge source="description.Description" target="description.Tache">
+      <point x="17.44999999999999" y="-346.5" />
+      <point x="191.95" y="562.0" />
+      <point x="168.47083333333336" y="562.0" />
+      <point x="-75.33333333333333" y="103.5" />
+    </edge>
+    <edge source="description.Description" target="description.TypeAlea">
+      <point x="-122.14999999999992" y="-346.5" />
+      <point x="52.35000000000008" y="562.0" />
+      <point x="59.67916666666669" y="562.0" />
+      <point x="59.67916666666669" y="121.0" />
+      <point x="72.03392857142859" y="121.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="description.Alea" target="description.TypeAlea">
+      <point x="0.0" y="-37.0" />
+      <point x="132.6791666666667" y="121.0" />
+      <point x="104.03392857142859" y="121.0" />
+      <point x="32.0" y="48.0" />
+    </edge>
+    <edge source="description.Description" target="description.Couleur">
+      <point x="122.14999999999998" y="-346.5" />
+      <point x="296.65" y="552.0" />
+      <point x="367.3041666666667" y="552.0" />
+      <point x="367.3041666666667" y="295.0" />
+      <point x="357.6172619047619" y="295.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="description.Tache" target="description.Alea">
+      <point x="-56.5" y="-103.5" />
+      <point x="187.3041666666667" y="295.0" />
+      <point x="179.5541666666667" y="295.0" />
+      <point x="46.875" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="114.5" y="523.333333333333" />
+  <SelectedNodes>
+    <node>description.Alea</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
