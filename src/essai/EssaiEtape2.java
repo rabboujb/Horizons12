@@ -10,12 +10,12 @@ public class EssaiEtape2 {
 		Scanner sc = new Scanner(System.in);
 		int i=0;
 
-		PartieTest listeEquipes = new PartieTest();
+		Equipes listeEquipes = new Equipes();
 
 		do {
 			i++;
 			System.out.print("Choisissez un nom d'équipe : ");
-            listeEquipes.ajouterEquipe(new PartieTest(""+sc.nextLine()));
+            listeEquipes.ajouterEquipe(new Equipes(""+sc.nextLine()));
 			System.out.print("Créer une nouvelle équipe (o/n) ? ");
 		} while(sc.nextLine().charAt(0) == 'o');
 
