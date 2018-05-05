@@ -3,7 +3,7 @@
  */
 
 package partie;
-import description.Description;
+import description.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,8 @@ public class Equipes implements DonneesJoueur {
 	private int qualite;
 	private Description description;
 	private List<DonneesJoueur> equipes;
-	public boolean tabB[] = {false, false, false, false, false, false, false, false};
+	public boolean tabA[] = new boolean[8];
+	public boolean tabP[] = new boolean[24];
 
 	public Equipes() {  this.equipes = new ArrayList<>();	}
 
@@ -23,6 +24,14 @@ public class Equipes implements DonneesJoueur {
 		this.caisse = 300;
 		this.qualite = 100;
 		this.description = new Description();
+	}
+
+	public void creerTab() {
+		for(int i=0;i<tabA.length;i++)
+			tabA[i] = false;
+
+		for(int i=0;i<tabP.length;i++)
+			tabP[i] = false;
 	}
 
 	public void ajouterEquipe(DonneesJoueur equipe) { equipes.add(equipe); }
@@ -34,6 +43,16 @@ public class Equipes implements DonneesJoueur {
 	public List<DonneesJoueur> getEquipes() { return equipes;       }
 
 	public void setAcceleration(String id, boolean active) {
-			tabB[Integer.parseInt(id)-1] = true;
+		tabA[Integer.parseInt(id) - 1] = active;
+	}
+
+	public void setProtection(String id, Couleur couleur, boolean active) {
+		int idCouleur = 0;
+
+		if(couleur == Couleur.ROUGE)   idCouleur = 0;
+		if(couleur == Couleur.ORANGE)   idCouleur = 1;
+		if(couleur == Couleur.VERT)     idCouleur = 2;
+
+		tabP[((Integer.parseInt(id) - 1) * 3) + idCouleur] = active;
 	}
 }
