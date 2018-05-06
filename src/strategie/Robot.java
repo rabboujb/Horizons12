@@ -17,5 +17,6 @@ public class Robot implements Strategie {
 		System.out.println(vue.getNom());
 		System.out.println(vue.getCaisse());
 		System.out.println(vue.getQualite());
+
 	}
 }
