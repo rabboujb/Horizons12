@@ -10,23 +10,24 @@ public class EssaiEtape2 {
 		Scanner sc = new Scanner(System.in);
 		int i=0;
 
-		Equipes listeEquipes = new Equipes();
+//		VueEquipes listeEquipes = new VueEquipes();
 
 		do {
 			i++;
 			System.out.print("Choisissez un nom d'équipe : ");
-            listeEquipes.ajouterEquipe(new Equipes(""+sc.nextLine()));
+//            listeEquipes.ajouterEquipe(new VueEquipes(""+sc.nextLine()));
 			System.out.print("Créer une nouvelle équipe (o/n) ? ");
 		} while(sc.nextLine().charAt(0) == 'o');
 
         System.out.println();
 
-		for(DonneesJoueur e: listeEquipes.getEquipes()) {
-			System.out.println(e.getNom());
-			System.out.println(e.getCaisse()+" €");
-			System.out.println(e.getQualite()+" %");
+//		for(VueJoueur e: listeEquipes.getEquipes()) {
+//			System.out.println(e.getNom());
+//			System.out.println(e.getCaisse()+" €");
+//			System.out.println(e.getQualite()+" %");
+//			System.out.println(e.getDuree()+" semaines");
 	        System.out.println("===");
 	        System.out.println();
-		}
+//		}
     }
 }
