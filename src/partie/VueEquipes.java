@@ -5,23 +5,29 @@ import description.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VueEquipes implements VueJoueur {
+public class VueEquipes implements VueJoueur, DonneesJoueur {
 	private int caisse;
 	private Description plateau;
 	private String nomEquipe;
 	private int numeroTour;
 	private int qualite;
+	private List<VueJoueur> equipes;
 
 	public boolean tabAcceleration[] = new boolean[8];
 	public boolean tabProtection[] = new boolean[24];
 
-	public VueEquipes(String nomEquipe) {
-		new Equipes(nomEquipe);
-	}
-
 	public VueEquipes() {
-
+		this.equipes = new ArrayList<>();
 	}
+
+	public VueEquipes(String nomEquipe) {
+		this.nomEquipe = nomEquipe;
+		this.caisse = 300;
+		this.qualite = 100;
+		this.plateau = new Description();
+	}
+
+	public List<VueJoueur> getEquipes() { return equipes;       }
 
 	public void FinDuTour()             {   }
 	public int getCaisse()              { return caisse;        }
@@ -33,6 +39,8 @@ public class VueEquipes implements VueJoueur {
 	public String getNom()              { return nomEquipe;     }
 	public int getNumeroTour()          { return numeroTour;    }
 	public int getQualite()             { return qualite;       }
+	public void baisseQualite(int delta)    { qualite = qualite - delta;}
+	public void depense(int somme)          { caisse = caisse - somme;  }
 
 	public void creerTab() {
 		for(int i=0;i<tabAcceleration.length;i++)
