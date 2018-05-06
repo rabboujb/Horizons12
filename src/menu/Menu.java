@@ -1,4 +1,6 @@
 package menu;
+import partie.VueJoueur;
+
 import java.util.Scanner;
 
 /**
@@ -7,7 +9,12 @@ import java.util.Scanner;
  */
 public class Menu {
     Scanner sc = new Scanner(System.in);
-    
+	private VueJoueur equipe;
+
+	public Menu(VueJoueur vue) {
+		this.equipe = vue;
+	}
+
 	public void menuLancement() {
 		int choix;
 
@@ -67,20 +74,37 @@ public class Menu {
 		choix = sc.nextInt();
 		System.out.println();
 
-		MenuPartie maPartie = new MenuPartie();
+		MenuPartie maPartie = new MenuPartie(equipe);
 
-		if(choix == 1)
+		if(choix == 1) {
 			maPartie.consulterPert();
-		else if(choix == 2)
-			System.out.println("choix2");
-		else if(choix == 3)
-			System.out.println("choix3");
+			remonterMenu();
+		}
+		else if(choix == 2) {
+			maPartie.infosEquipes();
+			remonterMenu();
+		}
+		else if(choix == 3) {
+			maPartie.actionsPossibles();
+			remonterMenu();
+		}
 		else if(choix == 4)
 			System.out.println("choix4");
 		else {
 			System.out.println("== Veuillez choisir l'un des menus proposés ==");
 			System.out.println();
 			menuPrincipal();
+		}
+	}
+
+	public void remonterMenu() {
+		System.out.print("Appuyez sur 1 pour revenir au jeu : ");
+		if(sc.nextInt() == 1)
+			menuPrincipal();
+		else {
+			System.out.println("== Veuillez choisir le menu proposé ==");
+			System.out.println();
+			remonterMenu();
 		}
 	}
 }

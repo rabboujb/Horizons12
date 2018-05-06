@@ -2,10 +2,16 @@ package menu;
 import description.*;
 import partie.DonneesJoueur;
 import partie.Equipes;
-import partie.VueEquipes;
+import partie.VueJoueur;
+
+import java.util.Scanner;
 
 public class MenuPartie {
-	public MenuPartie() {
+	Scanner sc = new Scanner(System.in);
+	private VueJoueur equipe;
+
+	public MenuPartie(VueJoueur vue) {
+		this.equipe = vue;
 	}
 
 	public void consulterPert() {
@@ -32,14 +38,38 @@ public class MenuPartie {
                 System.out.println("===");
                 System.out.println();
         }
+
+
 	}
 
 	public void infosEquipes() {
-		VueEquipes e = new VueEquipes("Horizons12");
-			System.out.println(e.getNom());
-			System.out.println(e.getCaisse()+" €");
-			System.out.println(e.getQualite()+" %");
-	        System.out.println("===");
-	        System.out.println();
+		System.out.println("Afficher les informations de l'équipe : ");
+		System.out.println("1. "+equipe.getNom());
+		System.out.println("2. IA");
+
+		System.out.println();
+		System.out.print("Veuillez saisir votre choix : ");
+
+//		DonneesJoueur DonneesEquipe;
+
+		if(sc.nextInt() == 1) {
+			System.out.println(equipe.getNom());
+			System.out.println(equipe.getCaisse()+" €");
+			System.out.println(equipe.getQualite()+" %");
+//	        consulterPert();
+		}
+		if(sc.nextInt() == 2) {
+			System.out.println(equipe.getNom());
+			System.out.println(equipe.getCaisse()+" €");
+			System.out.println(equipe.getQualite()+" %");
+//	        consulterPert();
+		}
+
+        System.out.println("===");
+        System.out.println();
+	}
+
+	public void actionsPossibles() {
+
 	}
 }
