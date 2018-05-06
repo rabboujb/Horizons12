@@ -1,24 +1,23 @@
+package essai;
+import partie.VueEquipes;
+import strategie.Robot;
+import menu.*;
+
 /**
  * @author Bilal RABBOUJ
  */
-package essai;
-import partie.Equipes;
-import partie.VueJoueur;
-import strategie.Robot;
-import java.util.Scanner;
 
 public class EssaiEtapeStrategie {
     public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+        String EquipeA = "Horizons12";
+        String EquipeB = "IA";
 
 	    Robot monRobot = new Robot();
-	    Equipes Horizons12 = new Equipes("Horizons12");
+	    VueEquipes Horizons12 = new VueEquipes(EquipeA);
+	    VueEquipes IA = new VueEquipes(EquipeB);
 
-	    monRobot.jouerJalon(Horizons12);
-
-   		Horizons12.depense(10);
-   		Horizons12.baisseQualite(2);
-
-   	    monRobot.jouerJalon(Horizons12);
+		Horizons12.getEquipes();
+		Menu menu = new Menu(Horizons12);
+		menu.menuLancement();
     }
 }

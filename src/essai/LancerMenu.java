@@ -5,7 +5,7 @@
  */
 package essai;
 import java.io.IOException;
-import  strategie.Menu;
+import menu.Menu;
 
 /**
  *
@@ -16,9 +16,9 @@ public class LancerMenu {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-      Menu lancer = new Menu();
-      lancer.menuLancement();
+    public static void main(String[] args) {
+//      Menu lancer = new Menu();
+//      lancer.menuLancement();
     }
     
 }
