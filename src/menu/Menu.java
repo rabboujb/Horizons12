@@ -1,4 +1,4 @@
-package strategie;
+package menu;
 import java.util.Scanner;
 
 /**
@@ -60,8 +60,6 @@ public class Menu {
 		System.out.println("*                             *");
 		System.out.println("*  4 : Quitter la partie      *");
 		System.out.println("*                             *");
-		System.out.println("*  5 : Quitter le jeu         *");
-		System.out.println("*                             *");
 		System.out.println("*******************************");
 
 		System.out.println();
@@ -69,16 +67,16 @@ public class Menu {
 		choix = sc.nextInt();
 		System.out.println();
 
+		MenuPartie maPartie = new MenuPartie();
+
 		if(choix == 1)
-			System.out.println("choix1");
+			maPartie.consulterPert();
 		else if(choix == 2)
 			System.out.println("choix2");
 		else if(choix == 3)
 			System.out.println("choix3");
 		else if(choix == 4)
 			System.out.println("choix4");
-		else if(choix == 5)
-			System.out.println("choix5");
 		else {
 			System.out.println("== Veuillez choisir l'un des menus proposés ==");
 			System.out.println();
