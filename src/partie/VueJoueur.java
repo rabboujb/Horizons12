@@ -38,7 +38,7 @@ public interface VueJoueur {
      * Retourne l'objet permettant d'acquérir la description de la configuration de jeu.
      * @return L'objet contenant la description statique du jeu.
      */
-    public Description getDescription();
+    public Description getPlateau();
 
     /**
      * Fournit la durée réelle d'une tâche pour l'équipe.
