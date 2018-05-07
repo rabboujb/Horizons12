@@ -1,7 +1,7 @@
 package essai;
 import partie.VueEquipes;
+import partie.VueJoueur;
 import strategie.Robot;
-import menu.*;
 
 /**
  * @author Bilal RABBOUJ
@@ -12,12 +12,16 @@ public class EssaiEtapeStrategie {
         String EquipeA = "Horizons12";
         String EquipeB = "IA";
 
+		// Création de l'IHM ou Robot
 	    Robot monRobot = new Robot();
-	    VueEquipes Horizons12 = new VueEquipes(EquipeA);
-	    VueEquipes IA = new VueEquipes(EquipeB);
+	    // Création de l'ArrayList contenant les équipes
+	    VueJoueur Equipes = new VueEquipes();
 
-		Horizons12.getEquipes();
-		Menu menu = new Menu(Horizons12);
-		menu.menuLancement();
+		// Création de l'équipe A et B et ajout dans l'ArrayList
+	    Equipes.ajouterEquipe(new VueEquipes(EquipeA));
+	    Equipes.ajouterEquipe(new VueEquipes(EquipeB));
+
+		monRobot.jouerJalon(Equipes);
+
     }
 }
