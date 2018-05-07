@@ -105,7 +105,7 @@ public class Description implements Alea, Tache {
     }
 
 		// Constructeur aleas
-    private Description(Couleur couleur, String nom, TypeAlea type, int gravite) {
+    public Description(Couleur couleur, String nom, TypeAlea type, int gravite) {
         this.couleur = couleur;
         this.nom = nom;
         this.type = type;
@@ -113,7 +113,7 @@ public class Description implements Alea, Tache {
     }
 
 		// Constructeur taches
-    private Description(String idTache, String description, int cout, int
+    public Description(String idTache, String description, int cout, int
         dureeInitiale, int dureeMax, Alea alea1, Alea alea2, Alea alea3) {
         this.idTache = idTache;
         this.description = description;
