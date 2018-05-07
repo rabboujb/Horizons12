@@ -198,8 +198,6 @@ public class Description implements Alea, Tache {
 **/
     public String toString() {
         return "Aléa {" +
-                "id=" + idTache +
-                "description=" + description +
                 "couleur=" + couleur +
                 ", nom='" + nom + '\'' +
                 ", type=" + type +

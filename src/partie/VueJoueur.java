@@ -3,6 +3,8 @@ package partie;
 import description.Couleur;
 import description.Description;
 
+import java.util.List;
+
 /**
  * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (Robot ou Joueur via son IHM) lors du
  * jeu. Ces opérations sont formées en 3 groupes:
@@ -11,6 +13,9 @@ import description.Description;
  */
 
 public interface VueJoueur {
+    void ajouterEquipe(VueJoueur equipe);
+
+    List<VueJoueur> getEquipes();
 
     /**Termine le tour pour le joueur courant.*/
     public void FinDuTour();

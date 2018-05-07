@@ -13,8 +13,8 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	private int qualite;
 	private List<VueJoueur> equipes;
 
-	public boolean tabAcceleration[] = new boolean[8];
-	public boolean tabProtection[] = new boolean[24];
+	private boolean tabAcceleration[];
+	private boolean tabProtection[];
 
 	public VueEquipes() {
 		this.equipes = new ArrayList<>();
@@ -25,9 +25,12 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		this.caisse = 300;
 		this.qualite = 100;
 		this.plateau = new Description();
+		this.tabAcceleration = new boolean[8];
+		this.tabProtection = new boolean[24];
 	}
 
-	public List<VueJoueur> getEquipes() { return equipes;       }
+	public List<VueJoueur> getEquipes()         { return equipes;       }
+	public void ajouterEquipe(VueJoueur equipe) { equipes.add(equipe);  }
 
 	public void FinDuTour()             {   }
 	public int getCaisse()              { return caisse;        }
@@ -39,6 +42,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	public String getNom()              { return nomEquipe;     }
 	public int getNumeroTour()          { return numeroTour;    }
 	public int getQualite()             { return qualite;       }
+
 	public void baisseQualite(int delta)    { qualite = qualite - delta;}
 	public void depense(int somme)          { caisse = caisse - somme;  }
 
@@ -61,6 +65,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		if(couleur == Couleur.ORANGE)   idCouleur = 1;
 		if(couleur == Couleur.VERT)     idCouleur = 2;
 
-		tabProtection[((Integer.parseInt(id) - 1) * 3) + idCouleur] = active;
+		int tabCase = ((Integer.parseInt(id) - 1) * 3) + idCouleur;
+		tabProtection[tabCase] = active;
 	}
 }
