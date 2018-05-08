@@ -23,7 +23,7 @@ public class TourAlea extends Tour {
      * Permet de retourner un tirage de dé
      * @return une couleur aléatoire
      */
-    public Couleur tirtage() {
+    public Couleur tirage() {
         return Couleur.tirage();
     }
 
