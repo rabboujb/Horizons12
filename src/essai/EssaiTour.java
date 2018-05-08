@@ -35,7 +35,7 @@ public class EssaiTour {
                 System.out.println(((TourJalon) tour).getIdTaches());
             }
             else {
-                System.out.println(((TourAlea) tour).tirtage());
+                System.out.println(((TourAlea) tour).tirage());
             }
         }
     }
