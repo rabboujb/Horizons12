@@ -5,13 +5,19 @@ import static description.Couleur.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
+import description.Alea;
 import description.Description;
+import description.Tache;
 
 /**
  * @author Equipe Horizons12
@@ -19,16 +25,20 @@ import description.Description;
 
 class DescriptionTest {
 	
-	private final Description example;
-	private Description autre;
-	
-	/*public DescriptionTest() {
-		this.example = new Description();
-	}*/
-	
+	private final Description exampleAlea;
+	private Description autreAlea;
+	private final Description exampleTache;
+	private Description autreTache;
 	
 	public DescriptionTest() {
-		this.example = new Description(ROUGE,"A",DELAI,1);
+		List<Alea> aleas = new ArrayList<>();		
+		this.exampleAlea = new Description(ROUGE,"A",DELAI,1);
+		aleas.add(this.exampleAlea);
+		this.autreAlea = new Description(ORANGE,"BB",DELAI,2);
+		aleas.add(this.autreAlea);
+		
+        this.exampleTache = new Description("1", "Réfléchir", 10, 2, 4, exampleAlea, exampleAlea, exampleAlea);
+        this.autreTache = new Description("2", "Dire", 20, 3, 4, autreAlea, autreAlea, autreAlea);      
 	}
 	
 	@BeforeClass
@@ -44,12 +54,13 @@ class DescriptionTest {
 	
 	@Before
 	public void setUp() {
-		this.autre = new Description(ROUGE,"A",DELAI,1);
-	}
+		this.autreAlea = new Description(ROUGE,"A",DELAI,1);
+        this.autreTache = new Description("1", "Réfléchir", 10, 2, 4, autreAlea, autreAlea, autreAlea);	}
 	
 	@After
 	public void tearDown() {
-		autre = null;
+		autreAlea = null;
+		autreTache = null;
 	}
 
 	/**
@@ -58,7 +69,7 @@ class DescriptionTest {
 	@Test
 	public void testGetCouleur() {
 		System.out.println("getCouleur");
-		assertEquals(ROUGE,autre.getCouleur());
+		assertEquals(ORANGE,autreAlea.getCouleur());
 	}
 	
 	/**
@@ -67,7 +78,7 @@ class DescriptionTest {
 	@Test
 	public void testGetNom() {
 		System.out.println("getNom");
-		assertEquals("A",autre.getNom());
+		assertEquals("BB",autreAlea.getNom());
 	}
 	
 	/**
@@ -76,7 +87,7 @@ class DescriptionTest {
 	@Test
 	public void testGetType() {
 		System.out.println("getType");
-		assertEquals(EUROS,autre.getType());
+		assertEquals(DELAI,autreAlea.getType());
 	}
 	
 	/**
@@ -85,7 +96,61 @@ class DescriptionTest {
 	@Test
 	public void testGetGravite() {
 		System.out.println("getGravite");
-		assertEquals(1,autre.getGravite());
+		assertEquals(2,autreAlea.getGravite());
+	}
+	
+	/**
+	 * Test de la méthode getId() de la class Description
+	 */
+	@Test
+	public void testGetId() {
+		System.out.println("getId");
+		assertEquals("2",autreTache.getId());
+	}
+
+	/**
+	 * Test de la méthode getDescription() de la class Description
+	 */
+	@Test
+	public void testGetDescription() {
+		System.out.println("getDescription");
+		assertEquals("Dire",autreTache.getDescription());
+	}
+
+	/**
+	 * Test de la méthode coutAcceleration() de la class Description
+	 */
+	@Test
+	public void testCoutAcceleration() {
+		System.out.println("coutacceleration");
+		assertEquals(20,autreTache.coutAcceleration());
+	}
+
+	/**
+	 * Test de la méthode getDureeInitiale() de la class Description
+	 */
+	@Test
+	public void testGetDureeInitiale() {
+		System.out.println("getDureeInitiale");
+		assertEquals(3,autreTache.getDureeInitiale());
+	}
+
+	/**
+	 * Test de la méthode getDureeMax() de la class Description
+	 */
+	@Test
+	public void testGetDureeMax() {
+		System.out.println("getDureeMax");
+		assertEquals(4,autreTache.getDureeMax());
+	}
+
+	/**
+	 * Test de la méthode getAlea() de la class Description
+	 */
+	@Test
+	public void testGetAlea() {
+		System.out.println("getAlea");
+		assertEquals(autreAlea,autreTache.getAlea(ROUGE));
 	}
 	
 	/**
@@ -95,7 +160,7 @@ class DescriptionTest {
 	public void testEquals_True() {
 		System.out.println("equals: true");
 		Description instance = new Description(ROUGE,"A",DELAI,1);
-		assertTrue(instance.equals(example));
+		assertTrue(instance.equals(exampleAlea));
 	}
 	
 	/**
@@ -104,7 +169,7 @@ class DescriptionTest {
 	@Test
 	public void testEquals_False() {
 		System.out.println("equals: false");
-		assertFalse(autre.equals(example));
+		assertFalse(autreAlea.equals(exampleAlea));
 	}
 	
 	/**
@@ -114,7 +179,7 @@ class DescriptionTest {
 	public void testEquals_Null_Object() {
 		System.out.println("equals avec null");
 		Description instance = null;
-		assertFalse(example.equals(instance));
+		assertFalse(exampleAlea.equals(instance));
 	}
 	
 	/**
@@ -124,7 +189,7 @@ class DescriptionTest {
 	public void testEquals_Other_Object() {
 		System.out.println("equals avec un autre objet");
 		String instance = "ROUGE,A,DELAI,1";
-		assertFalse(instance.equals(example));
+		assertFalse(instance.equals(exampleAlea));
 	}
 	
 	
@@ -132,13 +197,18 @@ class DescriptionTest {
 	/**
 	 * Test de la méthode toString() de la class Description
 	 */
-	/*@Test
+	@Test
 	public void testToString() {
 		System.out.println("toString");
 		Description instance = new Description(ORANGE,"BB",DELAI,2);
-		String expResult = "ORANGE,BB,DELAI,2";
+		String expResult = "Aléa {" +
+                "couleur=ORANGE" +
+                ", nom='BB" + '\'' +
+                ", type=DELAI" +
+                ", gravite=2" +
+                '}';
 		assertEquals(expResult, instance.toString());
-	}*/
+	}
 	
 
 
