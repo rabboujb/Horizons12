@@ -2,12 +2,13 @@
  * @author Bilal RABBOUJ
  */
 package description;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
 import static description.TypeAlea.*;
 import static description.Couleur.*;
+import static description.TypeTour.*;
 
 public class Description implements Alea, Tache {
 /**
@@ -26,6 +27,8 @@ public class Description implements Alea, Tache {
     private List<Tache> taches;
     private Collection<Tache> predecesseurs;
     private Collection<Tache> successeurs;
+    private List<Tour> sequence;
+	private int[] nbToursJalon1, nbToursJalon2;
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
 
@@ -102,6 +105,28 @@ public class Description implements Alea, Tache {
         t5.successeurs.addAll(taches.subList(taches.indexOf(t6),taches.size()));
         t6.successeurs.addAll(taches.subList(taches.indexOf(t7),taches.size()));
         t7.successeurs.add(t8);
+
+		this.sequence = new LinkedList<>();
+		this.nbToursJalon1 = new int[]{Integer.parseInt(t1.getId())
+										, Integer.parseInt(t2.getId())
+										, Integer.parseInt(t3.getId())
+										, Integer.parseInt(t4.getId())};
+		this.nbToursJalon2 = new int[]{Integer.parseInt(t5.getId())
+										, Integer.parseInt(t6.getId())
+										, Integer.parseInt(t7.getId())
+										, Integer.parseInt(t8.getId())};
+
+
+		sequence.add(new TourJalon(0, JALON, nbToursJalon1));
+		sequence.add(new TourAlea(1, ALEA, nbToursJalon1[0]));
+		sequence.add(new TourAlea(2, ALEA, nbToursJalon1[1]));
+		sequence.add(new TourAlea(3, ALEA, nbToursJalon1[2]));
+		sequence.add(new TourAlea(4, ALEA, nbToursJalon1[3]));
+		sequence.add(new TourJalon(5, JALON, nbToursJalon2));
+		sequence.add(new TourAlea(6, ALEA, nbToursJalon2[0]));
+		sequence.add(new TourAlea(7, ALEA, nbToursJalon2[1]));
+		sequence.add(new TourAlea(8, ALEA, nbToursJalon2[2]));
+		sequence.add(new TourAlea(9, ALEA, nbToursJalon2[3]));
     }
 
 		// Constructeur aleas
@@ -127,6 +152,9 @@ public class Description implements Alea, Tache {
         successeurs = new ArrayList<>();
     }
 
+	public List<Tour> getSequence()         { return sequence;      }
+	public int[] getTachesJalon1()          { return nbToursJalon1; }
+	public int[] getTachesJalon2()          { return nbToursJalon2; }
 /**
 * @return Couleur d'un aléa
 **/
