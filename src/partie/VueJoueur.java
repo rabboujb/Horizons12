@@ -18,7 +18,7 @@ public interface VueJoueur {
     List<VueJoueur> getEquipes();
 
     /**Termine le tour pour le joueur courant.*/
-    public void FinDuTour();
+    public void finDuTour();
 
     /**
      * Fournit le montant actuel de la caisse de l'équipe (en euros).
@@ -81,4 +81,11 @@ public interface VueJoueur {
 
     /** Active ou désactive la protection contre un alea. */
     public void setProtection(String id, Couleur couleur, boolean active);
+
+	boolean[] getTabA();
+	boolean[] getTabP();
+	boolean getIdTabA(int id);
+	boolean getIdTabP(int id);
+
+	VueJoueur getEquipe(String equipeA);
 }
