@@ -18,7 +18,7 @@ public class EssaiTour {
 
         tours.add(new TourAlea(1, TypeTour.ALEA, 1));
         tours.add(new TourAlea(2, TypeTour.ALEA, 2));
-        tours.add(new TourAlea(3, TypeTour.ALEA, 3));
+        tours.add(new TourAlea( 3, TypeTour.ALEA, 3));
         tours.add(new TourAlea(4, TypeTour.ALEA, 4));
 
         tours.add(new TourJalon(5, TypeTour.JALON, new int[]{5, 6, 7, 8}));
@@ -36,6 +36,7 @@ public class EssaiTour {
             }
             else {
                 System.out.println(((TourAlea) tour).tirage());
+                System.out.println(((TourAlea)tour).getIdTache());
             }
         }
     }
