@@ -21,7 +21,8 @@ public class EssaiEtapeStrategie {
 	    Equipes.ajouterEquipe(new VueEquipes(EquipeA));
 	    Equipes.ajouterEquipe(new VueEquipes(EquipeB));
 
-		monRobot.jouerJalon(Equipes);
+		monRobot.jouerJalon(Equipes.getEquipe(EquipeA));
+		monRobot.jouerJalon(Equipes.getEquipe(EquipeB));
 
     }
 }
