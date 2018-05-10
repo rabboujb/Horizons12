@@ -18,6 +18,14 @@ public class TourAlea extends Tour {
     }
 
     /**
+     * Retourne l'ID de la tâche concernée par ce tour Aléa
+     * @return
+     */
+    public int getIdTache() {
+        return idTache;
+    }
+
+    /**
      * Permet de retourner un tirage de dé
      * @return une couleur aléatoire
      */
