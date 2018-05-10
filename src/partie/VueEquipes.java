@@ -1,7 +1,6 @@
 package partie;
 
 import description.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +26,25 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		this.plateau = new Description();
 		this.tabAcceleration = new boolean[8];
 		this.tabProtection = new boolean[24];
+		this.numeroTour = 0;
 	}
 
-	public List<VueJoueur> getEquipes()         { return equipes;       }
-	public void ajouterEquipe(VueJoueur equipe) { equipes.add(equipe);  }
+	public List<VueJoueur> getEquipes()             { return equipes;       }
+	public VueJoueur getEquipe(String nomEquipe)    {
+		for(VueJoueur v: equipes) {
+			if(nomEquipe.equals(v.getNom()))
+				return v;
+		}
+		return null;
+	}
+	public void ajouterEquipe(VueJoueur equipe)     { equipes.add(equipe);  }
 
-	public void FinDuTour()             {   }
+	public boolean[] getTabA()          { return tabAcceleration;       }
+	public boolean[] getTabP()          { return tabProtection;         }
+	public boolean getIdTabA(int id)    { return tabAcceleration[id];   }
+	public boolean getIdTabP(int id)    { return tabProtection[id];     }
+
+	public void finDuTour()             { numeroTour++;         }
 	public int getCaisse()              { return caisse;        }
 	public int getCurrent(String id)    { return 0;             }
 	public String getDebutId()          { return getPlateau().getTacheById("1").getId();        }
@@ -45,27 +57,30 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 
 	public void baisseQualite(int delta)    { qualite = qualite - delta;}
 	public void depense(int somme)          { caisse = caisse - somme;  }
+	public void actualisation(int temps)    {   }
 
-	public void creerTab() {
-		for(int i=0;i<tabAcceleration.length;i++)
-			tabAcceleration[i] = false;
-
-		for(int i=0;i<tabProtection.length;i++)
-			tabProtection[i] = false;
-	}
+//	public void creerTab() {
+//		for(int i=0;i<tabAcceleration.length;i++)
+//			tabAcceleration[i] = false;
+//
+//		for(int i=0;i<tabProtection.length;i++)
+//			tabProtection[i] = false;
+//	}
 
 	public void setAcceleration(String id, boolean active) {
 		tabAcceleration[Integer.parseInt(id) - 1] = active;
 	}
 
 	public void setProtection(String id, Couleur couleur, boolean active) {
-		int idCouleur = 0;
+		int tabCase = 0;
 
-		if(couleur == Couleur.ROUGE)    idCouleur = 0;
-		if(couleur == Couleur.ORANGE)   idCouleur = 1;
-		if(couleur == Couleur.VERT)     idCouleur = 2;
+		if(couleur == Couleur.ROUGE)
+			tabCase = ((Integer.parseInt(id) - 1) * 3);
+		if(couleur == Couleur.ORANGE)
+			tabCase = ((Integer.parseInt(id) - 1) * 3) + 1;
+		if(couleur == Couleur.VERT)
+			tabCase = ((Integer.parseInt(id) - 1) * 3) + 2;
 
-		int tabCase = ((Integer.parseInt(id) - 1) * 3) + idCouleur;
 		tabProtection[tabCase] = active;
 	}
 }
