@@ -1,7 +1,5 @@
 package description;
 
-import description.Tour;
-
 /**
  * Classe représentant un tour semaine, elle est liée à une tâche et permet de tirer un lancer de dé
  *
