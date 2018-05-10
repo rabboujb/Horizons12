@@ -1,9 +1,6 @@
 package partie;
-
 import description.Couleur;
 import description.Description;
-
-import java.util.List;
 
 /**
  * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (Robot ou Joueur via son IHM) lors du
@@ -15,77 +12,73 @@ import java.util.List;
 public interface VueJoueur {
     void ajouterEquipe(VueJoueur equipe);
 
-    List<VueJoueur> getEquipes();
-
     /**Termine le tour pour le joueur courant.*/
-    public void finDuTour();
+    void finDuTour();
 
     /**
      * Fournit le montant actuel de la caisse de l'équipe (en euros).
      * @return Le montant de la caisse de l'équipe.
      */
-    public int getCaisse();
+    int getCaisse();
 
     /**
      * Fournit l'état d'avancement de la réalisation d'une tâche pour l'équipe (en semaines).
      * @param id - l'identifiant de la tâche
      * @return la durée réelle de la tâche
      */
-    public int getCurrent(String id);
+    int getCurrent(String id);
 
     /**
      * Fournit l'identifiant de la première tâche du PERT.
      * @return l'indentifiant de la première tâche du pert
      */
-    public String getDebutId();
+    String getDebutId();
 
     /**
      * Retourne l'objet permettant d'acquérir la description de la configuration de jeu.
      * @return L'objet contenant la description statique du jeu.
      */
-    public Description getPlateau();
+    Description getPlateau();
 
     /**
      * Fournit la durée réelle d'une tâche pour l'équipe.
      * @param id - l'identifiant de la tâche
      * @return La durée réelle d'une tâche pour l'équipe (en semaines).
      */
-    public int getDuree(String id);
+    int getDuree(String id);
 
     /**
      * Fournit l'identifiant de la dernière tâche du PERT.
      * @return l'identifiant de la dernière tâche.
      */
-    public String getFinId();
+    String getFinId();
 
     /**
      * Fournit le nom de l'équipe.
      * @return le nom de l'équipe
      */
-    public String getNom();
+    String getNom();
 
     /**
      * Fournit le numéro du tour courant.
      * @return le numéro du tour courant
      */
-    public int getNumeroTour();
+    int getNumeroTour();
 
     /**
      * Fournit la qualité actuelle du produit.
      * @return le pourcentage de qualité du produit
      */
-    public int getQualite();
+    int getQualite();
 
     /** Active ou désactive l'accélération de la tâche (réducton de 1 de la durée réelle). */
-    public void setAcceleration(String id, boolean active);
+    void setAcceleration(String id, boolean active);
 
     /** Active ou désactive la protection contre un alea. */
-    public void setProtection(String id, Couleur couleur, boolean active);
+    void setProtection(String id, Couleur couleur, boolean active);
 
-	boolean[] getTabA();
-	boolean[] getTabP();
-	boolean getIdTabA(int id);
-	boolean getIdTabP(int id);
-
-	VueJoueur getEquipe(String equipeA);
+    /** Récupère la vue de l'équipe passée en paramètre.
+      * @param nomEquipe le nom de l'équipe
+      */
+	VueJoueur getEquipe(String nomEquipe);
 }
