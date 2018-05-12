@@ -11,6 +11,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	private int numeroTour;
 	private int qualite;
 	private List<VueJoueur> equipes;
+	private Equipes donneesEquipe;
 
 	private boolean tabAcceleration[];
 	private boolean tabProtection[];
@@ -24,11 +25,14 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		this.caisse = 300;
 		this.qualite = 100;
 		this.plateau = new Description();
+		this.donneesEquipe = new Equipes(nomEquipe, caisse, qualite);
 		this.tabAcceleration = new boolean[8];
 		this.tabProtection = new boolean[24];
 		this.numeroTour = 0;
 	}
 
+
+	public DonneesJoueur getDonneesEquipe()         { return donneesEquipe; }
 	public List<VueJoueur> getEquipes()             { return equipes;       }
 	public VueJoueur getEquipe(String nomEquipe)    {
 		for(VueJoueur v: equipes) {
@@ -43,6 +47,8 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	public boolean[] getTabP()          { return tabProtection;         }
 	public boolean getIdTabA(int id)    { return tabAcceleration[id];   }
 	public boolean getIdTabP(int id)    { return tabProtection[id];     }
+
+	public int getDureeReelle()         { return 0; }
 
 	public void finDuTour()             { numeroTour++;         }
 	public int getCaisse()              { return caisse;        }

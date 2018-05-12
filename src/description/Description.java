@@ -27,8 +27,11 @@ public class Description implements Alea, Tache {
     private List<Tache> taches;
     private Collection<Tache> predecesseurs;
     private Collection<Tache> successeurs;
-    private List<Tour> sequence;
+    private LinkedList<Tour> sequence;
+    private List<Integer> duree;
+	private static List<Couleur> tirage;
 	private int[] nbToursJalon1, nbToursJalon2;
+	private int calendrier;
 
     private Description t1, t2, t3, t4, t5, t6, t7, t8;
 
@@ -116,7 +119,6 @@ public class Description implements Alea, Tache {
 										, Integer.parseInt(t7.getId())
 										, Integer.parseInt(t8.getId())};
 
-
 		sequence.add(new TourJalon(0, JALON, nbToursJalon1));
 		sequence.add(new TourAlea(1, ALEA, nbToursJalon1[0]));
 		sequence.add(new TourAlea(2, ALEA, nbToursJalon1[1]));
@@ -127,6 +129,18 @@ public class Description implements Alea, Tache {
 		sequence.add(new TourAlea(7, ALEA, nbToursJalon2[1]));
 		sequence.add(new TourAlea(8, ALEA, nbToursJalon2[2]));
 		sequence.add(new TourAlea(9, ALEA, nbToursJalon2[3]));
+
+		this.calendrier = 0;
+
+		this.duree = new ArrayList<>();
+		duree.add(t1.getDureeMax() - t1.getDureeInitiale());
+		duree.add(t2.getDureeMax() - t2.getDureeInitiale());
+		duree.add(t3.getDureeMax() - t3.getDureeInitiale());
+		duree.add(t4.getDureeMax() - t4.getDureeInitiale());
+		duree.add(t5.getDureeMax() - t5.getDureeInitiale());
+		duree.add(t6.getDureeMax() - t6.getDureeInitiale());
+		duree.add(t7.getDureeMax() - t7.getDureeInitiale());
+		duree.add(t8.getDureeMax() - t8.getDureeInitiale());
     }
 
 		// Constructeur aleas
@@ -152,10 +166,18 @@ public class Description implements Alea, Tache {
         successeurs = new ArrayList<>();
     }
 
-	public List<Tour> getSequence()         { return sequence;      }
-	public int[] getTachesJalon1()          { return nbToursJalon1; }
-	public int[] getTachesJalon2()          { return nbToursJalon2; }
-/**
+	public Couleur getRandom()  { return Couleur.tirage(); }
+
+	public LinkedList<Tour> getSequence()   { return sequence;      }
+	public void supprimerTour()             { sequence.poll();      }
+
+	public int[] getTachesJalon1()  { return nbToursJalon1; }
+	public int[] getTachesJalon2()  { return nbToursJalon2; }
+
+	public int getCalendrier()      { return calendrier;    }
+	public void setCalendrier()     { calendrier++;         }
+
+	/**
 * @return Couleur d'un aléa
 **/
     public Couleur getCouleur()     {   return this.couleur;        }
@@ -191,7 +213,19 @@ public class Description implements Alea, Tache {
 * @return Retard éventuel d'une tâche
 **/
     public int getDureeMax()        {   return this.dureeMax;       }
-/**
+
+    public int getDureeReelle(String id)    {   return duree.get(Integer.parseInt(id)-1); }
+
+	public void ajoutDureeReelle(String id, int semaines) {
+		int dureeReelle = duree.get(Integer.parseInt(id)-1) + semaines;
+		duree.set(Integer.parseInt(id)-1,dureeReelle);
+	}
+	public void retraitDureeReelle(String id, int semaines) {
+		int dureeReelle = duree.get(Integer.parseInt(id)-1) - semaines;
+		duree.set(Integer.parseInt(id)-1,dureeReelle);
+	}
+
+	/**
 * @return Aléas d'une tâche
 **/
     public Alea getAlea(Couleur couleur) {

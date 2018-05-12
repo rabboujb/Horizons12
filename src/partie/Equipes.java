@@ -14,13 +14,20 @@ public class Equipes implements DonneesJoueur {
 	public boolean tabAcceleration[] = new boolean[8];
 	public boolean tabProtection[] = new boolean[24];
 
-	public Equipes(String nomEquipe) {
+
+	public Equipes(String nomEquipe, int caisse, int qualite) {
 		this.nomEquipe = nomEquipe;
+		this.caisse = caisse;
+		this.qualite = qualite;
 	}
 
 	public int getCaisse()                  { return caisse;        }
 	public String getNom()                  { return nomEquipe;     }
 	public int getQualite()                 { return qualite;       }
-	public void baisseQualite(int delta)    { qualite = qualite - delta;}
-	public void depense(int somme)          { caisse = caisse - somme;  }
+	public void baisseQualite(int delta)    { qualite = getQualite() - delta;}
+	public void depense(int somme)          { caisse = getCaisse() - somme;  }
+
+	public void actualisation(int temps) {
+
+	}
 }

@@ -81,4 +81,12 @@ public interface VueJoueur {
       * @param nomEquipe le nom de l'équipe
       */
 	VueJoueur getEquipe(String nomEquipe);
+	boolean[] getTabA();
+	boolean[] getTabP();
+	boolean getIdTabA(int id);
+	boolean getIdTabP(int id);
+
+	int getDureeReelle();
+
+	DonneesJoueur getDonneesEquipe();
 }
