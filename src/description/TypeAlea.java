@@ -12,9 +12,19 @@ package description;
 
 
 public enum TypeAlea{
-    DELAI,EUROS,QUALITE;
+    DELAI ("Délai"),
+    COUT ("Coût"),
+    QUALITE ("Qualité");
 
+    private String nom;
 
+    TypeAlea(String nom, int gravite) {
+        this.nom = nom;
+    }
+
+    public String toString() {
+        return nom;
+    }
 }
     
     

@@ -17,7 +17,7 @@ public enum TypeTour {
 
     private String nom;
 
-    private TypeTour (String nom){
+    TypeTour (String nom){
         this.nom = nom;
     }
 
