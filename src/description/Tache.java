@@ -7,6 +7,7 @@ package description;
  */
 public class Tache {
 
+    private static int compteurId = 0;
     private final int ID;
     private final String NOM;
     private final int COUT;
@@ -17,13 +18,14 @@ public class Tache {
     private final Alea JAUNE;
     private final Alea VERT;
 
-    private final int PREDECESSEUR;
-    private final int SUCCESSEUR;
+    private final int[] PREDECESSEUR;
+    private final int[] SUCCESSEUR;
 
-    public Tache(int id, String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
-                 int predecesseur, int successeur) {
+    public Tache(String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
+                 int[] predecesseur, int[] successeur) {
 
-        this.ID = id;
+        compteurId ++;
+        this.ID = compteurId;
         this.NOM = nom;
         this.COUT = cout;
         this.SEMAINES = semaines;
@@ -90,7 +92,7 @@ public class Tache {
      * Retourne l'Id de la tache précédente
      * @return PREDECESSEUR
      */
-    public int getPREDECESSEUR() {
+    public int[] getPREDECESSEUR() {
         return PREDECESSEUR;
     }
 
@@ -98,7 +100,7 @@ public class Tache {
      * Retourne la tache suivante
      * @return SUCCESSEUR
      */
-    public int getSUCCESSEUR() {
+    public int[] getSUCCESSEUR() {
         return SUCCESSEUR;
     }
 
@@ -114,7 +116,8 @@ public class Tache {
                 .append("\nSemaines : ").append(SEMAINES)
                 .append("\n").append(ROUGE)
                 .append("\n").append(JAUNE)
-                .append("\n").append(VERT);
+                .append("\n").append(VERT)
+                .append("\n");
 
         return chaine.toString();
     }
