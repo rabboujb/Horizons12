@@ -1,7 +1,5 @@
 package menu;
 import description.*;
-import partie.DonneesJoueur;
-import partie.Equipes;
 import partie.VueJoueur;
 
 import java.util.Scanner;
@@ -15,14 +13,14 @@ public class MenuPartie {
 	}
 
 	public void consulterPert() {
-        Description description = new Description();
+        DescriptionObsolete descriptionObsolete = new DescriptionObsolete();
 
         for(int i=1;i<9;i++) {
                 System.out.println("TÂCHE "+i);
                System.out.println();
-            Tache t = description.getTacheById(""+i+"");
+            Tache t = descriptionObsolete.getTacheById(""+i+"");
                 System.out.println("Nom : "+t.getId());
-                System.out.println("Description : "+t.getDescription());
+                System.out.println("DescriptionObsolete : "+t.getDescription());
                 System.out.println("Coût d'accélération : "+t.coutAcceleration()+" €");
                 if(i == 5)
                     System.out.println("Durée prévue : "+t.getDureeInitiale()+" semaine");

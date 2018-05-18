@@ -10,7 +10,7 @@ import static description.TypeAlea.*;
 import static description.Couleur.*;
 import static description.TypeTour.*;
 
-public class Description implements Alea, Tache {
+public class DescriptionObsolete implements Alea, Tache {
 /**
 * Définition des attributs
 **/
@@ -33,54 +33,54 @@ public class Description implements Alea, Tache {
 	private int[] nbToursJalon1, nbToursJalon2;
 	private int calendrier;
 
-    private Description t1, t2, t3, t4, t5, t6, t7, t8;
+    private DescriptionObsolete t1, t2, t3, t4, t5, t6, t7, t8;
 
 			//  Constructeur sans paramètre
-    public Description() {
+    public DescriptionObsolete() {
         List<Alea> aleas = new ArrayList<>();
             // Alea - Tache 1
-        aleas.add(new Description(ROUGE, "A", DELAI, 1));
-        aleas.add(new Description(ORANGE, "BB", DELAI, 2));
-        aleas.add(new Description(VERT, "a", EUROS, 1));
+        aleas.add(new DescriptionObsolete(ROUGE, "A", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "BB", DELAI, 2));
+        aleas.add(new DescriptionObsolete(VERT, "a", EUROS, 1));
             // Alea - Tache 2
-        aleas.add(new Description(ROUGE, "C", DELAI, 1));
-        aleas.add(new Description(ORANGE, "D", DELAI, 1));
-        aleas.add(new Description(VERT, "bb", EUROS, 2));
+        aleas.add(new DescriptionObsolete(ROUGE, "C", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "D", DELAI, 1));
+        aleas.add(new DescriptionObsolete(VERT, "bb", EUROS, 2));
             // Aleas - Tache 3
-        aleas.add(new Description(ROUGE, "EE", DELAI, 2));
-        aleas.add(new Description(ORANGE, "c", EUROS, 1));
-        aleas.add(new Description(VERT, "FF", DELAI, 2));
+        aleas.add(new DescriptionObsolete(ROUGE, "EE", DELAI, 2));
+        aleas.add(new DescriptionObsolete(ORANGE, "c", EUROS, 1));
+        aleas.add(new DescriptionObsolete(VERT, "FF", DELAI, 2));
             // Aleas - Tache 4
-        aleas.add(new Description(ROUGE, "d", EUROS, 1));
-        aleas.add(new Description(ORANGE, "GG", DELAI, 2));
-        aleas.add(new Description(VERT, "e", EUROS, 1));
+        aleas.add(new DescriptionObsolete(ROUGE, "d", EUROS, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "GG", DELAI, 2));
+        aleas.add(new DescriptionObsolete(VERT, "e", EUROS, 1));
             // Aleas - Tache 5
-        aleas.add(new Description(ROUGE, "H", DELAI, 1));
-        aleas.add(new Description(ORANGE, "III", DELAI, 3));
-        aleas.add(new Description(VERT, "ff", EUROS, 2));
+        aleas.add(new DescriptionObsolete(ROUGE, "H", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "III", DELAI, 3));
+        aleas.add(new DescriptionObsolete(VERT, "ff", EUROS, 2));
             // Aleas - Tache 6
-        aleas.add(new Description(ROUGE, "J", DELAI, 1));
-        aleas.add(new Description(ORANGE, "f", EUROS, 1));
-        aleas.add(new Description(VERT, "y", QUALITE, 1));
+        aleas.add(new DescriptionObsolete(ROUGE, "J", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "f", EUROS, 1));
+        aleas.add(new DescriptionObsolete(VERT, "y", QUALITE, 1));
             // Aleas - Tache 7
-        aleas.add(new Description(ROUGE, "KKK", DELAI, 3));
-        aleas.add(new Description(ORANGE, "L", DELAI, 1));
-        aleas.add(new Description(VERT, "M", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ROUGE, "KKK", DELAI, 3));
+        aleas.add(new DescriptionObsolete(ORANGE, "L", DELAI, 1));
+        aleas.add(new DescriptionObsolete(VERT, "M", DELAI, 1));
             // Aleas - Tache 8
-        aleas.add(new Description(ROUGE, "O", DELAI, 1));
-        aleas.add(new Description(ORANGE, "pp", EUROS, 2));
-        aleas.add(new Description(VERT, "zz", QUALITE, 2));
+        aleas.add(new DescriptionObsolete(ROUGE, "O", DELAI, 1));
+        aleas.add(new DescriptionObsolete(ORANGE, "pp", EUROS, 2));
+        aleas.add(new DescriptionObsolete(VERT, "zz", QUALITE, 2));
 
         taches = new ArrayList<>();
             // Instanciation des taches
-        t1 = new Description("1", "Réfléchir", 10, 2, 4, aleas.get(0), aleas.get(1), aleas.get(2));
-        t2 = new Description("2", "Dire", 20, 3, 4, aleas.get(3), aleas.get(4), aleas.get(5));
-        t3 = new Description("3", "Ecouter", 10, 2, 4, aleas.get(6), aleas.get(7), aleas.get(8));
-        t4 = new Description("4", "Faire", 10, 2, 4, aleas.get(9), aleas.get(10), aleas.get(11));
-        t5 = new Description("5", "Demander", 10, 1, 4, aleas.get(12), aleas.get(13), aleas.get(14));
-        t6 = new Description("6", "Contrôler", 10, 3, 4, aleas.get(15), aleas.get(16), aleas.get(17));
-        t7 = new Description("7", "Planifier", 20, 3, 6, aleas.get(18), aleas.get(19), aleas.get(20));
-        t8 = new Description("8", "Présenter", 10, 2, 4, aleas.get(21), aleas.get(22), aleas.get(23));
+        t1 = new DescriptionObsolete("1", "Réfléchir", 10, 2, 4, aleas.get(0), aleas.get(1), aleas.get(2));
+        t2 = new DescriptionObsolete("2", "Dire", 20, 3, 4, aleas.get(3), aleas.get(4), aleas.get(5));
+        t3 = new DescriptionObsolete("3", "Ecouter", 10, 2, 4, aleas.get(6), aleas.get(7), aleas.get(8));
+        t4 = new DescriptionObsolete("4", "Faire", 10, 2, 4, aleas.get(9), aleas.get(10), aleas.get(11));
+        t5 = new DescriptionObsolete("5", "Demander", 10, 1, 4, aleas.get(12), aleas.get(13), aleas.get(14));
+        t6 = new DescriptionObsolete("6", "Contrôler", 10, 3, 4, aleas.get(15), aleas.get(16), aleas.get(17));
+        t7 = new DescriptionObsolete("7", "Planifier", 20, 3, 6, aleas.get(18), aleas.get(19), aleas.get(20));
+        t8 = new DescriptionObsolete("8", "Présenter", 10, 2, 4, aleas.get(21), aleas.get(22), aleas.get(23));
             // Ajout des Taches à la liste
         taches.add(t1);
         taches.add(t2);
@@ -144,7 +144,7 @@ public class Description implements Alea, Tache {
     }
 
 		// Constructeur aleas
-    public Description(Couleur couleur, String nom, TypeAlea type, int gravite) {
+    public DescriptionObsolete(Couleur couleur, String nom, TypeAlea type, int gravite) {
         this.couleur = couleur;
         this.nom = nom;
         this.type = type;
@@ -152,7 +152,7 @@ public class Description implements Alea, Tache {
     }
 
 		// Constructeur taches
-    public Description(String idTache, String description, int cout, int
+    public DescriptionObsolete(String idTache, String description, int cout, int
         dureeInitiale, int dureeMax, Alea alea1, Alea alea2, Alea alea3) {
         this.idTache = idTache;
         this.description = description;
@@ -198,7 +198,7 @@ public class Description implements Alea, Tache {
 **/
     public String getId()           {   return this.idTache;        }
 /**
-* @return Description d'une tâche
+* @return DescriptionObsolete d'une tâche
 **/
     public String getDescription()  {   return this.description;    }
 /**
@@ -256,7 +256,7 @@ public class Description implements Alea, Tache {
 	}
 
 /**
-* @return Description d'un aléa
+* @return DescriptionObsolete d'un aléa
 **/
     public String toString() {
         return "Aléa {" +

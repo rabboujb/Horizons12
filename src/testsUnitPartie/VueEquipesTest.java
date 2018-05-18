@@ -99,7 +99,7 @@ class VueEquipesTest {
 	
 	
 	/**
-	 * Test de la méthode equals() de la class Description
+	 * Test de la méthode equals() de la class DescriptionObsolete
 	 */
 	@Test
 	public void testEquals_True() {
@@ -109,7 +109,7 @@ class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description
+	 * Test de la méthode equals() de la class DescriptionObsolete
 	 */
 	@Test
 	public void testEquals_False() {
@@ -118,7 +118,7 @@ class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description avec null
+	 * Test de la méthode equals() de la class DescriptionObsolete avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -128,7 +128,7 @@ class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description avec un autre objet
+	 * Test de la méthode equals() de la class DescriptionObsolete avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {

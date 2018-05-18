@@ -1,7 +1,5 @@
 package partie;
 
-import description.Description;
-
 /**
  * Représentation de l'état d'une équipe au cours de la partie.
  *

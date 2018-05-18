@@ -1,6 +1,6 @@
 package partie;
 import description.Couleur;
-import description.Description;
+import description.DescriptionObsolete;
 
 /**
  * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (Robot ou Joueur via son IHM) lors du
@@ -38,7 +38,7 @@ public interface VueJoueur {
      * Retourne l'objet permettant d'acquérir la description de la configuration de jeu.
      * @return L'objet contenant la description statique du jeu.
      */
-    Description getPlateau();
+    DescriptionObsolete getPlateau();
 
     /**
      * Fournit la durée réelle d'une tâche pour l'équipe.

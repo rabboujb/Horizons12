@@ -56,7 +56,7 @@ public class Alea {
     }
 
     /**
-     * Retourne une description de la tache et de ses attributs
+     * Retourne une description de l'Alea et de ses attributs
      * @return description
      */
     public String toString() {

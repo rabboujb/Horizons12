@@ -104,7 +104,7 @@ public class Tache {
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)
-     * @return Description de la tache
+     * @return DescriptionObsolete de la tache
      */
     public String toString() {
         StringBuilder chaine = new StringBuilder();

@@ -6,14 +6,14 @@ import description.*;
 
 public class EssaiEtape1 {
     public static void main(String[] args) {
-        Description description = new Description();
+        DescriptionObsolete descriptionObsolete = new DescriptionObsolete();
 
         for(int i=1;i<9;i++) {
                 System.out.println("TÂCHE "+i);
                 System.out.println();
-            Tache t = description.getTacheById(""+i+"");
+            Tache t = descriptionObsolete.getTacheById(""+i+"");
                 System.out.println("Nom : "+t.getId());
-                System.out.println("Description : "+t.getDescription());
+                System.out.println("DescriptionObsolete : "+t.getDescription());
                 System.out.println("Coût d'accélération : "+t.coutAcceleration()+" €");
                 if(i == 5)
                     System.out.println("Durée prévue : "+t.getDureeInitiale()+" semaine");

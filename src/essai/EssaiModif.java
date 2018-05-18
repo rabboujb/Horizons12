@@ -19,7 +19,7 @@
 //		Tache EBt2 = EquipeB.getPlateau().getTacheById("2");
 //
 //		System.out.println("==== Equipe A");
-//        System.out.println("Description de la tâche 2 pour l'équipe A : "+EAt2.getDescription());
+//        System.out.println("DescriptionObsolete de la tâche 2 pour l'équipe A : "+EAt2.getDescription());
 //        System.out.println("Durée maximale de la tâche 2 pour l'équipe A : "+EAt2.getDureeMax()+" semaines");
 //        System.out.println("Etat de l'accélération de la tâche 2 pour l'équipe A : "+EquipeA.tabAcceleration[1]);
 //
@@ -29,7 +29,7 @@
 //
 //		System.out.println();
 //		System.out.println("==== Equipe B");
-//        System.out.println("Description de la tâche 2 pour l'équipe B : "+EBt2.getDescription());
+//        System.out.println("DescriptionObsolete de la tâche 2 pour l'équipe B : "+EBt2.getDescription());
 //        System.out.println("Durée maximale de la tâche 2 pour l'équipe B : "+EBt2.getDureeMax()+" semaines");
 //        System.out.println("Etat de l'accélération de la tâche 2 pour l'équipe B : "+EquipeB.tabAcceleration[1]);
 //

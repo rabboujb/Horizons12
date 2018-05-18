@@ -6,7 +6,7 @@ import java.util.List;
 
 public class VueEquipes implements VueJoueur, DonneesJoueur {
 	private int caisse;
-	private Description plateau;
+	private DescriptionObsolete plateau;
 	private String nomEquipe;
 	private int numeroTour;
 	private int qualite;
@@ -24,7 +24,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		this.nomEquipe = nomEquipe;
 		this.caisse = 300;
 		this.qualite = 100;
-		this.plateau = new Description();
+		this.plateau = new DescriptionObsolete();
 		this.donneesEquipe = new Equipes(nomEquipe, caisse, qualite);
 		this.tabAcceleration = new boolean[8];
 		this.tabProtection = new boolean[24];
@@ -54,7 +54,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	public int getCaisse()              { return caisse;        }
 	public int getCurrent(String id)    { return 0;             }
 	public String getDebutId()          { return getPlateau().getTacheById("1").getId();        }
-	public Description getPlateau()     { return plateau;       }
+	public DescriptionObsolete getPlateau()     { return plateau;       }
 	public int getDuree(String id)      { return getPlateau().getTacheById(id).getDureeMax();   }
 	public String getFinId()            { return getPlateau().getTacheById("8").getId();        }
 	public String getNom()              { return nomEquipe;     }
