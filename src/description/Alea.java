@@ -1,28 +1,39 @@
 package description;
 
-/**
- * Représente un des aleas envisagé durant le déroulement du jeu
- *
- * @author Equipe Horizons12
- */
+public class Alea {
 
+    private final TypeAlea TYPE;
+    private final Couleur COULEUR;
+    private final int GRAVITE;
+    private final String NOM;
 
-public interface Alea {
+    public Alea(TypeAlea type, Couleur couleur, int gravite, String nom) {
+        this.TYPE = type;
+        this.COULEUR = couleur;
+        this.GRAVITE = gravite;
+        this.NOM = nom;
+    }
 
-	/** Méthode qui applique l'aléa sur l'équipe et la réalisation passée en paramètre	*/
-	//public void appliquer(Donnees joueur, partie.RealisationConcrete realisationConcrete);
-		
-	
-	/** 
-	 * Indique la gravité d'un aléa
-	 * @return le niveau de gravité de l'aléa
-	 */
-	public int getGravite();
-	
-	/** 
-	 * Indique le type d'impact de l'alea
-	 * @return le type d'aléa
-	 *  */
-	public TypeAlea getType();
-	
+    public TypeAlea getTYPE() {
+        return TYPE;
+    }
+
+    public Couleur getCOULEUR() {
+        return COULEUR;
+    }
+
+    public int getGRAVITE() {
+        return GRAVITE;
+    }
+
+    public String getNOM() {
+        return NOM;
+    }
+
+    public String toString() {
+        StringBuilder chaine = new StringBuilder();
+
+        chaine.append(COULEUR).append(" : ").append(TYPE).append("\t").append(GRAVITE).append("\t").append(NOM);
+        return chaine.toString();
+    }
 }

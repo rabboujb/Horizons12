@@ -16,14 +16,14 @@ public enum TypeAlea{
     COUT ("Coût"),
     QUALITE ("Qualité");
 
-    private String nom;
+    private String type;
 
-    TypeAlea(String nom) {
-        this.nom = nom;
+    TypeAlea(String type) {
+        this.type = type;
     }
 
     public String toString() {
-        return nom;
+        return type;
     }
 }
     

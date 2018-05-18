@@ -6,7 +6,6 @@ import static description.Couleur.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.After;
@@ -15,9 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
-import description.Alea;
 import description.Description;
-import description.Tache;
 
 /**
  * @author Equipe Horizons12
