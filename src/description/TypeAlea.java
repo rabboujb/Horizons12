@@ -18,7 +18,7 @@ public enum TypeAlea{
 
     private String nom;
 
-    TypeAlea(String nom, int gravite) {
+    TypeAlea(String nom) {
         this.nom = nom;
     }
 
