@@ -1,61 +1,51 @@
 package description;
 
-import java.util.Collection;
+public class Tache {
 
-/**
- * Représente une tâche telle que définie par la structure du jeu
- *
- * @author Equipe Horizons12
- */
+    private final int ID;
+    private final String NOM;
+    private final int COUT;
+    private final int SEMAINES;
+    private final int SEMAINES_REEL;
 
-public interface Tache {
-		
-	/** 
-	 * Indique le cout de l'accélération en euros
-	 * @return le cout d'accélération de la tâche
-	 */
-	public int coutAcceleration();
-	
-	/** 
-	 * Fournit l'alea associé à une couleur pour la tâche courante
-	 * @return l'alea associé à la couleur
-	 */
-	public Alea getAlea(Couleur couleur);
-	
-	/** 
-	 * Fournit la description de la tâche
-	 * @return la description de la tâche (de l'ordre de 10 à 30 caractères)
-	 */
-	public String getDescription();
-	
-	/** 
-	 * Fournit la durée initiale de la tâche
-	 * @return la durée initiale de la tâche
-	 */
-	public int getDureeInitiale();
-	
-	/**
-	 * Fournit la durée maximale de la tâche
-	 * @return la durée maximale de la tâche
-	 */
-	public int getDureeMax();
-	
-	/**
-	 * Donne l'identifiant de la tâche
-	 * @return la tâche désignée
-	 */
-	public String getId();
-	
-	/**
-	 * Fournit la liste des tâches précédentes
-	 * @return la collection des tâches précédentes
-	 */
-	public Collection<Tache> getPredecesseurs();
-	
-	/**
-	 * Fournit la lliste des tâches suivantes
-	 * @return la liste des tâches suivantes
-	 */
-	public Collection<Tache> getSuccesseurs();
+    private final Alea ROUGE;
+    private final Alea JAUNE;
+    private final Alea VERT;
 
+    private final int PREDECESSEUR;
+    private final int SUCCESSEUR;
+
+    public Tache(int id,
+                 String nom,
+                 int cout,
+                 int semaines,
+//                 int semainesReel,
+                 Alea rouge,
+                 Alea jaune,
+                 Alea vert,
+                 int predecesseur,
+                 int successeur) {
+
+        this.ID = id;
+        this.NOM = nom;
+        this.COUT = cout;
+        this.SEMAINES = semaines;
+//        this.SEMAINES_REEL = semainesReel;
+        this.ROUGE = rouge;
+        this.JAUNE = jaune;
+        this.VERT = vert;
+        this.PREDECESSEUR = predecesseur;
+        this.SUCCESSEUR = successeur;
+    }
+
+    public String toString() {
+        StringBuilder chaine = new StringBuilder();
+
+        chaine.append("Id : ").append(ID)
+                .append("\nNom : ").append(NOM)
+                .append("\nSemaines : ").append(SEMAINES)
+                .append("\n").append(ROUGE)
+                .append("\n").append(JAUNE)
+                .append("\n").append(VERT);
+    }
 }
