@@ -13,104 +13,14 @@ public class Description {
     private ArrayList<Tour> tours;
 
     /**
-     * Constructeur de description, il se charge de remplir le plateau de jeu avec les taches qu'il crées, il récupère
-     * les Aléas grace à la méthode creationAleas, et les ajoute aux taches grace à un compteur.
-     * Pour les tours il fait appel à la méthode creationTours()
+     * Constructeur de description :
+     *      Il remplis le plateau avec la méthode creationTache à laquelle il passe en paramètre la liste des Alea
+     *      fournie par creationAlea.
+     *      Il remplis la liste des tours avec la méthode creationTours
      */
     public Description() {
-        plateau = new ArrayList<>();
+        plateau = this.creationTache(this.creationAleas());
         tours = this.creationTours();
-
-        ArrayList<Alea> aleas =  this.creationAleas();
-        int compteurAlea = 0;
-
-//        Tache 1
-        plateau.add(new Tache("Réfléchir",
-                10,
-                2,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{},
-                new int[]{2, 3, 4}));
-
-//        Tache 2
-        plateau.add(new Tache("Dire",
-                20,
-                3,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
-
-//        Tache 3
-        plateau.add(new Tache("Écouter",
-                10,
-                2,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
-
-//        Tache 4
-        plateau.add(new Tache("Faire",
-                10,
-                2,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
-
-//        Tache 5
-        plateau.add(new Tache("Demander",
-                10,
-                1,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{2, 3, 4},
-                new int[]{6}));
-
-//        Tache 6
-        plateau.add(new Tache("Controler",
-                10,
-                3,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{5},
-                new int[]{8}));
-
-//        Tache 7
-        plateau.add(new Tache("Planifier",
-                20,
-                3,
-                6,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{2, 3, 4},
-                new int[]{8}));
-
-//        Tache 8
-        plateau.add(new Tache("Présenter",
-                10,
-                2,
-                4,
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
-                new int[]{6, 7},
-                new int[]{}));
     }
 
     /**
@@ -161,6 +71,107 @@ public class Description {
         aleas.add((new Alea(TypeAlea.QUALITE, Couleur.VERT, 2, "zz")));
 
         return aleas;
+    }
+
+    /**
+     * Méthode qui effectue la création de toutes les taches et les renvoient au constructeur sous forme d'ArrayList.
+     * Elle prend en paramètre une ArrayList d'Alea
+     * @param aleas
+     * @return une ArrayList de Tache
+     */
+    private ArrayList<Tache> creationTache(ArrayList<Alea> aleas) {
+        ArrayList<Tache> taches = new ArrayList<>();
+        int compteurAlea = 0;
+
+//        Tache 1
+        taches.add(new Tache("Réfléchir",
+                10,
+                2,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{},
+                new int[]{2, 3, 4}));
+
+//        Tache 2
+        taches.add(new Tache("Dire",
+                20,
+                3,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{1},
+                new int[]{5, 7}));
+
+//        Tache 3
+        taches.add(new Tache("Écouter",
+                10,
+                2,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{1},
+                new int[]{5, 7}));
+
+//        Tache 4
+        taches.add(new Tache("Faire",
+                10,
+                2,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{1},
+                new int[]{5, 7}));
+
+//        Tache 5
+        taches.add(new Tache("Demander",
+                10,
+                1,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{2, 3, 4},
+                new int[]{6}));
+
+//        Tache 6
+        taches.add(new Tache("Controler",
+                10,
+                3,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{5},
+                new int[]{8}));
+
+//        Tache 7
+        taches.add(new Tache("Planifier",
+                20,
+                3,
+                6,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{2, 3, 4},
+                new int[]{8}));
+
+//        Tache 8
+        taches.add(new Tache("Présenter",
+                10,
+                2,
+                4,
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea++),
+                new int[]{6, 7},
+                new int[]{}));
+
+        return taches;
     }
 
     /**
