@@ -1,7 +1,7 @@
 package description;
 
 /**
- * Classe représantant un Alea avec toute les information necessaire pour l'appliquer :
+ * Classe représantant un Alea avec toutes les informations necessaires pour l'appliquer :
  *      Le type
  *      La couleur
  *      la gravité
@@ -40,7 +40,7 @@ public class Alea {
     }
 
     /**
-     * Retourne la gravité de la tache
+     * Retourne la gravité de l'alea
      * @return GRAVITE
      */
     public int getGRAVITE() {

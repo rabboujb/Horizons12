@@ -114,7 +114,7 @@ public class Description {
     }
 
     /**
-     * Méthode qui effectue la création de tout les Aléas et les renvois au constructeur sous forme d'ArrayList
+     * Méthode qui effectue la création de tout les Aléas et les renvoie au constructeur sous forme d'ArrayList
      * @return une ArrayList d'Aleas
      */
     private ArrayList<Alea> creationAleas() {
@@ -164,7 +164,7 @@ public class Description {
     }
 
     /**
-     * Méthode qui créer les tours de jeu et les retourne sous forme d'ArrayList au constructeur
+     * Méthode qui crée les tours de jeu et les retourne sous forme d'ArrayList au constructeur
      * @return une ArrayList de tours
      */
     private ArrayList<Tour> creationTours() {
@@ -187,9 +187,11 @@ public class Description {
         return tours;
     }
 
+//    Getters relatifs aux taches
+
     /**
      * Méthode qui retourne le plateau de jeu complet,
-     * <strong>Attention : il ne s'agit pas d'une duplication du tableau, mais d'une simple référence</strong>
+     * <strong>Attention : il ne s'agit pas d'une duplication du plateau, mais d'une simple référence</strong>
      * @return une référence du plateau
      */
     public ArrayList<Tache> getPlateau() {
@@ -197,7 +199,7 @@ public class Description {
     }
 
     /**
-     * Méthode qui retourne la tache situé à l'index donné du plateau, retourne null si l'index est incorrecte
+     * Méthode qui retourne la tache situé à l'index donné du plateau, retourne null si l'index est incorrect
      * @param index
      * @return Tache
      */
@@ -209,11 +211,11 @@ public class Description {
     }
 
     /**
-     * Méthode qui renvoi une tache, retourne null si l'id est incorrecte
+     * Méthode qui renvoie une tache, retourne null si l'id est incorrect
      * @param id
      * @return Tache
      */
-    public Tache getTacheViaId(int id) {
+    public Tache getTacheById(int id) {
         for (Tache tache : plateau) {
             if (tache.getID() == id) {
                 return tache;
@@ -221,6 +223,8 @@ public class Description {
         }
         return null;
     }
+
+//    Getters relatifs aux tours
 
     /**
      * Méthode qui retourne l'ArrayList complète des tours
@@ -231,8 +235,8 @@ public class Description {
     }
 
     /**
-     * Méthode qui retourne le tour situé à l'index donné de l'ArrayList tours, retourne null si l'index est incorrecte.
-     * <strong>Notez que l'index et le numéro de tour sont identique</strong>
+     * Méthode qui retourne le tour situé à l'index donné de l'ArrayList tours, retourne null si l'index est incorrect
+     * <strong>Notez que l'index et le numéro de tour sont identiques</strong>
      * @param index
      * @return un tour
      */

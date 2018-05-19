@@ -15,7 +15,7 @@ public class Tache {
     private final int SEMAINES_MAX;
 
     private final Alea ROUGE;
-    private final Alea JAUNE;
+    private final Alea ORANGE;
     private final Alea VERT;
 
     private final int[] PREDECESSEUR;
@@ -31,7 +31,7 @@ public class Tache {
         this.SEMAINES = semaines;
         this.SEMAINES_MAX = semaineMax;
         this.ROUGE = rouge;
-        this.JAUNE = jaune;
+        this.ORANGE = jaune;
         this.VERT = vert;
         this.PREDECESSEUR = predecesseur;
         this.SUCCESSEUR = successeur;
@@ -43,11 +43,11 @@ public class Tache {
      * @return un Alea
      */
     public Alea getAlea(Couleur couleur) {
-        if (couleur.equals(ROUGE)) {
+        if (couleur.equals(Couleur.ROUGE)) {
             return ROUGE;
         }
-        else if (couleur.equals(JAUNE)) {
-            return JAUNE;
+        else if (couleur.equals(Couleur.ORANGE)) {
+            return ORANGE;
         }
         return VERT;
     }
@@ -115,7 +115,7 @@ public class Tache {
                 .append("\nNom : ").append(NOM)
                 .append("\nSemaines : ").append(SEMAINES)
                 .append("\n").append(ROUGE)
-                .append("\n").append(JAUNE)
+                .append("\n").append(ORANGE)
                 .append("\n").append(VERT)
                 .append("\n");
 

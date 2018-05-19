@@ -32,11 +32,13 @@ public class EssaiTour {
         for (Tour tour : tours) {
 
             if (tour instanceof TourJalon) {
-                System.out.println(((TourJalon) tour).getIdTaches());
+                System.out.println(tour);
+                System.out.println(((TourJalon) tour).getIdTaches() + "\n"); // force-cast
             }
             else {
+                System.out.println(tour);
                 System.out.println(((TourAlea) tour).tirage());
-                System.out.println(((TourAlea)tour).getIdTache());
+                System.out.println(((TourAlea)tour).getIdTache() + "\n"); // force-cast
             }
         }
     }
