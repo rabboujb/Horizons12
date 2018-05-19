@@ -11,17 +11,18 @@ public class Description {
 
     private ArrayList<Tache> plateau;
     private ArrayList<Tour> tours;
-    int compteurAlea = 0;
 
     /**
      * Constructeur de description, il se charge de remplir le plateau de jeu avec les taches qu'il crées, il récupère
      * les Aléas grace à la méthode creationAleas, et les ajoute aux taches grace à un compteur.
+     * Pour les tours il fait appel à la méthode creationTours()
      */
     public Description() {
         plateau = new ArrayList<>();
-        tours = new ArrayList<>();
+        tours = this.creationTours();
 
         ArrayList<Alea> aleas =  this.creationAleas();
+        int compteurAlea = 0;
 
 //        Tache 1
         plateau.add(new Tache("Réfléchir",
@@ -114,7 +115,7 @@ public class Description {
 
     /**
      * Méthode qui effectue la création de tout les Aléas et les renvois au constructeur sous forme d'ArrayList
-     * @return ArrayList d'Aleas
+     * @return une ArrayList d'Aleas
      */
     private ArrayList<Alea> creationAleas() {
         ArrayList<Alea> aleas = new ArrayList<>();
@@ -162,7 +163,83 @@ public class Description {
         return aleas;
     }
 
+    /**
+     * Méthode qui créer les tours de jeu et les retourne sous forme d'ArrayList au constructeur
+     * @return une ArrayList de tours
+     */
+    private ArrayList<Tour> creationTours() {
+        ArrayList<Tour> tours =  new ArrayList<>();
+
+        tours.add(new TourJalon(0, TypeTour.JALON, new int[]{1, 2, 3, 4}));
+
+        tours.add(new TourAlea(1, TypeTour.ALEA, 1));
+        tours.add(new TourAlea(2, TypeTour.ALEA, 2));
+        tours.add(new TourAlea( 3, TypeTour.ALEA, 3));
+        tours.add(new TourAlea(4, TypeTour.ALEA, 4));
+
+        tours.add(new TourJalon(5, TypeTour.JALON, new int[]{5, 6, 7, 8}));
+
+        tours.add(new TourAlea(6, TypeTour.ALEA, 5));
+        tours.add(new TourAlea(7, TypeTour.ALEA, 6));
+        tours.add(new TourAlea(8, TypeTour.ALEA, 7));
+        tours.add(new TourAlea(9, TypeTour.ALEA, 8));
+
+        return tours;
+    }
+
+    /**
+     * Méthode qui retourne le plateau de jeu complet,
+     * <strong>Attention : il ne s'agit pas d'une duplication du tableau, mais d'une simple référence</strong>
+     * @return une référence du plateau
+     */
     public ArrayList<Tache> getPlateau() {
         return plateau;
+    }
+
+    /**
+     * Méthode qui retourne la tache situé à l'index donné du plateau, retourne null si l'index est incorrecte
+     * @param index
+     * @return Tache
+     */
+    public Tache getTache(int index) {
+        if (index >= 0 && index < plateau.size()) {
+            return plateau.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Méthode qui renvoi une tache, retourne null si l'id est incorrecte
+     * @param id
+     * @return Tache
+     */
+    public Tache getTacheViaId(int id) {
+        for (Tache tache : plateau) {
+            if (tache.getID() == id) {
+                return tache;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Méthode qui retourne l'ArrayList complète des tours
+     * @return tours
+     */
+    public ArrayList<Tour> getTours() {
+        return tours;
+    }
+
+    /**
+     * Méthode qui retourne le tour situé à l'index donné de l'ArrayList tours, retourne null si l'index est incorrecte.
+     * <strong>Notez que l'index et le numéro de tour sont identique</strong>
+     * @param index
+     * @return un tour
+     */
+    public Tour getTour(int index) {
+        if (index >= 0 && index < tours.size()) {
+            return tours.get(index);
+        }
+        return null;
     }
 }

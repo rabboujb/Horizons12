@@ -121,4 +121,24 @@ public class Tache {
 
         return chaine.toString();
     }
+
+    @Override
+    public boolean equals(Object objet) {
+        if (objet != null && objet instanceof Tache){
+            return this.equals((Tache)objet);
+        }
+        return false;
+    }
+
+    /**
+     * Méthode equals qui se sert de l'ID pour définir si il y'a égalité
+     * @param tache
+     * @return un boolean
+     */
+    public boolean equals(Tache tache) {
+        if (this.ID == tache.ID) {
+            return true;
+        }
+        return false;
+    }
 }
