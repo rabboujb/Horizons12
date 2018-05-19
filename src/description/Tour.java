@@ -8,25 +8,36 @@ package description;
  */
 public abstract class Tour {
 
-    /** Numéro du tour*/
+    private static int compteurNum = -1;
     private final int NUMERO;
-
-    /** type de tour (Jalon, Alea, ou Final)*/
     private final TypeTour TYPE;
 
-    public Tour(int numero, TypeTour type){
-        this.NUMERO = numero;
+    public Tour(TypeTour type){
+        compteurNum++;
+        this.NUMERO = compteurNum;
         this.TYPE = type;
     }
 
+    /**
+     * Méthode qui retourne le numéro du tour
+     * @return NUMERO
+     */
     public int getNUMERO() {
         return NUMERO;
     }
 
+    /**
+     * Méthode qui retourne le type du tour (Alea, Jalon, Final)
+     * @return TYPE
+     */
     public TypeTour getTYPE() {
         return TYPE;
     }
 
+    /**
+     * Méthode qui retourne une description du tour
+     * @return une description du tour
+     */
     @Override
     public String toString() {
         StringBuilder chaine = new StringBuilder();

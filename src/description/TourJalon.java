@@ -17,8 +17,8 @@ public class TourJalon extends Tour {
      */
     private ArrayList<Integer> idTaches;
 
-    public TourJalon(int numero, TypeTour type, int idTaches[]) {
-        super(numero, type);
+    public TourJalon(TypeTour type, int idTaches[]) {
+        super(type);
 
         this.idTaches = new ArrayList<>();
         for (int id : idTaches) {

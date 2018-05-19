@@ -12,8 +12,8 @@ public class TourAlea extends Tour {
      */
     private int idTache;
 
-    public TourAlea(int numero, TypeTour type, int idTache) {
-        super(numero, type);
+    public TourAlea(TypeTour type, int idTache) {
+        super(type);
         this.idTache = idTache;
     }
 
