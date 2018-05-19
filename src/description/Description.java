@@ -167,7 +167,7 @@ public class Description {
                 4,
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                aleas.get(compteurAlea++),
+                aleas.get(compteurAlea),
                 new int[]{6, 7},
                 new int[]{}));
 
