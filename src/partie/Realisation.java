@@ -21,6 +21,7 @@ public class Realisation {
     private boolean orange;
     private boolean vert;
     private boolean accelere;
+    private Etat etat;
 
     public Realisation(Tache tache) {
         this.TACHE = tache;
@@ -29,6 +30,7 @@ public class Realisation {
         this.orange = false;
         this.vert = false;
         this.accelere = false;
+        this.etat = Etat.NON_ENTAMEE;
     }
 
     /**
@@ -72,6 +74,27 @@ public class Realisation {
      */
     public boolean getVert() {
         return vert;
+    }
+
+    /**
+     * Méthode qui retourne l'état de la realisation lors du calcule de chemin critique, il peut être :
+     *      NON_ENTAMEE,
+     *      IMMINENT,
+     *      EN_COURS,
+     *      TERMINEE,
+     *
+     * @return Etat
+     */
+    public Etat getEtat() {
+        return etat;
+    }
+
+    /**
+     * Méthode qui permet de modifier l'état de la réalisation lors du calcule de chemin critique
+     * @param etat
+     */
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     /**
