@@ -112,6 +112,7 @@ public class Realisation {
     public boolean appliquerAcceleration() {
         if (!accelere) {
             semainesReel --;
+            accelere = true;
             return true;
         }
         return false;
@@ -165,11 +166,12 @@ public class Realisation {
                 .append("\nNom : ").append(TACHE.getNOM())
                 .append("\nSemaines : ").append(semainesReel)
                 .append("\n").append(TACHE.getAlea(Couleur.ROUGE))
-                .append(" ,status : ").append(this.protege(Couleur.ROUGE))
+                .append("\tstatus : ").append(this.protege(Couleur.ROUGE))
                 .append("\n").append(TACHE.getAlea(Couleur.ORANGE))
-                .append(" ,status : ").append(this.protege(Couleur.ORANGE))
+                .append("\tstatus : ").append(this.protege(Couleur.ORANGE))
                 .append("\n").append(TACHE.getAlea(Couleur.VERT))
-                .append(" ,status : ").append(this.protege(Couleur.VERT));
+                .append("\tstatus : ").append(this.protege(Couleur.VERT))
+                .append("\n");
 
         return chaine.toString();
     }
