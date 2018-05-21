@@ -42,6 +42,15 @@ public class Realisation {
     }
 
     /**
+     * Méthode qui retourne l'id de la tache concernée par la réalisation, cela peu facilité la selection de la
+     * réalisation (qui serra placée dans une ArrayList) en fonction du tour joué
+     * @return l'id de la tache concernée par la réalisation
+     */
+    public int getIdTache() {
+        return TACHE.getID();
+    }
+
+    /**
      * Méthode qui retourne le nombre réel de semaines réel que prendra la tache pour le joueur
      * @return le nombre réel de semaines
      */
