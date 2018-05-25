@@ -1,16 +1,12 @@
 package testsUnitDescription;
 
-//import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-//import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
 /**
- * @author Equipe Horizons12
+ * @author Ismérie
  */
 
 @RunWith(Suite.class)
@@ -18,20 +14,23 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
 		{
 			testsUnitDescription.DescriptionTest.class,
+			testsUnitDescription.AleaTest.class,
+			testsUnitDescription.TacheTest.class,
+			testsUnitDescription.TourAleaTest.class,
+			testsUnitDescription.TourJalonTest.class,
 		}
 )
 
-
 public class TestsUnitSuite {
 
-@BeforeClass
-public static void setUpClass() throws Exception{
-	System.out.println("Début de la suite de tests");
-}
-
-@AfterClass
-public static void tearDownClass() throws Exception{
-	System.out.println("Fin de la suite de tests");
-}
+		@BeforeClass
+		public static void setUpClass() throws Exception{
+			System.out.println("Début de la suite de tests");
+		}
+		
+		@AfterClass
+		public static void tearDownClass() throws Exception{
+			System.out.println("Fin de la suite de tests");
+		}
 
 }
