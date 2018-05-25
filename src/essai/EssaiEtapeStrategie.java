@@ -1,11 +1,11 @@
 package essai;
-import description.Couleur;
+import description.Description;
+import description.Tour;
+import description.TypeTour;
+import partie.Equipes;
 import partie.VueEquipes;
 import partie.VueJoueur;
 import strategie.Robot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Bilal RABBOUJ
@@ -18,28 +18,22 @@ public class EssaiEtapeStrategie {
 
 		// Création de l'IHM ou Robot
 	    Robot monRobot = new Robot();
-	    // Création de l'ArrayList contenant les équipes
-	    VueJoueur Equipes = new VueEquipes();
+	    Description description = new Description();
 
-		// Création de l'équipe A et B et ajout dans l'ArrayList
-	    Equipes.ajouterEquipe(new VueEquipes(EquipeA)); // 1 équipe - 1 vue
-	    Equipes.ajouterEquipe(new VueEquipes(EquipeB)); // 1 équipe - 1 vue
+		VueJoueur equipes = new VueEquipes();
 
-//		for(int i=0;i<2;i++) {
-			// Joue le jalon
-			monRobot.jouerJalon(Equipes.getEquipe(EquipeA));
-			monRobot.jouerJalon(Equipes.getEquipe(EquipeB));
+	    equipes.ajouterEquipe(new VueEquipes(EquipeA, description));
+	    equipes.ajouterEquipe(new VueEquipes(EquipeB, description));
 
-			// Déroule le jalon
-			monRobot.jouerEtape(Equipes.getEquipe(EquipeA));
-			monRobot.jouerEtape(Equipes.getEquipe(EquipeB));
-			// Joue le jalon
-			monRobot.jouerJalon(Equipes.getEquipe(EquipeA));
-			monRobot.jouerJalon(Equipes.getEquipe(EquipeB));
+//			monRobot.jouerJalon(equipeB);
+		for(int i=0;i<2;i++) {
+//			// Joue le jalon
+			monRobot.jouerJalon(equipes.getEquipe(EquipeA));
+			monRobot.jouerJalon(equipes.getEquipe(EquipeB));
 
-			// Déroule le jalon
-			monRobot.jouerEtape(Equipes.getEquipe(EquipeA));
-			monRobot.jouerEtape(Equipes.getEquipe(EquipeB));
-//		}
+//			// Déroule le jalon
+			monRobot.jouerEtape(equipes.getEquipe(EquipeA));
+			monRobot.jouerEtape(equipes.getEquipe(EquipeB));
+	}
     }
 }
