@@ -1,38 +1,35 @@
 package testsUnitDescription;
 
 import static description.TypeTour.*;
+import description.Couleur;
+import description.TourAlea;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
 
-import description.TourAlea;
 /**
- * @author Equipe Horizons12
+ * @author Ismérie
  */
 
-class TourAleaTest {
+public class TourAleaTest {
 	
-	private final TourAlea exampleTour;
-	private TourAlea autreTour;
+	private final TourAlea exampleTourAlea;
+	private TourAlea autreTourAlea;
 	
 	public TourAleaTest() {
-		this.exampleTour = new TourAlea(1,ALEA,1);
-		this.autreTour = new TourAlea(2,ALEA,1);
+		this.exampleTourAlea = new TourAlea(ALEA,1);
+		this.autreTourAlea = new TourAlea(ALEA,2);
 	}
 	
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Début du test de TourAlea");
-		System.out.println("Tour de référence: " + new TourAlea(1,ALEA,1));
+		System.out.println("Tour de référence: " + new TourAlea(ALEA,1));
 	}
 	
 	@AfterClass
@@ -42,40 +39,42 @@ class TourAleaTest {
 	
 	@Before
 	public void setUp() {
-		this.autreTour = new TourAlea(2,ALEA,1);
+		this.autreTourAlea = new TourAlea(ALEA,1);
 	}
 	
 	@After
 	public void tearDown() {
-		autreTour = null;
+		autreTourAlea = null;
 	}
 
 	/**
-	 * Test de la méthode getNUMERO() de la class TourALea
+	 * Test de la méthode getIDTache() de la class TourALea
 	 */
 	@Test
-	public void testGetNumero() {
-		System.out.println("getNUMERO");
-		assertEquals(2,autreTour.getNUMERO());
+	public void testGetIDTache() {
+		System.out.println("getIDTache");
+		assertEquals(1,exampleTourAlea.getIdTache());
 	}
 	
 	/**
-	 * Test de la méthode getTYPE() de la class TourALea
+	 * Test de la méthode tirage() de la class TourALea
 	 */
 	@Test
-	public void testGetType() {
-		System.out.println("getTYPE");
-		assertEquals(ALEA,autreTour.getTYPE());
+	public void testTirage() {
+		System.out.println("tirage");
+		Couleur coul = exampleTourAlea.tirage();
+		assertTrue(coul.equals(Couleur.ROUGE)||coul.equals(Couleur.ORANGE)||coul.equals(Couleur.VERT));
 	}
 
 	/**
 	 * Test de la méthode equals() de la class TourAlea
+	 * ne sera jamais true car les id des tours sont différents
 	 */
 	@Test
 	public void testEquals_True() {
 		System.out.println("equals: true");
-		TourAlea instance = new TourAlea(1,ALEA,1);
-		assertTrue(instance.equals(exampleTour));
+		TourAlea instance = new TourAlea(ALEA,1);
+		assertTrue(instance.equals(autreTourAlea));
 	}
 	
 	/**
@@ -84,7 +83,7 @@ class TourAleaTest {
 	@Test
 	public void testEquals_False() {
 		System.out.println("equals: false");
-		assertFalse(autreTour.equals(exampleTour));
+		assertFalse(autreTourAlea.equals(exampleTourAlea));
 	}
 	
 	/**
@@ -94,7 +93,7 @@ class TourAleaTest {
 	public void testEquals_Null_Object() {
 		System.out.println("equals avec null");
 		TourAlea instance = null;
-		assertFalse(exampleTour.equals(instance));
+		assertFalse(autreTourAlea.equals(instance));
 	}
 	
 	/**
@@ -104,10 +103,8 @@ class TourAleaTest {
 	public void testEquals_Other_Object() {
 		System.out.println("equals avec un autre objet");
 		String instance = "1,ALEA,1";
-		assertFalse(instance.equals(exampleTour));
+		assertFalse(instance.equals(autreTourAlea));
 	}
-	
-	
 	
 	/**
 	 * Test de la méthode toString() de la class TourAlea
@@ -115,14 +112,10 @@ class TourAleaTest {
 	@Test
 	public void testToString() {
 		System.out.println("toString");
-		TourAlea instance = new TourAlea(1,ALEA,1);
-	    StringBuilder chaine = new StringBuilder();
-
-	    chaine.append("Tour ").append("1").append(" : ").append("Aléa").append(" concernant la tâche ").append("1");
-		assertEquals(chaine.toString(), instance.toString());
+		TourAlea instance = new TourAlea(ALEA,1);
+	    String chaine = "Tour 14 : Aléa concernant la tâche 1";
+		assertEquals(chaine, instance.toString());
 	}
-	
-
 
 
 }
