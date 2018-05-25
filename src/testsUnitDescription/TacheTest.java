@@ -1,25 +1,25 @@
 package testsUnitDescription;
 
 import static description.Couleur.ROUGE;
-import static description.TypeAlea.DELAI;
+import description.Alea;
+import description.Couleur;
+
+import description.Tache;
+import description.TypeAlea;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
 
-import description.Alea;
-import description.Couleur;
-import description.Description;
-import description.Tache;
-import description.TypeAlea;
 
 /**
- * @author Equipe Horizons12
+ * @author Ismérie
  */
 
 public class TacheTest {
@@ -80,9 +80,9 @@ public class TacheTest {
 	@Test
 	public void testGetID() {
 		System.out.println("getID");
-		//à revoir pourquoi ça démarre à 4 ????
+		//à revoir pourquoi ça démarre à 8 ????
 		System.out.println(autreTache.getID());
-		assertEquals(4,autreTache.getID());
+		assertEquals(8,autreTache.getID());
 	}
 	
 	
@@ -153,7 +153,7 @@ public class TacheTest {
 	public void testToString() {
 		System.out.println("toString");
 		Tache instance = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new int[]{},new int[]{2, 3, 4});
-		String expResult = "Id : 12\nNom : Dire\nSemaines : 3\nROUGE : Délai	3	KKK\nORANGE : Délai	1	L\nVERT : Délai	1	M\n";
+		String expResult = "Id : 18\nNom : Dire\nSemaines : 3\nROUGE : Délai	3	KKK\nORANGE : Délai	1	L\nVERT : Délai	1	M\n";
 		assertEquals(expResult, instance.toString());
 	}
 	

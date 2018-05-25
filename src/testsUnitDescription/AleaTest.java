@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
- * @author Equipe Horizons12
+ * @author Ismérie
  */
 
 public class AleaTest {
@@ -61,7 +61,7 @@ public class AleaTest {
 	@Test
 	public void testGetTYPE() {
 		System.out.println("getTYPE");
-		assertEquals(TypeAlea.COUT,autreAlea.getTYPE());
+		assertEquals(TypeAlea.DELAI,autreAlea.getTYPE());
 	}
 	
 	/**
@@ -70,7 +70,8 @@ public class AleaTest {
 	@Test
 	public void testGetCOULEUR() {
 		System.out.println("getCOULEUR");
-		assertEquals(Couleur.VERT,autreAlea.getCOULEUR());
+		System.out.println(autreAlea);
+		assertEquals(Couleur.ROUGE,autreAlea.getCOULEUR());
 	}
 	
 	/**
@@ -88,7 +89,7 @@ public class AleaTest {
 	@Test
 	public void testGetNOM() {
 		System.out.println("getNOM");
-		assertEquals("a",autreAlea.getNOM());
+		assertEquals("A",autreAlea.getNOM());
 	}
 	
 	/**
