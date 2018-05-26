@@ -7,6 +7,8 @@ import partie.VueEquipes;
 import partie.VueJoueur;
 import strategie.Robot;
 
+import java.util.Scanner;
+
 /**
  * @author Bilal RABBOUJ
  */
@@ -26,14 +28,20 @@ public class EssaiEtapeStrategie {
 	    equipes.ajouterEquipe(new VueEquipes(EquipeB, description));
 
 //			monRobot.jouerJalon(equipeB);
-		for(int i=0;i<2;i++) {
+//		for(int i=0;i<2;i++) {
 //			// Joue le jalon
 			monRobot.jouerJalon(equipes.getEquipe(EquipeA));
-			monRobot.jouerJalon(equipes.getEquipe(EquipeB));
+//			monRobot.jouerJalon(equipes.getEquipe(EquipeB));
 
 //			// Déroule le jalon
 			monRobot.jouerEtape(equipes.getEquipe(EquipeA));
-			monRobot.jouerEtape(equipes.getEquipe(EquipeB));
-	}
+//			monRobot.jouerEtape(equipes.getEquipe(EquipeB));
+//		}
+
+		System.out.print("Continuer (o/n) ?");
+		if(new Scanner(System.in).nextLine().charAt(0) == 'o') {
+			monRobot.nouveauTour(equipes.getEquipe(EquipeA));
+			monRobot.jouerEtape(equipes.getEquipe(EquipeA));
+		}
     }
 }
