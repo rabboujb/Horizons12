@@ -1,5 +1,4 @@
 package partie;
-
 import description.Couleur;
 import description.Tache;
 
@@ -127,7 +126,9 @@ public class Realisation {
         return false;
     }
 
-    /**
+	public boolean getAccelere() { return accelere; }
+
+	/**
      * Méthode qui permet de protéger l'aléa dont la couleur a été passée en paramètre, elle renvoie true si la
      * protection a pus être appliquée et false dans le cas où cela est impossible (alea déja protégé)
      * @param couleur

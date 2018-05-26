@@ -1,9 +1,11 @@
 package partie;
 import description.Couleur;
-import description.DescriptionObsolete;
+import description.Description;
+
+import java.util.List;
 
 /**
- * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (Robot ou Joueur via son IHM) lors du
+ * L'interface VueJoueur décrit toutes les opérations que peut demander un acteur (RobotObsolete ou Joueur via son IHM) lors du
  * jeu. Ces opérations sont formées en 3 groupes:
  *
  * @author mickael
@@ -38,14 +40,14 @@ public interface VueJoueur {
      * Retourne l'objet permettant d'acquérir la description de la configuration de jeu.
      * @return L'objet contenant la description statique du jeu.
      */
-    DescriptionObsolete getPlateau();
+    Description getPlateau();
 
     /**
      * Fournit la durée réelle d'une tâche pour l'équipe.
      * @param id - l'identifiant de la tâche
      * @return La durée réelle d'une tâche pour l'équipe (en semaines).
      */
-    int getDuree(String id);
+    int getDuree(int id);
 
     /**
      * Fournit l'identifiant de la dernière tâche du PERT.
@@ -81,6 +83,8 @@ public interface VueJoueur {
       * @param nomEquipe le nom de l'équipe
       */
 	VueJoueur getEquipe(String nomEquipe);
+	List<VueJoueur> getEquipes();
+
 	boolean[] getTabA();
 	boolean[] getTabP();
 	boolean getIdTabA(int id);
@@ -89,4 +93,6 @@ public interface VueJoueur {
 	int getDureeReelle();
 
 	DonneesJoueur getDonneesEquipe();
+
+	Realisation getRealisation(int idTache);
 }
