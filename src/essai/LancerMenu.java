@@ -4,21 +4,35 @@
  * and open the template in the editor.
  */
 package essai;
-import java.io.IOException;
 import menu.Menu;
+import partie.VueEquipes;
+import partie.VueJoueur;
 
-/**
+
+/**1111
  *
- * @author diallo6
+ * @author diallo1
  */
 public class LancerMenu {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments1
      */
     public static void main(String[] args) {
-//      Menu lancer = new Menu();
-//      lancer.menuLancement();
+        /**
+         * création d'un objet vue;
+         */
+        VueJoueur vue=new VueEquipes();
+        /**
+         * création d'un lancer pour demarrer le Menu;
+         * @param vue
+         */
+        Menu lancer = new Menu(vue);
+       
+       lancer.menuLancement();
+       
+      
+       
     }
     
 }
