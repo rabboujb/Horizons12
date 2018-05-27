@@ -1,7 +1,10 @@
 package menu;
+import description.Description;
 import partie.VueJoueur;
 
 import java.util.Scanner;
+import partie.VueEquipes;
+import strategie.Robot;
 
 /**
  *
@@ -58,14 +61,15 @@ public class Menu {
 		System.out.println("*       Nouvelle partie       *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
+		System.out.println("*  1 : Jouer                  *");
+                System.out.println("*                             *");
+		System.out.println("*  2 : Consulter le PERT      *");
 		System.out.println("*                             *");
-		System.out.println("*  1 : Consulter le PERT      *");
+		System.out.println("*  3 : Informations équipes   *");
 		System.out.println("*                             *");
-		System.out.println("*  2 : Informations équipes   *");
+		System.out.println("*  4 : Actions possibles      *");
 		System.out.println("*                             *");
-		System.out.println("*  3 : Actions possibles      *");
-		System.out.println("*                             *");
-		System.out.println("*  4 : Quitter la partie      *");
+		System.out.println("*  5 : Quitter la partie      *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
 
@@ -73,22 +77,40 @@ public class Menu {
 		System.out.print("Veuillez indiquer votre choix : ");
 		choix = sc.nextInt();
 		System.out.println();
-
+                
+                Description description = new Description();
 		MenuPartie maPartie = new MenuPartie(equipe);
+                VueJoueur  equipe = new VueEquipes();
+               
+                Robot robot = new Robot();
+                String nom_equipe;
 
-		if(choix == 1) {
+                if(choix == 1) {
+                    nom_equipe=sc.nextLine();
+                equipe.ajouterEquipe(new VueEquipes(nom_equipe, description));
+               
+                robot.jouerJalon(equipe.getEquipe(nom_equipe));
+                robot.jouerEtape(equipe.getEquipe(nom_equipe));
+                robot.nouveauTour(equipe.getEquipe(nom_equipe));
+               
+                remonterMenu();
+              
+                 
+                }
+			
+                else if(choix == 2) {
 			maPartie.consulterPert();
 			remonterMenu();
 		}
-		else if(choix == 2) {
+		else if(choix == 3) {
 			maPartie.infosEquipes();
 			remonterMenu();
 		}
-		else if(choix == 3) {
+		else if(choix == 4) {
 			maPartie.actionsPossibles();
 			remonterMenu();
 		}
-		else if(choix == 4)
+		else if(choix == 5)
 			System.out.println("choix4");
 		else {
 			System.out.println("== Veuillez choisir l'un des menus proposés ==");
