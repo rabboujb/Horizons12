@@ -13,20 +13,21 @@ public class MenuPartie {
 	}
 
 	public void consulterPert() {
-        DescriptionObsolete descriptionObsolete = new DescriptionObsolete();
+        Description description = new Description();
 
         for(int i=1;i<9;i++) {
                 System.out.println("TÂCHE "+i);
                System.out.println();
-            Tache t = descriptionObsolete.getTacheById(""+i+"");
-                System.out.println("Nom : "+t.getId());
-                System.out.println("DescriptionObsolete : "+t.getDescription());
-                System.out.println("Coût d'accélération : "+t.coutAcceleration()+" €");
+            Tache t = description.getTacheById(i);
+            
+                System.out.println("ID : "+t.getID());
+                System.out.println("Description : "+t.getNOM());
+                System.out.println("Coût d'accélération : "+t.getCOUT()+" €");
                 if(i == 5)
-                    System.out.println("Durée prévue : "+t.getDureeInitiale()+" semaine");
+                    System.out.println("Durée prévue : "+t.getSEMAINES()+" semaine");
                 else
-                    System.out.println("Durée prévue : "+t.getDureeInitiale()+" semaines");
-                    System.out.println("Retard éventuel : "+t.getDureeMax()+" semaines");
+                    System.out.println("Durée prévue : "+t.getSEMAINES_MAX()+" semaines");
+                    System.out.println("Retard éventuel : "+t.getSEMAINES()+" semaines");
             Alea aR = t.getAlea(Couleur.ROUGE);
                 System.out.println(aR.toString());
             Alea aO = t.getAlea(Couleur.ORANGE);
