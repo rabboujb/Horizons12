@@ -7,6 +7,8 @@ import partie.Realisation;
 
 /**
  * Classe de test qui montre un exemple d'application d'aléa de type délai
+ * 
+ * @author Mickael
  */
 public class EssaiRealisation2 {
 

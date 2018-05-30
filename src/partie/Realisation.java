@@ -16,6 +16,9 @@ public class Realisation {
 
     private final Tache TACHE;
     private int semainesReel;
+    private int semainesRestantes;
+    private int dateAuPlusTot;
+    private int dateAuPlusTard;
     private boolean rouge;
     private boolean orange;
     private boolean vert;
@@ -25,6 +28,7 @@ public class Realisation {
     public Realisation(Tache tache) {
         this.TACHE = tache;
         this.semainesReel = tache.getSEMAINES();
+        this.semainesRestantes = semainesReel;
         this.rouge = false;
         this.orange = false;
         this.vert = false;
@@ -56,8 +60,44 @@ public class Realisation {
     public int getSemainesReel() {
         return semainesReel;
     }
+    
+    /**
+     * Méthode qui retourne le nombre de semaines restantes 
+     * @return
+     */
+    public int getSemainesRestantes() {
+		return semainesRestantes;
+	}
+
+	/**
+     * Méthode qui retourne la date au plus tôt
+     * @return la date au plus tot
+     */
+    public int getDateAuPlusTot() {
+		return dateAuPlusTot;
+	}
 
     /**
+     * Méthode qui permet de mettre à jour 
+     * @param dateAuPlusTot
+     */
+	public void setDateAuPlusTot(int dateAuPlusTot) {
+		this.dateAuPlusTot = dateAuPlusTot;
+	}
+
+	/**
+     * Méthode qui retourne la date au plus tard
+     * @param date au plus tard
+     */
+	public int getDateAuPlusTard() {
+		return dateAuPlusTard;
+	}
+
+	public void setDateAuPlusTard(int dateAuPlusTard) {
+		this.dateAuPlusTard = dateAuPlusTard;
+	}
+
+	/**
      * Méthode qui retourne le status de l'aléa rouge sous forme boolean (true si l'aléa est protégé et false dans le
      * cas contraire)
      * @return un boolean
@@ -111,6 +151,27 @@ public class Realisation {
      */
     public void appliquerDelai(int gravite) {
         this.semainesReel += gravite;
+        this.semainesRestantes += gravite;
+    }
+    
+    /**
+     * Méthode qui permet de décrémenter le nombre de semaines à chaque tour, elle renvoie true si cela est possible (semaines restante > 0)
+     * et false dans le cas contraire.
+     * Si le nombre de semaines passe à 0 l'état de la tâche est mis à jour vers terminée.
+     * @return un boolean
+     */
+    public boolean decrementerSemaine() {
+    	boolean applique = false;
+    	
+    	if (semainesRestantes > 0) {
+    		semainesRestantes --;
+    		applique = true;
+    		
+    		if (semainesRestantes == 0) {
+    			this.etat = etat.TERMINEE;
+    		}
+    	}
+    	return applique;
     }
 
     /** Méthode qui permet d'appliquer une accélération, retourne true si l'accélération à été correctement appliquée,
@@ -120,12 +181,17 @@ public class Realisation {
     public boolean appliquerAcceleration() {
         if (!accelere) {
             semainesReel --;
+            semainesRestantes --;
             accelere = true;
             return true;
         }
         return false;
     }
 
+    /**
+     * Méthode qui retourne un boolean indiquant si la tâche à déja été accélérée ou non
+     * @return un boolean
+     */
 	public boolean getAccelere() { return accelere; }
 
 	/**
@@ -135,16 +201,21 @@ public class Realisation {
      * @return un booelan
      */
     public boolean appliquerProtection(Couleur couleur) {
+    	boolean applique = false;
+    	
         if (couleur.equals(Couleur.ROUGE) && !rouge) {
-            return rouge = true;
+            rouge = true;
+            applique = true;
         }
         else if (couleur.equals(Couleur.ORANGE) && !orange) {
-            return orange = true;
+            orange = true;
+            applique = true;
         }
         else if (couleur.equals(Couleur.VERT) && !vert) {
-            return vert = true;
+            vert = true;
+            applique = true;
         }
-        return false;
+        return applique;
     }
 
     /**
@@ -164,6 +235,15 @@ public class Realisation {
         }
         return "non protégé";
     }
+    
+    private String jaugeSemainesRestantes() {
+    	String jauge = "";
+    	
+    	for (int i = semainesRestantes ; i  > 0 ; i--) {
+    		jauge += "*";
+    	}
+    	return jauge;
+    }
 
     /**
      * Méthode qui décrit l'actuel de la tache pour le joueur, avec le nombre de semaines réele et le status des aléas
@@ -174,7 +254,7 @@ public class Realisation {
 
         chaine.append("Id : ").append(TACHE.getID())
                 .append("\nNom : ").append(TACHE.getNOM())
-                .append("\nSemaines : ").append(semainesReel)
+                .append("\nSemaines : ").append(semainesReel).append("\tsemaines restantes : ").append(jaugeSemainesRestantes())
                 .append("\n").append(TACHE.getAlea(Couleur.ROUGE))
                 .append("\tstatus : ").append(this.protege(Couleur.ROUGE))
                 .append("\n").append(TACHE.getAlea(Couleur.ORANGE))

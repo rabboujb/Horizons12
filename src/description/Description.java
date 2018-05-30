@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * La classe description se charge de créer la configuration de départ de la partie
  *
- * @author Equipe Horizon12
+ * @author Mickael
  */
 public class Description {
 
