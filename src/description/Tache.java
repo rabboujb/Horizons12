@@ -3,7 +3,7 @@ package description;
 /**
  * Classe qui représente une tache
  *
- * @author Equipe Horizon12
+ * @author Mickael
  */
 public class Tache {
 
