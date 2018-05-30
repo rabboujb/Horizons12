@@ -7,7 +7,7 @@ package description;
  *      la gravité
  *      le nom
  *
- * @author Equipe Horizon12
+ * @author Ismerie
  */
 public class Alea {
 
