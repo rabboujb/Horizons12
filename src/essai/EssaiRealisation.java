@@ -1,4 +1,4 @@
-package essai;
+
 
 import description.Couleur;
 import description.Description;
@@ -6,6 +6,8 @@ import partie.Realisation;
 
 /**
  * Classe de test des fonction de base de classe réalisation
+ * 
+ * @author Mickael
  */
 public class EssaiRealisation {
 
