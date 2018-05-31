@@ -103,6 +103,17 @@ public class Tache {
     public int[] getSUCCESSEUR() {
         return SUCCESSEUR;
     }
+    
+    /**
+     * Ajout d'un successeur à la tâche 1
+     * Ismerie
+     */
+    public void addSuccesseur(int idTache) {
+    	System.out.println(SUCCESSEUR.length);
+    	SUCCESSEUR[SUCCESSEUR.length]=idTache;
+    	System.out.println(SUCCESSEUR.length);
+    }
+    
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)
