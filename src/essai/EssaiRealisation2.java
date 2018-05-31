@@ -4,6 +4,7 @@ import description.Couleur;
 import description.Description;
 import description.Tache;
 import description.TypeAlea;
+import partie.Pert;
 import partie.Realisation;
 
 import java.util.ArrayList;
@@ -51,5 +52,8 @@ public class EssaiRealisation2 {
             System.out.println(realisation.getDateAuPlusTard());
             System.out.println(realisation.getDateAuPlusTot());
         }
+        
+        Pert pert = new Pert(realisations);
+        pert.construitAlpha(realisations);
     }
 }
