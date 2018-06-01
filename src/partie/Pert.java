@@ -26,13 +26,14 @@ public class Pert {
 	}
     
 	public void calculeTempsAuPlusTot(){
-		//cree la tache initiale fictive en lui trouvant pour 
-		//successeur toutes les taches qui n'ont pas de prédécesseurs
+		//création de la tache initiale fictive en lui trouvant pour 
+		//successeur toutes les tâches qui n'ont pas de prédécesseurs
 		Tache alpha = construitAlpha(realisations);
 		
-		//Cree la tache finale fictive en lui trouvant pour predecesseur
-		//toutes les taches qui n'ont pas de successeur
-		//Tache tacheFinale = construitTFinale(realisations.length, taches);
+		//création de la tache finale fictive en lui trouvant pour predecesseur
+		//toutes les tâches qui n'ont pas de successeurs
+		Tache tacheFinale = construitOmega(realisations);
+		
 		//condition initiale à l'algo on marque T0 et on lui
 		//affecte la date au plus tot nulle
 		//alpha.setMarque(true);
@@ -73,5 +74,23 @@ public class Pert {
 		return alpha;
 	}
 	
+	/**
+	 * Construit la tache omega celle qui sera le successeur de toutes celles
+	 * qui n'ont pas de successeurs.
+	 * @param ArrayList<Realisation>
+	 * @return
+	 */
+	public static Tache construitOmega(ArrayList<Realisation> realisations){
+		//Tache t = new Tache(nbrTotalDeTache + 1, 0);
+		
+		Tache omega = new Tache("Omega",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
+		
+		for(Realisation real : realisations){
+			if (real.getTACHE().getSUCCESSEUR().size()==0){
+				real.getTACHE().addSuccesseur(omega.getID());
+			}		
+		}
+		return omega;	
     
+	}
 }

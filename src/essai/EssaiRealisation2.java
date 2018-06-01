@@ -55,5 +55,6 @@ public class EssaiRealisation2 {
         
         Pert pert = new Pert(realisations);
         pert.construitAlpha(realisations);
+        pert.construitOmega(realisations);
     }
 }
