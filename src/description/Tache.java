@@ -1,9 +1,11 @@
 package description;
 
+import java.util.ArrayList;
+
 /**
  * Classe qui représente une tache
  *
- * @author Equipe Horizon12
+ * @author Mickael
  */
 public class Tache {
 
@@ -18,11 +20,11 @@ public class Tache {
     private final Alea ORANGE;
     private final Alea VERT;
 
-    private final int[] PREDECESSEUR;
-    private final int[] SUCCESSEUR;
+    private final ArrayList <Integer> PREDECESSEUR;
+    private final ArrayList <Integer> SUCCESSEUR;
 
     public Tache(String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
-                 int[] predecesseur, int[] successeur) {
+    		ArrayList <Integer> predecesseur, ArrayList <Integer> successeur) {
 
         compteurId ++;
         this.ID = compteurId;
@@ -92,7 +94,7 @@ public class Tache {
      * Retourne l'Id de la tache précédente
      * @return PREDECESSEUR
      */
-    public int[] getPREDECESSEUR() {
+    public ArrayList <Integer> getPREDECESSEUR() {
         return PREDECESSEUR;
     }
 
@@ -100,9 +102,18 @@ public class Tache {
      * Retourne la tache suivante
      * @return SUCCESSEUR
      */
-    public int[] getSUCCESSEUR() {
+    public ArrayList <Integer> getSUCCESSEUR() {
         return SUCCESSEUR;
     }
+    
+    /**
+     * Ajout d'un successeur à la tâche 1
+     * Ismerie
+     */
+    public void addSuccesseur(int idTache) {
+    	SUCCESSEUR.add(idTache);
+    }
+    
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)

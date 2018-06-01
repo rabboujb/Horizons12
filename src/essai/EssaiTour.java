@@ -7,6 +7,9 @@ import description.TypeTour;
 
 import java.util.ArrayList;
 
+/**
+ * @author Mickael
+ */
 public class EssaiTour {
 
     public static void main(String[] args) {

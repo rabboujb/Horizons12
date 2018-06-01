@@ -2,11 +2,17 @@ package essai;
 
 import description.Couleur;
 import description.Description;
+import description.Tache;
 import description.TypeAlea;
+import partie.Pert;
 import partie.Realisation;
+
+import java.util.ArrayList;
 
 /**
  * Classe de test qui montre un exemple d'application d'aléa de type délai
+ * 
+ * @author Mickael
  */
 public class EssaiRealisation2 {
 
@@ -32,5 +38,23 @@ public class EssaiRealisation2 {
         }
 
         System.out.println(realisation);
+
+        // ArrayList de réalisations pour Ismérie, n'oublie pas de créer la description avant
+        ArrayList<Realisation> realisations = new ArrayList<>();
+
+        for (Tache tache : description.getPlateau()) {
+            realisations.add(new Realisation(tache));
+        }
+
+        // petit test pour voir si l'ArrayList fonctionne
+        for (Realisation real : realisations) {
+            System.out.println(realisation);
+            System.out.println(realisation.getDateAuPlusTard());
+            System.out.println(realisation.getDateAuPlusTot());
+        }
+        
+        Pert pert = new Pert(realisations);
+        pert.construitAlpha(realisations);
+        pert.construitOmega(realisations);
     }
 }

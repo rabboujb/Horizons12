@@ -1,11 +1,12 @@
 package description;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * La classe description se charge de créer la configuration de départ de la partie
  *
- * @author Equipe Horizon12
+ * @author Mickael
  */
 public class Description {
 
@@ -91,8 +92,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{},
-                new int[]{2, 3, 4}));
+                new ArrayList <Integer>(),
+                new ArrayList <Integer>(Arrays.asList(2,3,4))));
 
 //        Tache 2
         taches.add(new Tache("Dire",
@@ -102,8 +103,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
+                new ArrayList <Integer>(Arrays.asList(1)),
+                new ArrayList <Integer>(Arrays.asList(5,7))));
 
 //        Tache 3
         taches.add(new Tache("Écouter",
@@ -113,8 +114,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
+                new ArrayList <Integer>(Arrays.asList(1)),
+                new ArrayList <Integer>(Arrays.asList(5,7))));
 
 //        Tache 4
         taches.add(new Tache("Faire",
@@ -124,8 +125,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{1},
-                new int[]{5, 7}));
+                new ArrayList <Integer>(Arrays.asList(1)),
+                new ArrayList <Integer>(Arrays.asList(5,7))));
 
 //        Tache 5
         taches.add(new Tache("Demander",
@@ -135,8 +136,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{2, 3, 4},
-                new int[]{6}));
+                new ArrayList <Integer>(Arrays.asList(2,3,4)),
+                new ArrayList <Integer>(Arrays.asList(6))));
 
 //        Tache 6
         taches.add(new Tache("Controler",
@@ -146,8 +147,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{5},
-                new int[]{8}));
+                new ArrayList <Integer>(Arrays.asList(5)),
+                new ArrayList <Integer>(Arrays.asList(8))));
 
 //        Tache 7
         taches.add(new Tache("Planifier",
@@ -157,8 +158,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
-                new int[]{2, 3, 4},
-                new int[]{8}));
+                new ArrayList <Integer>(Arrays.asList(2,3,4)),
+                new ArrayList <Integer>(Arrays.asList(8))));;
 
 //        Tache 8
         taches.add(new Tache("Présenter",
@@ -168,8 +169,8 @@ public class Description {
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea++),
                 aleas.get(compteurAlea),
-                new int[]{6, 7},
-                new int[]{}));
+                new ArrayList <Integer>(Arrays.asList(6,7)),
+                new ArrayList <Integer>()));
 
         return taches;
     }
