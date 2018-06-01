@@ -1,6 +1,7 @@
 package partie;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import description.Tache;
 
@@ -62,10 +63,10 @@ public class Pert {
 	 * @return alpha
 	 */
 	public static Tache construitAlpha(ArrayList<Realisation> realisations){
-		Tache alpha = new Tache("Alpha",0,0,0,null,null,null,new int[]{},new int[]{});
+		Tache alpha = new Tache("Alpha",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
 		for(Realisation real : realisations){
-			if (real.getTACHE().getPREDECESSEUR().length==0){
+			if (real.getTACHE().getPREDECESSEUR().size()==0){
 				alpha.addSuccesseur(real.getIdTache());
 			}		
 		}
