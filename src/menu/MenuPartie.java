@@ -1,71 +1,82 @@
 package menu;
 import description.*;
 import partie.VueJoueur;
-
 import java.util.Scanner;
+
+/**
+ *
+ * @author diallo, Bilal RABBOUJ
+ */
 
 public class MenuPartie {
 	Scanner sc = new Scanner(System.in);
-	private VueJoueur equipe;
+	private Description d;
+	private VueJoueur equipes;
 
-	public MenuPartie(VueJoueur vue) {
-		this.equipe = vue;
+	public MenuPartie(VueJoueur equipes, Description description) {
+		this.equipes = equipes;
+		this.d = description;
 	}
 
 	public void consulterPert() {
-        Description description = new Description();
+        for(int i=1;i<d.getPlateau().size()+1;i++) {
+        	Tache t = d.getTacheById(i);
 
-        for(int i=1;i<9;i++) {
-                System.out.println("TÂCHE "+i);
-               System.out.println();
-            Tache t = description.getTacheById(i);
-            
-                System.out.println("ID : "+t.getID());
-                System.out.println("Description : "+t.getNOM());
-                System.out.println("Coût d'accélération : "+t.getCOUT()+" €");
-                if(i == 5)
-                    System.out.println("Durée prévue : "+t.getSEMAINES()+" semaine");
-                else
-                    System.out.println("Durée prévue : "+t.getSEMAINES_MAX()+" semaines");
-                    System.out.println("Retard éventuel : "+t.getSEMAINES()+" semaines");
-            Alea aR = t.getAlea(Couleur.ROUGE);
-                System.out.println(aR.toString());
-            Alea aO = t.getAlea(Couleur.ORANGE);
-                System.out.println(aO.toString());
-            Alea aV = t.getAlea(Couleur.VERT);
-                System.out.println(aV.toString());
-                System.out.println("===");
-                System.out.println();
+            System.out.println("TÂCHE "+t.getID());
+            System.out.println();
+            System.out.println(t);
+            System.out.println("===");
+            System.out.println();
         }
-
-
 	}
 
-	public void infosEquipes() {
-		System.out.println("Afficher les informations de l'équipe : ");
-		System.out.println("1. "+equipe.getNom());
-		System.out.println("2. IA");
+	public void infosJoueurs() {
+		String oui = "";
 
-		System.out.println();
-		System.out.print("Veuillez saisir votre choix : ");
+		do {
+			int i = 0;
+			for(VueJoueur v: equipes.getEquipes()) {
+				if(v.getNom().equals("IA"))
+					System.out.println((i+1)+". "+v.getNom()+" (Informations non visualisables)");
+				else
+					System.out.println((i+1)+". "+v.getNom());
+				i++;
+			}
 
-//		DonneesJoueur DonneesEquipe;
+			System.out.println();
+			System.out.print("Choisissez un joueur pour consulter ses informations (numéro) : ");
+			String numJoueur;
 
-		if(sc.nextInt() == 1) {
-			System.out.println(equipe.getNom());
-			System.out.println(equipe.getCaisse()+" €");
-			System.out.println(equipe.getQualite()+" %");
-//	        consulterPert();
-		}
-		if(sc.nextInt() == 2) {
-			System.out.println(equipe.getNom());
-			System.out.println(equipe.getCaisse()+" €");
-			System.out.println(equipe.getQualite()+" %");
-//	        consulterPert();
-		}
+			numJoueur = sc.nextLine();
+			while(!numJoueur.matches("^[0-"+i+"\"]$")) {
+				System.out.print("Veuillez indiquer votre choix parmi ceux proposés : ");
+				numJoueur = sc.nextLine();
+			}
 
-        System.out.println("===");
-        System.out.println();
+			VueJoueur joueur = equipes.getEquipe(equipes.getEquipes().get(Integer.parseInt(numJoueur)-1).getNom());
+
+			if(!joueur.getNom().equals("IA")) {
+				System.out.println("Informations de l'équipe "+joueur.getNom()
+					+"\nTour "+joueur.getNumeroTour()
+					+"\n"
+					+"\nCaisse : "+joueur.getDonneesEquipe().getCaisse()+" €"
+					+"\nQualité : "+joueur.getDonneesEquipe().getQualite()+" %");
+				if(joueur.getNumeroTour() > 0)
+					System.out.println("\nSemaines jouées : "+joueur.getRealisation(joueur.getNumeroTour()).getSemainesReel());
+			}
+			else
+				System.out.println("Les informations de l'IA ne sont pas visualisables.");
+
+	        System.out.println("===");
+	        System.out.println();
+
+			System.out.print("Consulter les informations d'un autre joueur (o/n) ? ");
+			oui = sc.nextLine();
+			while(!oui.matches("[on]")) {
+				System.out.print("Veuillez indiquer votre choix parmi ceux proposés : ");
+				oui = sc.nextLine();
+			}
+		} while(oui.equals("o"));
 	}
 
 	public void actionsPossibles() {
