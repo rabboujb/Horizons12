@@ -1,4 +1,5 @@
 package menu;
+import description.Couleur;
 import description.Description;
 import description.TypeTour;
 import partie.VueEquipes;
@@ -128,7 +129,17 @@ public class Menu {
 		else {
 			infoTour = "Tour "+description.getTours().get(affichageTour).getNUMERO()+" : "+description.getTours().get(affichageTour).getTYPE();
 		}
-        System.out.println("*        "+infoTour+"       *");
+        System.out.println("*       "+infoTour+"        *");
+        if(description.getTours().get(affichageTour).getTYPE() == TypeTour.ALEA) {
+            if(robot.getTirage(affichageTour) == Couleur.ROUGE)
+                System.out.println("*       Tirage : "+robot.getTirage(affichageTour)+"        *");
+            if(robot.getTirage(affichageTour) == Couleur.ORANGE)
+                System.out.println("*      Tirage : "+robot.getTirage(affichageTour)+"        *");
+            if(robot.getTirage(affichageTour) == Couleur.VERT)
+                System.out.println("*       Tirage : "+robot.getTirage(affichageTour)+"         *");
+        }
+        else
+			System.out.println("*        Aucun tirage         *");
         System.out.println("*                             *");
         System.out.println("*******************************");
         System.out.println("*                             *");
