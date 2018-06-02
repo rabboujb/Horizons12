@@ -9,12 +9,9 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 	private String nomEquipe;
 	private int numeroTour;
 	private int qualite;
+	private int current;
 	private List<VueJoueur> equipes;
 	private Equipes donneesEquipe;
-
-	private boolean tabAcceleration[];
-	private boolean tabProtection[];
-
 	private List<Realisation> realisations;
 
 	public VueEquipes() {
@@ -30,8 +27,6 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		for(Tache tache : plateau.getPlateau())
 			realisations.add(new Realisation(tache));
 		this.donneesEquipe = new Equipes(nomEquipe, caisse, qualite);
-		this.tabAcceleration = new boolean[8];
-		this.tabProtection = new boolean[24];
 		this.numeroTour = 0;
 	}
 
@@ -52,52 +47,22 @@ public class VueEquipes implements VueJoueur, DonneesJoueur {
 		}
 		return null;
 	}
+
 	public void ajouterEquipe(VueJoueur equipe)     { equipes.add(equipe);  }
-
-	public boolean[] getTabA()          { return tabAcceleration;       }
-	public boolean[] getTabP()          { return tabProtection;         }
-	public boolean getIdTabA(int id)    { return tabAcceleration[id];   }
-	public boolean getIdTabP(int id)    { return tabProtection[id];     }
-
-	public int getDureeReelle()         { return 0; }
 
 	public void finDuTour()             { numeroTour++;         }
 	public int getCaisse()              { return caisse;        }
 	public int getCurrent(String id)    { return 0;             }
-	public String getDebutId()          { return getPlateau().getTacheById(1).getNOM();        }
+	public String getDebutId()          { return getPlateau().getTacheById(1).getNOM(); }
 	public Description getPlateau()     { return plateau;       }
-	public int getDuree(int id)      { return getPlateau().getTacheById(id).getSEMAINES_MAX();   }
-	public String getFinId()            { return getPlateau().getTacheById(8).getNOM();        }
+	public int getDuree(int id)         { return getPlateau().getTacheById(id).getSEMAINES_MAX();   }
+	public String getFinId()            { return getPlateau().getTacheById(8).getNOM();             }
 	public String getNom()              { return nomEquipe;     }
 	public int getNumeroTour()          { return numeroTour;    }
 	public int getQualite()             { return qualite;       }
 
 	public void baisseQualite(int delta)    { qualite = qualite - delta;}
 	public void depense(int somme)          { caisse = caisse - somme;  }
-	public void actualisation(int temps)    {   }
-
-//	public void creerTab() {
-//		for(int i=0;i<tabAcceleration.length;i++)
-//			tabAcceleration[i] = false;
-//
-//		for(int i=0;i<tabProtection.length;i++)
-//			tabProtection[i] = false;
-//	}
-
-	public void setAcceleration(String id, boolean active) {
-		tabAcceleration[Integer.parseInt(id) - 1] = active;
-	}
-
-	public void setProtection(String id, Couleur couleur, boolean active) {
-		int tabCase = 0;
-
-		if(couleur == Couleur.ROUGE)
-			tabCase = ((Integer.parseInt(id) - 1) * 3);
-		if(couleur == Couleur.ORANGE)
-			tabCase = ((Integer.parseInt(id) - 1) * 3) + 1;
-		if(couleur == Couleur.VERT)
-			tabCase = ((Integer.parseInt(id) - 1) * 3) + 2;
-
-		tabProtection[tabCase] = active;
+	public void actualisation(int temps)    {
 	}
 }

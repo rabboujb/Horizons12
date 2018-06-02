@@ -73,24 +73,12 @@ public interface VueJoueur {
      */
     int getQualite();
 
-    /** Active ou désactive l'accélération de la tâche (réducton de 1 de la durée réelle). */
-    void setAcceleration(String id, boolean active);
-
-    /** Active ou désactive la protection contre un alea. */
-    void setProtection(String id, Couleur couleur, boolean active);
-
     /** Récupère la vue de l'équipe passée en paramètre.
       * @param nomEquipe le nom de l'équipe
       */
 	VueJoueur getEquipe(String nomEquipe);
+
 	List<VueJoueur> getEquipes();
-
-	boolean[] getTabA();
-	boolean[] getTabP();
-	boolean getIdTabA(int id);
-	boolean getIdTabP(int id);
-
-	int getDureeReelle();
 
 	DonneesJoueur getDonneesEquipe();
 

@@ -26,8 +26,4 @@ public class Equipes implements DonneesJoueur {
 	public int getQualite()                 { return qualite;       }
 	public void baisseQualite(int delta)    { qualite = getQualite() - delta;}
 	public void depense(int somme)          { caisse = getCaisse() - somme;  }
-
-	public void actualisation(int temps) {
-
-	}
 }
