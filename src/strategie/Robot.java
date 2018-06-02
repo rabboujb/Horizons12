@@ -93,14 +93,14 @@ public class Robot implements Strategie {
 							.getAlea(Couleur.VERT).getGRAVITE());
 					}
 				}
-				System.out.println();
-				System.out.println("*"+vue.getNom()+"*Tour "+vue.getNumeroTour());
-				System.out.println("*Tirage "+tirage);
-				System.out.println("*Semaines réelles "+idTache+" "+vue.getRealisation(idTache).getSemainesReel());
-				System.out.println("*Caisse Données "+vue.getDonneesEquipe().getCaisse()+" €");
-				System.out.println("*Caisse Vue "+vue.getCaisse()+" €");
-				System.out.println("*Qualité "+vue.getDonneesEquipe().getQualite()+" %");
-				System.out.println();
+//				System.out.println();
+//				System.out.println("*"+vue.getNom()+"*Tour "+vue.getNumeroTour());
+//				System.out.println("*Tirage "+tirage);
+//				System.out.println("*Semaines réelles "+idTache+" "+vue.getRealisation(idTache).getSemainesReel());
+//				System.out.println("*Caisse Données "+vue.getDonneesEquipe().getCaisse()+" €");
+//				System.out.println("*Caisse Vue "+vue.getCaisse()+" €");
+//				System.out.println("*Qualité "+vue.getDonneesEquipe().getQualite()+" %");
+//				System.out.println();
 			}
 		}
 	}
@@ -113,24 +113,23 @@ public class Robot implements Strategie {
 				if(!vue.getNom().equals("IA")) {
 					System.out.println(vue.getNom());
 					System.out.println();
-					for(int i = 0; i < ((TourJalon) tour).getIdTaches().size(); i++) {
+					for(int i=0;i<((TourJalon) tour).getIdTaches().size();i++) {
 						int idTache = ((TourJalon) tour).getIdTaches().get(i);
-
 						System.out.println("Tâche " + idTache);
 						System.out.print("Accélérer la tâche pour " + vue.getPlateau().getTacheById(idTache).getCOUT()
 						+ " € (o/n) ? ");
-						if(sc.nextLine().charAt(0) == 'o') {
+						if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 							vue.getRealisation(idTache).appliquerAcceleration();
 							System.out.println("La tâche " + idTache + " a bien été accélérée");
 						} else
 							System.out.println("Pas d'accélération pour la tâche " + idTache);
 
 						System.out.print("Protéger un ou plusieurs aléas pour 10€ (o/n) ? ");
-						if(sc.nextLine().charAt(0) == 'o') {
+						if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
 							.getTacheById(idTache).getAlea(Couleur.ROUGE) + " (o/n) ? ");
 
-							if(sc.nextLine().charAt(0) == 'o') {
+							if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 								vue.getRealisation(idTache).appliquerProtection(Couleur.ROUGE);
 								System.out.println("L'aléa ROUGE a bien été protégé");
 							} else
@@ -138,7 +137,7 @@ public class Robot implements Strategie {
 
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
 							.getTacheById(idTache).getAlea(Couleur.ORANGE) + " (o/n) ? ");
-							if(sc.nextLine().charAt(0) == 'o') {
+							if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 								vue.getRealisation(idTache).appliquerProtection(Couleur.ORANGE);
 							System.out.println("L'aléa ORANGE a bien été protégé");
 							} else
@@ -146,7 +145,7 @@ public class Robot implements Strategie {
 
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
 							.getTacheById(idTache).getAlea(Couleur.VERT) + " (o/n) ? ");
-							if(sc.nextLine().charAt(0) == 'o') {
+							if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 								vue.getRealisation(idTache).appliquerProtection(Couleur.VERT);
 								System.out.println("L'aléa VERT a bien été protégé");
 							} else
@@ -159,38 +158,30 @@ public class Robot implements Strategie {
 				if(vue.getNom().equals("IA")) {
 					// IA
 					System.out.println(vue.getNom());
+					System.out.println("Tour Jalon effectué.");
 					System.out.println();
 					for(int i = 0; i < ((TourJalon) tour).getIdTaches().size(); i++) {
 						int idTache = ((TourJalon) tour).getIdTaches().get(i);
 
-						System.out.println("Tâche " + idTache);
-						if(rand.nextInt(2) == 0) {
+						if(rand.nextInt(2) == 0)
 							vue.getRealisation(idTache).appliquerAcceleration();
-							System.out.println("La tâche " + idTache + " a bien été accélérée");
-						} else
-							System.out.println("Pas d'accélération pour la tâche " + idTache);
-
-						if(rand.nextInt(2) == 0) {
+						if(rand.nextInt(2) == 0)
 							vue.getRealisation(idTache).appliquerProtection(Couleur.ROUGE);
-							System.out.println("L'aléa ROUGE a bien été protégé");
-						} else
-							System.out.println("Pas de protection pour l'aléa ROUGE");
-
-						if(rand.nextInt(2) == 0) {
+						if(rand.nextInt(2) == 0)
 							vue.getRealisation(idTache).appliquerProtection(Couleur.ORANGE);
-							System.out.println("L'aléa ORANGE a bien été protégé");
-						} else
-							System.out.println("Pas de protection pour l'aléa ORANGE");
-
-						if(rand.nextInt(2) == 0) {
+						if(rand.nextInt(2) == 0)
 							vue.getRealisation(idTache).appliquerProtection(Couleur.VERT);
-							System.out.println("L'aléa VERT a bien été protégé");
-						} else
-							System.out.println("Pas de protection pour l'aléa VERT");
 					}
 				}
-				if(vue.getNumeroTour() == 0) vue.finDuTour();
 			}
 		}
+	}
+
+	public String getChoix(String choix, String regex) {
+		while(!choix.matches(regex)) {
+			System.out.print("Veuillez indiquer un choix parmi ceux proposés : ");
+			choix = sc.nextLine();
+		}
+		return choix;
 	}
 }
