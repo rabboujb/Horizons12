@@ -24,6 +24,11 @@ public class Realisation {
     private boolean vert;
     private boolean accelere;
     private Etat etat;
+    
+	/**
+	 * Le noeud a-t-il été marqué durant le parcours ?
+	 */
+	private boolean marque = false;
 
     public Realisation(Tache tache) {
         this.TACHE = tache;
@@ -95,6 +100,24 @@ public class Realisation {
 
 	public void setDateAuPlusTard(int dateAuPlusTard) {
 		this.dateAuPlusTard = dateAuPlusTard;
+	}
+	
+	/**
+     * Méthode qui retourne la valeur de l'attribut marque
+     * Ismérie
+     */
+	public boolean getMarque() {
+		return marque;
+	}
+	
+	
+	/**
+     * Méthode pour marquer une réalisation
+     * @param marque
+     * Ismérie
+     */
+	public void setMarque(boolean marque) {
+		this.marque = marque;
 	}
 
 	/**

@@ -22,7 +22,7 @@ public class Tache {
 
     private final ArrayList <Integer> PREDECESSEUR;
     private final ArrayList <Integer> SUCCESSEUR;
-
+	
     public Tache(String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
     		ArrayList <Integer> predecesseur, ArrayList <Integer> successeur) {
 
@@ -113,7 +113,7 @@ public class Tache {
     public void addSuccesseur(int idTache) {
     	SUCCESSEUR.add(idTache);
     }
-    
+      
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)
