@@ -3,6 +3,7 @@ import description.Couleur;
 import description.Description;
 import description.TypeTour;
 import partie.VueEquipes;
+import partie.VueJoueur;
 import strategie.Robot;
 import java.util.Scanner;
 
@@ -12,10 +13,11 @@ import java.util.Scanner;
  */
 public class Menu {
     private Scanner sc = new Scanner(System.in);
-	private VueEquipes equipes;
+	private VueJoueur equipes;
 	private Description description;
     private MenuJeu mj;
     private MenuPartie mp;
+    private MenuSauvegarde ms;
     private Robot robot;
 	private int affichageTour;
 
@@ -28,6 +30,9 @@ public class Menu {
 		mj = new MenuJeu(equipes, description);
 		mp = new MenuPartie(equipes, description);
 	}
+
+	public int getAffichageTour() { return affichageTour; }
+	public void setAffichageTour() { affichageTour++; }
 
 	public void menuLancement() {
 		String choix;
@@ -120,21 +125,21 @@ public class Menu {
         System.out.println("*                             *");
 
 		String infoTour = "";
-		if(description.getTours().get(affichageTour).getTYPE() == TypeTour.ALEA) {
-			infoTour = "Tour "+description.getTours().get(affichageTour).getNUMERO()+" : "+description.getTours().get
-			(affichageTour).getTYPE()+" ";
+		if(description.getTours().get(getAffichageTour()).getTYPE() == TypeTour.ALEA) {
+			infoTour = "Tour "+description.getTours().get(getAffichageTour()).getNUMERO()+" : "+description.getTours().get
+			(getAffichageTour()).getTYPE()+" ";
 		}
 		else {
-			infoTour = "Tour "+description.getTours().get(affichageTour).getNUMERO()+" : "+description.getTours().get(affichageTour).getTYPE();
+			infoTour = "Tour "+description.getTours().get(getAffichageTour()).getNUMERO()+" : "+description.getTours().get(getAffichageTour()).getTYPE();
 		}
         System.out.println("*       "+infoTour+"        *");
-        if(description.getTours().get(affichageTour).getTYPE() == TypeTour.ALEA) {
-            if(robot.getTirage(affichageTour) == Couleur.ROUGE)
-                System.out.println("*       Tirage : "+robot.getTirage(affichageTour)+"        *");
-            if(robot.getTirage(affichageTour) == Couleur.ORANGE)
-                System.out.println("*      Tirage : "+robot.getTirage(affichageTour)+"        *");
-            if(robot.getTirage(affichageTour) == Couleur.VERT)
-                System.out.println("*       Tirage : "+robot.getTirage(affichageTour)+"         *");
+        if(description.getTours().get(getAffichageTour()).getTYPE() == TypeTour.ALEA) {
+            if(robot.getTirage(getAffichageTour()) == Couleur.ROUGE)
+                System.out.println("*       Tirage : "+robot.getTirage(getAffichageTour())+"        *");
+            if(robot.getTirage(getAffichageTour()) == Couleur.ORANGE)
+                System.out.println("*      Tirage : "+robot.getTirage(getAffichageTour())+"        *");
+            if(robot.getTirage(getAffichageTour()) == Couleur.VERT)
+                System.out.println("*       Tirage : "+robot.getTirage(getAffichageTour())+"         *");
         }
         else
 			System.out.println("*        Aucun tirage         *");
@@ -167,15 +172,15 @@ public class Menu {
         }
 		// Dérouler les tours
         if(choixMenu == 2) {
-			if(description.getTour(affichageTour).getTYPE() == TypeTour.JALON) {
+			if(description.getTour(getAffichageTour()).getTYPE() == TypeTour.JALON) {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
-					if(affichageTour != 0)
+					if(getAffichageTour() != 0)
 						robot.nouveauTour(equipes.getEquipes().get(j));
 					robot.jouerJalon(equipes.getEquipes().get(j));
 				}
 				System.out.println();
 				System.out.println("Le tour jalon est terminé pour toutes les équipes.");
-				affichageTour++;
+				setAffichageTour();
 			}
 			else {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
@@ -183,8 +188,8 @@ public class Menu {
 					robot.jouerEtape(equipes.getEquipes().get(j));
 				}
 				System.out.println();
-				System.out.println("L'étape "+affichageTour+" est terminée pour toutes les équipes.");
-				affichageTour++;
+				System.out.println("L'étape "+getAffichageTour()+" est terminée pour toutes les équipes.");
+				setAffichageTour();
 			}
 	        remonterMenu();
 	        menuPrincipal();
@@ -197,7 +202,8 @@ public class Menu {
 		}
 		//Sauvegarde
         if(choixMenu == 4) {
-			System.out.println("Menu en cours.");
+			ms = new MenuSauvegarde(equipes, description, robot.getTirages(), getAffichageTour());
+			ms.sauvegarde();
 	        remonterMenu();
 	        menuPrincipal();
 		}

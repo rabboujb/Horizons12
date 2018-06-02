@@ -37,12 +37,12 @@ public class MenuJeu {
 			System.out.println();
 			System.out.print("Modifier le nom d'équipe (o/n) ? ");
 			String choix = sc.nextLine();
-			while(!choix.matches("^o{1}|n{1}$")) {
+			while(!choix.matches("[on]")) {
 				System.out.print("Veuillez indiquer votre choix parmi (o/n) : ");
 				choix = sc.nextLine();
 			}
 
-			if(choix == "o")
+			if(choix.equals("o"))
 				ajouterEquipe();
 			else
 				equipes.ajouterEquipe(new VueEquipes(equipeA, d));

@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 
 public class MenuPartie {
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 	private Description d;
 	private VueJoueur equipes;
 
@@ -77,9 +77,5 @@ public class MenuPartie {
 				oui = sc.nextLine();
 			}
 		} while(oui.equals("o"));
-	}
-
-	public void actionsPossibles() {
-
 	}
 }
