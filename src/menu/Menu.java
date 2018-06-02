@@ -3,9 +3,7 @@ import description.Couleur;
 import description.Description;
 import description.TypeTour;
 import partie.VueEquipes;
-import partie.VueJoueur;
 import strategie.Robot;
-
 import java.util.Scanner;
 
 /**
@@ -13,7 +11,7 @@ import java.util.Scanner;
  * @author diallo, Bilal RABBOUJ
  */
 public class Menu {
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 	private VueEquipes equipes;
 	private Description description;
     private MenuJeu mj;
@@ -113,9 +111,9 @@ public class Menu {
 		System.out.println("*       Nouvelle partie       *");
 		if(equipes.getEquipes().size() > 2)
 			System.out.println("*        Multijoueurs         *");
-		if(equipes.getEquipes().size() == 2 && equipes.getEquipes().get(0).getNom() == "IA")
+		if(equipes.getEquipes().size() == 2 && equipes.getEquipes().get(0).getNom().equals("IA"))
 			System.out.println("*        Joueur vs IA         *");
-		if(equipes.getEquipes().size() == 2 && equipes.getEquipes().get(0).getNom() != "IA")
+		if(equipes.getEquipes().size() == 2 && !equipes.getEquipes().get(0).getNom().equals("IA"))
 			System.out.println("*      Joueur vs Joueur       *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
@@ -210,7 +208,7 @@ public class Menu {
 			System.out.print("Quitter la partie (o/n) ? ");
 			choixQuitter = sc.nextLine();
 
-			if(getChoix(choixQuitter, "^o{1}|n{1}$") == "o")
+			if(getChoix(choixQuitter, "^o{1}|n{1}$").equals("o"))
 				new Menu().menuLancement();
 			else
 				menuPrincipal();
