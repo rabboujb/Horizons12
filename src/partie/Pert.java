@@ -32,16 +32,20 @@ public class Pert {
 		
 		//création de la tache finale fictive en lui trouvant pour predecesseur
 		//toutes les tâches qui n'ont pas de successeurs
-		Tache tacheFinale = construitOmega(realisations);
+		Tache omega = construitOmega(realisations);
+		
+		Realisation realAlpha = new Realisation(alpha);
+		Realisation realOmega = new Realisation(omega);
 		
 		//condition initiale à l'algo on marque T0 et on lui
 		//affecte la date au plus tot nulle
-		//alpha.setMarque(true);
-		//alpha.setTempsAuPlusTot(0);
+		realAlpha.setMarque(true);
+		realAlpha.setDateAuPlusTot(0);
+		
 		//nonMarque est l'index de la premiere tache non marquee
 		//trouvee si il vaut -1 c'est qu'on ne peut plus en trouver
 		//la boucle s'arrete
-		//int nonMarque = trouveNonMarqueAvecTousPredecesseursMarque(taches);
+		int nonMarque = trouveNonMarqueAvecTousPredecesseursMarque();
 		/*while (nonMarque != -1  ){
 			//on marque la tache traitee
 			taches[nonMarque].setMarque(true);
@@ -81,7 +85,6 @@ public class Pert {
 	 * @return
 	 */
 	public static Tache construitOmega(ArrayList<Realisation> realisations){
-		//Tache t = new Tache(nbrTotalDeTache + 1, 0);
 		
 		Tache omega = new Tache("Omega",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
@@ -93,4 +96,51 @@ public class Pert {
 		return omega;	
     
 	}
+	
+	
+	/**
+	 * Trouve une tâche non marquée dont tous les prédécesseurs sont marqués.
+	 * @return
+	 */
+	public int trouveNonMarqueAvecTousPredecesseursMarque(){
+		//boucle qui parcourt toutes les réalisations
+		for(int i = 0; i < this.realisations.size(); i++){
+			//on récupère à chaque tour la réalisation
+			//que l'on met dans une variable temp 
+			//pour pouvoir la manipuler
+			Realisation temp = this.realisations.get(i);
+			
+			//on test si la réalisation est marquée
+			if (temp.getMarque()){
+				continue;
+			}
+			
+			boolean predecesseursTousMarques = true;
+			
+			//on récupère la tâche de la réalisation temp
+			//et de cette tâche on récupère la liste des prédécesseurs
+			for(int j=0; j< temp.getTACHE().getPREDECESSEUR().size();j++) {
+				//
+				if()
+				
+			}
+			
+			for(Tache precedent : realisation.getTACHE().getPREDECESSEUR()){
+				if (!precedent.getMarque()){
+					predecesseursTousMarques = false;
+				}
+			}
+			if (predecesseursTousMarques){
+				return i;
+			}
+		}
+		//signifie qu'on a pas pu trouver de non marqué
+		return -1;
+	}
+	
+	
+	
+	
+	
+	
 }
