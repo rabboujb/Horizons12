@@ -1,5 +1,7 @@
 package description;
 
+import java.io.Serializable;
+
 /**
  * Classe représantant un Alea avec toutes les informations necessaires pour l'appliquer :
  *      Le type
@@ -9,7 +11,7 @@ package description;
  *
  * @author Mickael
  */
-public class Alea {
+public class Alea implements Serializable {
 
     private final TypeAlea TYPE;
     private final Couleur COULEUR;

@@ -1,13 +1,14 @@
 package description;
 
+import java.io.Serializable;
+
 /**
  * Classe abstraite qui sert de modèle aux différents types de tours, elle contiens un numero de tour ainsi qu'un type
  * de tour
  *
  * @author mickael
  */
-public abstract class Tour {
-
+public abstract class Tour implements Serializable {
     private static int compteurNum = -1;
     private final int NUMERO;
     private final TypeTour TYPE;

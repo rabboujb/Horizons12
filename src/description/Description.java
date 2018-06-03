@@ -1,5 +1,6 @@
 package description;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,7 +9,7 @@ import java.util.Arrays;
  *
  * @author Mickael
  */
-public class Description {
+public class Description implements Serializable {
 
     private ArrayList<Tache> plateau;
     private ArrayList<Tour> tours;

@@ -5,6 +5,9 @@ import description.TypeTour;
 import partie.VueEquipes;
 import partie.VueJoueur;
 import strategie.Robot;
+
+import java.io.File;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -25,14 +28,14 @@ public class Menu {
 		robot = new Robot();
 		equipes = new VueEquipes();
 		description = new Description();
-		affichageTour = 0;
-
 		mj = new MenuJeu(equipes, description);
 		mp = new MenuPartie(equipes, description);
+		ms = new MenuSauvegarde(equipes, description, robot.getTirages());
+		affichageTour = 0;
 	}
 
 	public int getAffichageTour() { return affichageTour; }
-	public void setAffichageTour() { affichageTour++; }
+	public void setAffichageTour(int nombre) { affichageTour = affichageTour + nombre; }
 
 	public void menuLancement() {
 		String choix;
@@ -53,9 +56,11 @@ public class Menu {
 		System.out.println("*                             *");
 		System.out.println("*  4 : Voir les équipes       *");
 		System.out.println("*                             *");
-		System.out.println("*  5 : Lancer                 *");
+		System.out.println("*  5 : Démarrer               *");
 		System.out.println("*                             *");
-		System.out.println("*  6 : Quitter                *");
+		System.out.println("*  6 : Reprendre une partie   *");
+		System.out.println("*                             *");
+		System.out.println("*  7 : Quitter                *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
 
@@ -64,7 +69,7 @@ public class Menu {
 		choix = sc.nextLine();
 		System.out.println();
 
-		int choixMenu = Integer.parseInt(getChoix(choix, "^[1-6]{1}$"));
+		int choixMenu = Integer.parseInt(getChoix(choix, "^[1-7]{1}$"));
 		// Joueur v IA
         if(choixMenu == 1) {
         	mj.joueurVsIA();
@@ -99,8 +104,26 @@ public class Menu {
             else
 				menuPrincipal();
         }
-        // Quitter
+        // Récupérer la sauvegarde
         if(choixMenu == 6) {
+            String path = "src/sauvegarde/";
+            File f = new File(path);
+
+            if(f.listFiles() == null) {
+                System.out.println("Aucune sauvegarde disponible.");
+		        remonterMenu();
+		        menuLancement();
+            }
+            else {
+				ms.recoverSauvegarde(path);
+				System.out.println(equipes.getEquipes().get(0).getNumeroTour());
+				setAffichageTour(equipes.getEquipes().get(0).getNumeroTour()+1);
+		        remonterMenu();
+		        menuLancement();
+            }
+        }
+        // Quitter
+        if(choixMenu == 7) {
 			System.out.println("Merci d'avoir utilisé Horizon !");
 			System.out.println("À bientôt !");
 			System.exit(0);
@@ -180,7 +203,7 @@ public class Menu {
 				}
 				System.out.println();
 				System.out.println("Le tour jalon est terminé pour toutes les équipes.");
-				setAffichageTour();
+				setAffichageTour(1);
 			}
 			else {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
@@ -189,7 +212,7 @@ public class Menu {
 				}
 				System.out.println();
 				System.out.println("L'étape "+getAffichageTour()+" est terminée pour toutes les équipes.");
-				setAffichageTour();
+				setAffichageTour(1);
 			}
 	        remonterMenu();
 	        menuPrincipal();
@@ -202,20 +225,33 @@ public class Menu {
 		}
 		//Sauvegarde
         if(choixMenu == 4) {
-			ms = new MenuSauvegarde(equipes, description, robot.getTirages(), getAffichageTour());
-			ms.sauvegarde();
-	        remonterMenu();
-	        menuPrincipal();
+			String choixQuitter;
+			System.out.print("Sauvegarder (o/n) ? ");
+			choixQuitter = sc.nextLine();
+
+			if(getChoix(choixQuitter, "[on]").equals("o")) {
+				ms.sauvegarde(getAffichageTour());
+		        remonterMenu();
+		        menuPrincipal();
+			}
+			else {
+		        remonterMenu();
+		        menuPrincipal();
+			}
 		}
 		// Quitter la partie
         if(choixMenu == 5) {
 			String choixQuitter;
-			System.out.println("La partie ne sera pas sauvegardée.");
+
+			System.out.println("Rappel : vous pouvez sauvegarder en revenant au menu précédent.");
 			System.out.print("Quitter la partie (o/n) ? ");
 			choixQuitter = sc.nextLine();
 
-			if(getChoix(choixQuitter, "^o{1}|n{1}$").equals("o"))
+			if(getChoix(choixQuitter, "[on]").equals("o")) {
+				affichageTour = 0;
+				System.out.println("GET"+getAffichageTour());
 				new Menu().menuLancement();
+			}
 			else
 				menuPrincipal();
 		}
@@ -226,7 +262,7 @@ public class Menu {
 		System.out.println();
 		System.out.print("Appuyez sur 1 pour revenir au menu précédent : ");
 		choix = sc.nextLine();
-		getChoix(choix, "^1{1}$");
+		getChoix(choix, "1");
 	}
 
 	public String getChoix(String choix, String regex) {

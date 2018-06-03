@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author diallo, Bilal RABBOUJ
+ * @author Bilal RABBOUJ
  */
 
 public class MenuJeu {
@@ -101,22 +101,33 @@ public class MenuJeu {
 		String choixC;
 
 		do {
+			int j = 0;
 			System.out.println();
 			System.out.print("Nom d'équipe : ");
 			nNom = sc.nextLine();
 			System.out.println();
 
-			System.out.println("Nom : "+nNom);
-			System.out.print("Conserver le nom (o/n) ? ");
-			choixC = sc.nextLine();
-			while(!choixC.matches("[on]")) {
-				System.out.print("Veuillez indiquer votre choix parmi (o/n) : ");
+			for(int i=0;i<equipes.getEquipes().size();i++)
+				j = (nNom.equals(equipes.getEquipes().get(i).getNom())) ? j+1 : j;
+
+			if(j > 0) {
+				System.out.println("Le nom est déja pris. Veuillez choisir un nouveau nom.");
+				choixC = "n";
+			}
+			else {
+				System.out.println("Nom : "+nNom);
+				System.out.print("Conserver le nom (o/n) ? ");
 				choixC = sc.nextLine();
+				while(!choixC.matches("[on]")) {
+					System.out.print("Veuillez indiquer votre choix parmi (o/n) : ");
+					choixC = sc.nextLine();
+				}
 			}
 		} while(choixC.equals("n"));
 
-		if(choixC.equals("o"))
+		if(choixC.equals("o")) {
 			equipes.ajouterEquipe(new VueEquipes(nNom, d));
+		}
 	}
 
 	public void voirEquipes() {

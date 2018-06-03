@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author diallo, Bilal RABBOUJ
+ * @author Bilal RABBOUJ
  */
 
 public class MenuPartie {
@@ -48,7 +48,7 @@ public class MenuPartie {
 			String numJoueur;
 
 			numJoueur = sc.nextLine();
-			while(!numJoueur.matches("^[0-"+i+"\"]$")) {
+			while(numJoueur.equals("0") || !numJoueur.matches("^[0-"+i+"\"]$")) {
 				System.out.print("Veuillez indiquer votre choix parmi ceux proposés : ");
 				numJoueur = sc.nextLine();
 			}

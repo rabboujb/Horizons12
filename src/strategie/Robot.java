@@ -2,23 +2,31 @@ package strategie;
 import description.*;
 import partie.VueJoueur;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * @author Bilal RABBOUJ
  */
 
-public class Robot implements Strategie {
+public class Robot implements Strategie, Serializable {
 	private Scanner sc = new Scanner(System.in);
 	private Random rand = new Random();
 
 	private List<Couleur> tirages;
+	private Couleur tirage;
 
 	public Robot() {
 		this.tirages = new ArrayList<>();
-		for(int i=0;i<10;i++)
-			tirages.add(Couleur.tirage());
+		for(int i=0;i<10;i++) {
+			tirage = Couleur.tirage();
+			tirages.add(tirage);
+		}
 	}
+
+	public List<Couleur> getTirages()           { return tirages;               }
+	public Couleur getTirage(int id)            { return tirages.get(id);       }
+	public void ajouterTirage(Couleur tirage)   { tirages.add(tirage);          }
 
 	public void nouveauTour(VueJoueur vue) {
 		vue.finDuTour();

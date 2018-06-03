@@ -1,5 +1,6 @@
 package description;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Mickael
  */
-public class Tache {
+public class Tache implements Serializable {
 
     private static int compteurId = 0;
     private final int ID;
@@ -105,7 +106,7 @@ public class Tache {
     public ArrayList <Integer> getSUCCESSEUR() {
         return SUCCESSEUR;
     }
-    
+
     /**
      * Ajout d'un successeur à la tâche 1
      * Ismerie
@@ -113,7 +114,7 @@ public class Tache {
     public void addSuccesseur(int idTache) {
     	SUCCESSEUR.add(idTache);
     }
-    
+
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)

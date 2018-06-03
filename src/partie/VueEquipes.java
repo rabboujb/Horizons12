@@ -1,9 +1,14 @@
 package partie;
 import description.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VueEquipes implements VueJoueur, DonneesJoueur {
+/**
+ * @author Bilal RABBOUJ
+ */
+
+public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	private int caisse;
 	private Description plateau;
 	private String nomEquipe;

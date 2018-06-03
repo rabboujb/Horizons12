@@ -2,6 +2,8 @@ package partie;
 import description.Couleur;
 import description.Tache;
 
+import java.io.Serializable;
+
 /**
  * Objet permetant d'enregistrer les action de la du jeu (Aleas) et du joueur :
  *      application d'alea de delai
@@ -12,7 +14,7 @@ import description.Tache;
  *
  * @author Mickael
  */
-public class Realisation {
+public class Realisation implements Serializable {
 
     private final Tache TACHE;
     private int semainesReel;
@@ -24,6 +26,11 @@ public class Realisation {
     private boolean vert;
     private boolean accelere;
     private Etat etat;
+
+	/**
+	 * Le noeud a-t-il été marqué durant le parcours ?
+	 */
+	private boolean marque = false;
 
     public Realisation(Tache tache) {
         this.TACHE = tache;
@@ -60,9 +67,9 @@ public class Realisation {
     public int getSemainesReel() {
         return semainesReel;
     }
-    
+
     /**
-     * Méthode qui retourne le nombre de semaines restantes 
+     * Méthode qui retourne le nombre de semaines restantes
      * @return
      */
     public int getSemainesRestantes() {
@@ -78,7 +85,7 @@ public class Realisation {
 	}
 
     /**
-     * Méthode qui permet de mettre à jour 
+     * Méthode qui permet de mettre à jour
      * @param dateAuPlusTot
      */
 	public void setDateAuPlusTot(int dateAuPlusTot) {
@@ -87,7 +94,6 @@ public class Realisation {
 
 	/**
      * Méthode qui retourne la date au plus tard
-     * @param date au plus tard
      */
 	public int getDateAuPlusTard() {
 		return dateAuPlusTard;
@@ -95,6 +101,24 @@ public class Realisation {
 
 	public void setDateAuPlusTard(int dateAuPlusTard) {
 		this.dateAuPlusTard = dateAuPlusTard;
+	}
+
+	/**
+     * Méthode qui retourne la valeur de l'attribut marque
+     * Ismérie
+     */
+	public boolean getMarque() {
+		return marque;
+	}
+
+
+	/**
+     * Méthode pour marquer une réalisation
+     * @param marque
+     * Ismérie
+     */
+	public void setMarque(boolean marque) {
+		this.marque = marque;
 	}
 
 	/**

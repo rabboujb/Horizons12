@@ -7,11 +7,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+/**
+ * @author Bilal RABBOUJ
+ */
+
+
 public class EssaiSauvegarde {
     public static void main(String [] args)
     {
 		try {
-			FileInputStream fis = new FileInputStream("src/Sauvegarde");
+			FileInputStream fis = new FileInputStream("src/Sauvegarde/Partie-Mugiwara/Tirages");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			while(fis.available() != 0) {
