@@ -70,4 +70,11 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	public void depense(int somme)          { caisse = caisse - somme;  }
 	public void actualisation(int temps)    {
 	}
+
+	public String toString() {
+		return "VueEquipes{" +
+				", nomEquipe='" + nomEquipe + '\'' +
+				", numeroTour=" + numeroTour +
+				'}';
+	}
 }
