@@ -27,6 +27,8 @@ public abstract class Tour implements Serializable {
         return NUMERO;
     }
 
+	public void setNUMERO() { compteurNum = -1; }
+
     /**
      * Méthode qui retourne le type du tour (Alea, Jalon, Final)
      * @return TYPE
