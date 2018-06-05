@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 
 public class MenuJeu {
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 	private Description d;
 	private VueJoueur equipes;
 
