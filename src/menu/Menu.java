@@ -1,13 +1,13 @@
 package menu;
 import description.Couleur;
 import description.Description;
+import description.Tour;
 import description.TypeTour;
 import partie.VueEquipes;
 import partie.VueJoueur;
 import strategie.Robot;
 
 import java.io.File;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -21,6 +21,7 @@ public class Menu {
     private MenuJeu mj;
     private MenuPartie mp;
     private MenuSauvegarde ms;
+    private MenuAbout ma;
     private Robot robot;
 	private int affichageTour;
 
@@ -31,6 +32,7 @@ public class Menu {
 		mj = new MenuJeu(equipes, description);
 		mp = new MenuPartie(equipes, description);
 		ms = new MenuSauvegarde(equipes, description, robot.getTirages());
+		ma = new MenuAbout();
 		affichageTour = 0;
 	}
 
@@ -44,7 +46,6 @@ public class Menu {
 		System.out.println("**********  Horizon  **********");
 		System.out.println("*                             *");
 		System.out.println("*   Bienvenue sur le jeu      *");
-		System.out.println("*   Équipe Horizon12          *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
 		System.out.println("*                             *");
@@ -63,13 +64,15 @@ public class Menu {
 		System.out.println("*  7 : Quitter                *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
+		System.out.println("*  0 : À propos               *");
+		System.out.println("*******************************");
 
 		System.out.println();
 		System.out.print("Veuillez indiquer votre choix : ");
 		choix = sc.nextLine();
 		System.out.println();
 
-		int choixMenu = Integer.parseInt(getChoix(choix, "^[1-7]{1}$"));
+		int choixMenu = Integer.parseInt(getChoix(choix, "^[0-7]{1}$"));
 		// Joueur v IA
         if(choixMenu == 1) {
         	mj.joueurVsIA();
@@ -109,15 +112,17 @@ public class Menu {
             String path = "src/sauvegarde/";
             File f = new File(path);
 
-            if(f.listFiles() == null) {
+            if(f.list().length == 0) {
                 System.out.println("Aucune sauvegarde disponible.");
 		        remonterMenu();
 		        menuLancement();
             }
             else {
 				ms.recoverSauvegarde(path);
-				System.out.println(equipes.getEquipes().get(0).getNumeroTour());
 				setAffichageTour(equipes.getEquipes().get(0).getNumeroTour()+1);
+				System.out.println();
+				System.out.println("La sauvegarde a bien été récupérée.");
+				System.out.println();
 		        remonterMenu();
 		        menuLancement();
             }
@@ -127,6 +132,13 @@ public class Menu {
 			System.out.println("Merci d'avoir utilisé Horizon !");
 			System.out.println("À bientôt !");
 			System.exit(0);
+		}
+        // À propos
+        if(choixMenu == 0) {
+            ma.about();
+            ma.presentationJeu();
+	        remonterMenu();
+	        menuLancement();
 		}
 	}
 
@@ -147,7 +159,7 @@ public class Menu {
 		System.out.println("*******************************");
         System.out.println("*                             *");
 
-		String infoTour = "";
+		String infoTour;
 		if(description.getTours().get(getAffichageTour()).getTYPE() == TypeTour.ALEA) {
 			infoTour = "Tour "+description.getTours().get(getAffichageTour()).getNUMERO()+" : "+description.getTours().get
 			(getAffichageTour()).getTYPE()+" ";
@@ -249,6 +261,7 @@ public class Menu {
 
 			if(getChoix(choixQuitter, "[on]").equals("o")) {
 				affichageTour = 0;
+				description.getTours().get(0).setNUMERO();
 				System.out.println("GET"+getAffichageTour());
 				new Menu().menuLancement();
 			}
