@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * Il encapsule la tache à laquelle il est lié.
  *
- * @author Mickael
+ * @author Mickael, Ismerie
  */
 public class Realisation implements Serializable {
 

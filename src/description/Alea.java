@@ -9,7 +9,7 @@ import java.io.Serializable;
  *      la gravité
  *      le nom
  *
- * @author Mickael
+ * @author Mickael, Ismerie
  */
 public class Alea implements Serializable {
 

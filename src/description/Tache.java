@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Classe qui représente une tache
  *
- * @author Mickael
+ * @author Mickael, Ismerie
  */
 public class Tache implements Serializable {
 
