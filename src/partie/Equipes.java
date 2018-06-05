@@ -22,4 +22,12 @@ public class Equipes implements DonneesJoueur, Serializable {
 	public int getQualite()                 { return qualite;       }
 	public void baisseQualite(int delta)    { qualite = getQualite() - delta;}
 	public void depense(int somme)          { caisse = getCaisse() - somme;  }
+
+	public String toString() {
+		return "Equipes{" +
+				"nomEquipe='" + nomEquipe + '\'' +
+				", caisse=" + caisse +
+				", qualite=" + qualite +
+				'}';
+	}
 }
