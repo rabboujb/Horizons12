@@ -35,6 +35,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 		this.numeroTour = 0;
 	}
 
+	public List<Realisation> getRealisations() { return realisations; }
 	public Realisation getRealisation(int idTache) {
 		for(Realisation r: realisations)
 			if(r.getIdTache() == idTache)
