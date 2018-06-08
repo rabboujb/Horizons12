@@ -1,7 +1,6 @@
 package partie;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import description.Tache;
@@ -16,6 +15,8 @@ import description.Tache;
 
 public class Pert {
     ArrayList<Realisation> realisations = new ArrayList<>();
+    // L'arrayList de réalisations ordonancées
+    ArrayList<Realisation> realisationsTriees;
 	Tache alpha;
 	Tache omega;
 	Realisation realAlpha; 
@@ -25,6 +26,39 @@ public class Pert {
     public Pert(ArrayList<Realisation> realisations){
     	this.realisations=realisations;
 
+	}
+
+	/**
+	 * Méthode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre, et agit
+	 * directement sur realisationsTriees
+	 * @param realisations
+	 * @return ArrayList de réalisations ordonnancé
+	 */
+	private void trieOrdonnance(ArrayList<Realisation> realisations){
+		while (realisations.size() != realisationsTriees.size()){
+			for (Realisation realisation : realisations){
+				if (realisation.getPredecesseurs().isEmpty() || controlePredecesseurs(realisation)){
+					realisationsTriees.add(realisation);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Méthode qui est utile à trieOrdonnance, elle vérifie si les prédécesseurs d'une réalisation (de la tache encapsulée
+	 * à l'interieur) font parties des realisation déja traités ou non.
+	 * @param realisation
+	 * @return un boolean
+	 */
+	private boolean controlePredecesseurs(Realisation realisation){
+    	for (Integer idPredecesseur : realisation.getPredecesseurs()){
+    		for (Realisation realisationTriee : realisationsTriees){
+    			if (idPredecesseur == realisation.getIdTache()){
+    				return false;
+				}
+			}
+		}
+		return true;
 	}
     
 	public void calculeTempsAuPlusTot(){

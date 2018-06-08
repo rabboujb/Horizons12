@@ -3,6 +3,7 @@ import description.Couleur;
 import description.Tache;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Objet permetant d'enregistrer les action de la du jeu (Aleas) et du joueur :
@@ -58,6 +59,24 @@ public class Realisation implements Serializable {
      */
     public int getIdTache() {
         return TACHE.getID();
+    }
+
+    /**
+     * Méthode qui retourne la liste des predecesseurs de la tache encapsulée sous forme d'ArrayList, cette méthode
+     * facilite la lecture du code du PERT
+     * @return ArrayList
+     */
+    public ArrayList<Integer> getPredecesseurs(){
+        return TACHE.getPREDECESSEUR();
+    }
+
+    /**
+     * Méthode qui retourne la liste des successeurs de la tache encapsulée sous forme d'ArrayList, cette méthode
+     * facilite la lecture du code du PERT
+     * @return ArrayList
+     */
+    public ArrayList<Integer> getSuccesseurs(){
+        return TACHE.getSUCCESSEUR();
     }
 
     /**
