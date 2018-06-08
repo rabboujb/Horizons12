@@ -115,6 +115,13 @@ public class Tache implements Serializable {
     	SUCCESSEUR.add(idTache);
     }
 
+    /**
+     * Ajout d'un predecesseur à une tache
+     * Ismerie
+     */
+    public void addPredecesseur(int idTache) {
+    	PREDECESSEUR.add(idTache);
+    }
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)
