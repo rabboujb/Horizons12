@@ -54,7 +54,19 @@ public class EssaiRealisation2 {
         }
         
         Pert pert = new Pert(realisations);
-        pert.construitAlpha(realisations);
-        pert.construitOmega(realisations);
+       // pert.construitAlpha(realisations);
+        //pert.construitOmega(realisations);
+		//on calcul les temps au plus tot pour chaque tache
+		System.out.println("=== CALCUL DES CHEMINS AU PLUS TOT ===");
+		pert.calculDateAuPlusTot();
+		pert.calculDateAuPlusTard();
+		pert.afficheTemps();
+
+		//on obtient le chemin critique une fois que se calcul est fait
+		System.out.println();
+		System.out.println("=== CALCUL DU CHEMIN CRITIQUE ===");
+		for (Realisation real : pert.calculeCheminCritique()) {
+			System.out.print("tache "+real.getTACHE().getNOM()+" "+real.getIdTache() + "\n");
+		}
     }
 }
