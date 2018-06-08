@@ -1,7 +1,6 @@
 package partie;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import description.Tache;
@@ -9,7 +8,7 @@ import description.Tache;
 /**
  * Class de construction du pert, permettant de connaitre
  * la date au plus tôt, la date au plus tard
- * la marge libre, et le chemin critique
+ * et le chemin critique
  * 
  * @author Ismerie
  */
@@ -30,29 +29,31 @@ public class Pert {
     	this.realisations=realisations;
     	this.realisations.add(0, realAlpha);
     	this.realisations.add(realOmega);
-    	// on intitialise le marque et les dates au plus tot / au plus tard
+    	// on inititialise les dates au plus tot / au plus tard
     	for(Realisation real : this.realisations){
-    		//real.setMarque(false);
     		real.setDateAuPlusTard(0);
     		real.setDateAuPlusTot(0);
     	}
 	}
     
-    // Calcul de la date au plus tot de chaque realisation
+    /**
+     * Méthode qui calcul la date au plus tot de chaque realisation
+     */
     public void calculDateAuPlusTot() {
     	// on parcourt la liste des realisations
     	for(int i = 0; i < this.realisations.size(); i++){
 			Realisation temp = this.realisations.get(i);
-			//si la tache de la realisation n'a pas de predecessuers, cela veut dire que c'est la premiere tache
+			//si la tache de la realisation n'a pas de predecessuers,
+			//cela veut dire que c'est la premiere tache
 			//donc la date au plus tot=0
 			if(temp.getTACHE().getPREDECESSEUR().size()==0){
 				this.realisations.get(i).setDateAuPlusTot(0);
-				//temp.setDateAuPlusTot(0);
 			}
 			else{
-				// on parcourt la liste des predecesseurs de la tache de la realisation
                 int max = 0;
                 int calcul = 0;
+                
+                // on parcourt la liste des predecesseurs de la tache de la realisation
 				for(int j=0; j< temp.getTACHE().getPREDECESSEUR().size();j++) {
 					//boucle qui parcourt toutes les réalisations pour retrouver celle du predecesseur
 					for(int k = 0; k < this.realisations.size(); k++){
@@ -65,7 +66,6 @@ public class Pert {
 					}
 				}
 				this.realisations.get(i).setDateAuPlusTot(max);
-				//temp.setDateAuPlusTot(max);
 			}
     	}
     }
@@ -81,12 +81,11 @@ public class Pert {
 
             // s'il n'y a pas de successeur la date au plus tard est la date au plus tot
 			if(temp.getTACHE().getSUCCESSEUR().size()==0){
-                
 				this.realisations.get(i).setDateAuPlusTard(temp.getDateAuPlusTot());
-				//temp.setDateAuPlusTard(temp.getDateAuPlusTot());
             } else {
                 int min = Integer.MAX_VALUE;
                 int calcul = 0;
+                
                 // Si il y a des successeurs il faut faire le calcul avec la date au plus tard
                 // minimum des successeurs
                 // Boucle qui recupere la date au plus tard minimun des successeurs
@@ -103,11 +102,9 @@ public class Pert {
 					}
 				
 				}
-                // Le calcul correspond au min de la date au plus tard des successeurs - duree
-                // de la tache
+                // Le calcul correspond au min de la date au plus tard des successeurs - duree de la tache
                 calcul = min - temp.getSemainesReel();
                 this.realisations.get(i).setDateAuPlusTard(calcul);
-                //temp.setDateAuPlusTard(calcul);
             }
         }
     }    
@@ -154,24 +151,32 @@ public class Pert {
 	 * Methode d'affichage des dates au plus et date au plus tard
 	 * de chaque realisation
 	 */
-	public void afficheTemps() {
+	public void afficheDates() {
 		for (int i = 0; i<this.realisations.size(); i++){
 			System.out.print("tache: "+this.realisations.get(i).getTACHE().getNOM()+" Date au plus tot="+this.realisations.get(i).getDateAuPlusTot()+" Date au plus tard="+this.realisations.get(i).getDateAuPlusTard()+ "\n");
 		}
 	}
+	
+	/*
+	 * Methode d'affichage du chemin critique
+	 */
+	public void afficheCheminCritique() {
+		for (Realisation real : calculeCheminCritique()) {
+			System.out.print("Tâche n°"+ real.getIdTache() + " - " + real.getTACHE().getNOM() + "\n");
+		}
+	}
 
 	/**
+	 * methode de calcul du chemin critique
 	 * Renvoie les realisations sur le chemin critique 
-	 * @return
+	 * @return cheminCritique
 	 */
 	public List<Realisation> calculeCheminCritique() {
 		//On intialise le chemin critique
 		List<Realisation> cheminCritique = new ArrayList<Realisation>();
-		//on ajoute la tache initiale
-		//Tache tacheInitale = taches[0].getPredecesseurs().iterator().next();
+
 		for(int j = 0; j < this.realisations.size(); j++){
-			if(this.realisations.get(j).getDateAuPlusTard()-this.realisations.get(j).getDateAuPlusTot()==0)
-			{
+			if(this.realisations.get(j).getDateAuPlusTard()-this.realisations.get(j).getDateAuPlusTot()==0){
 				cheminCritique.add(this.realisations.get(j));
 			}
 		}
