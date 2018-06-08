@@ -10,7 +10,7 @@ import description.Tache;
  * la date au plus tôt, la date au plus tard
  * la marge libre, et le chemin critique
  * 
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class Pert {
@@ -21,11 +21,15 @@ public class Pert {
 	Tache omega;
 	Realisation realAlpha; 
 	Realisation realOmega;
-
-    
+	
     public Pert(ArrayList<Realisation> realisations){
     	this.realisations=realisations;
-
+    	// on intitialise le marque et les dates au plus tot / au plus tard
+    	for(Realisation real : this.realisations){
+    		//real.setMarque(false);
+    		real.setDateAuPlusTard(0);
+    		real.setDateAuPlusTot(0);
+    	}
 	}
 
 	/**
@@ -61,49 +65,87 @@ public class Pert {
 		return true;
 	}
     
-	public void calculeTempsAuPlusTot(){
-		//création de la tache initiale fictive en lui trouvant pour 
-		//successeur toutes les tâches qui n'ont pas de prédécesseurs
-		this.alpha = construitAlpha(realisations);
-		
-		//création de la tache finale fictive en lui trouvant pour predecesseur
-		//toutes les tâches qui n'ont pas de successeurs
-		this.omega = construitOmega(realisations);
-		
-		this.realAlpha = new Realisation(alpha);
-		this.realOmega = new Realisation(omega);
-		
-		//condition initiale à l'algo on marque T0 et on lui
-		//affecte la date au plus tot nulle
-		realAlpha.setMarque(true);
-		realAlpha.setDateAuPlusTot(0);
-		
-		//nonMarque est l'index de la premiere tache non marquee
-		//trouvee si il vaut -1 c'est qu'on ne peut plus en trouver
-		//la boucle s'arrete
-		int nonMarque = trouveNonMarqueAvecTousPredecesseursMarque();
-		while (nonMarque != -1  ){
-			//on marque la tache traitee
-			this.realisations.get(nonMarque).setMarque(true);
-			//on calcul son temps au plus tot
-			int tempsAuPlusTot = calculTempsAuPlusTot(this.realisations.get(nonMarque));
-			//et on le met dans la tache
-			this.realisations.get(nonMarque).setDateAuPlusTot(tempsAuPlusTot);
-			//et on continue avec la prochaine tache non marquee suivante
-			nonMarque = trouveNonMarqueAvecTousPredecesseursMarque();
-		}
-		//on finalise avec la dernière tache
-		int tempsAuPlusTotFinal = calculTempsAuPlusTot(realOmega);
-		realOmega.setDateAuPlusTot(tempsAuPlusTotFinal);
-	}
-	
+    // Calcul de la date au plus tot de chaque realisation
+    public void calculDateAuPlusTot() {
+    	// on parcourt la liste des realisations
+    	for(int i = 0; i < this.realisations.size(); i++){
+			Realisation temp = this.realisations.get(i);
+			//si la tache de la realisation n'a pas de predecessuers, cela veut dire que c'est la premiere tache
+			//donc la date au plus tot=0
+			if(temp.getTACHE().getPREDECESSEUR().size()==0){
+				this.realisations.get(i).setDateAuPlusTot(0);
+				//temp.setDateAuPlusTot(0);
+			}
+			else{
+				// on parcourt la liste des predecesseurs de la tache de la realisation
+                int max = 0;
+                int calcul = 0;
+				for(int j=0; j< temp.getTACHE().getPREDECESSEUR().size();j++) {
+					//boucle qui parcourt toutes les réalisations pour retrouver celle du predecesseur
+					for(int k = 0; k < this.realisations.size(); k++){
+						if(this.realisations.get(k).getIdTache()==temp.getTACHE().getPREDECESSEUR().get(j)){
+		                    calcul = this.realisations.get(k).getDateAuPlusTot() + this.realisations.get(k).getSemainesReel();
+		                    if (calcul > max) {
+		                        max = calcul;
+		                    }
+						}
+					}
+				}
+				this.realisations.get(i).setDateAuPlusTot(max);
+				//temp.setDateAuPlusTot(max);
+			}
+    	}
+    }
+
+    /**
+     * Calcul de la date au plus tard de chaque realisation
+     *
+     */
+    public void calculDateAuPlusTard() {
+        // On parcourt la liste des realisations de la fin au debut
+        for (int i = this.realisations.size() - 1; i >= 0; i--) {
+			Realisation temp = this.realisations.get(i);
+
+            // s'il n'y a pas de successeur la date au plus tard est la date au plus tot
+			if(temp.getTACHE().getSUCCESSEUR().size()==0){
+                
+				this.realisations.get(i).setDateAuPlusTard(temp.getDateAuPlusTot());
+				//temp.setDateAuPlusTard(temp.getDateAuPlusTot());
+            } else {
+                int min = Integer.MAX_VALUE;
+                int calcul = 0;
+                // Si il y a des successeurs il faut faire le calcul avec la date au plus tard
+                // minimum des successeurs
+                // Boucle qui recupere la date au plus tard minimun des successeurs
+				for(int j=0; j< temp.getTACHE().getSUCCESSEUR().size();j++) {
+					//boucle qui parcourt toutes les réalisations pour retrouver celle du successeur
+					for(int k = 0; k < this.realisations.size(); k++){
+						if(this.realisations.get(k).getIdTache()==temp.getTACHE().getSUCCESSEUR().get(j))
+						{
+		                    calcul = this.realisations.get(k).getDateAuPlusTard() + this.realisations.get(k).getSemainesReel();
+		                    if (this.realisations.get(k).getDateAuPlusTard() < min) {
+		                        min = this.realisations.get(k).getDateAuPlusTard();
+		                    }
+						}
+					}
+				
+				}
+                // Le calcul correspond au min de la date au plus tard des successeurs - duree
+                // de la tache
+                calcul = min - temp.getSemainesReel();
+                this.realisations.get(i).setDateAuPlusTard(calcul);
+                //temp.setDateAuPlusTard(calcul);
+            }
+        }
+    }    
+
 	
 	/**
 	 * Construit la tache alpha celle qui sera le predecesseur de la tache 1
 	 * @param ArrayList<Realisation>
 	 * @return alpha
 	 */
-	public static Tache construitAlpha(ArrayList<Realisation> realisations){
+	public Tache construitAlpha(ArrayList<Realisation> realisations){
 		Tache alpha = new Tache("Alpha",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
 		for(Realisation real : realisations){
@@ -120,7 +162,7 @@ public class Pert {
 	 * @param ArrayList<Realisation>
 	 * @return
 	 */
-	public static Tache construitOmega(ArrayList<Realisation> realisations){
+	public Tache construitOmega(ArrayList<Realisation> realisations){
 		
 		Tache omega = new Tache("Omega",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
@@ -133,86 +175,18 @@ public class Pert {
     
 	}
 	
-	
-	/**
-	 * Trouve une tâche non marquée dont tous les prédécesseurs sont marqués.
-	 * @return
+	/*
+	 * Methode d'affichage des dates au plus et date au plus tard
+	 * de chaque realisation
 	 */
-	public int trouveNonMarqueAvecTousPredecesseursMarque(){
-		//boucle qui parcourt toutes les réalisations
-		for(int i = 0; i < this.realisations.size(); i++){
-			//on récupère à chaque tour la réalisation
-			//que l'on met dans une variable temp 
-			//pour pouvoir la manipuler
-			Realisation temp = this.realisations.get(i);
-			
-			//on test si la réalisation est marquée
-			if (temp.getMarque()){
-				continue;
-			}
-			
-			boolean predecesseursTousMarques = true;
-			
-			//on récupère la tâche de la réalisation temp
-			//et de cette tâche on récupère la liste des prédécesseurs
-			for(int j=0; j< temp.getTACHE().getPREDECESSEUR().size();j++) {
-				//boucle qui parcourt toutes les réalisations
-				for(int k = 0; k < this.realisations.size(); k++){
-					if(this.realisations.get(k).getIdTache()==temp.getTACHE().getPREDECESSEUR().get(j))
-					{
-						if(!this.realisations.get(k).getMarque())
-						{
-							predecesseursTousMarques = false;
-						}
-					}
-				}
-				
-			}
-			
-			if (predecesseursTousMarques){
-				return i;
-			}
-		}
-		//signifie qu'on a pas pu trouver de non marqué
-		return -1;
-	}
-	
-	/**
-	 * Calcul le temps au plus tot d'une tache 
-	 * 
-	 * Le calcul de ce temps est fourni par l'algorithme de Bellman,
-	 * tj = max { tk + ex(Tk) } ou k est l'ensemble des predecesseurs de j
-	 * 
-	 * @param tache
-	 * @return
-	 */
-	public int calculTempsAuPlusTot(Realisation real) {
-		int max = 0;
-		for(int i=0; i< real.getTACHE().getPREDECESSEUR().size();i++) {		
-			//boucle qui parcourt toutes les réalisations
-			for(int j = 0; j < this.realisations.size(); j++){
-				if(this.realisations.get(j).getIdTache()==real.getTACHE().getPREDECESSEUR().get(i))
-				{
-					if((this.realisations.get(j).getDateAuPlusTot() + this.realisations.get(j).getSemainesReel())>max)
-					{
-						max = this.realisations.get(j).getDateAuPlusTot() + this.realisations.get(j).getSemainesReel(); 						
-					}
-				}
-			}
-		}
-		return max;
-	}
-	
-	public void afficheTempsAuPlusTot() {
+	public void afficheTemps() {
 		for (int i = 0; i<this.realisations.size(); i++){
-			System.out.print("t"+this.realisations.get(i).getIdTache()+"="+this.realisations.get(i).getDateAuPlusTot()+ " ");
+			System.out.print("tache: "+this.realisations.get(i).getTACHE().getNOM()+" Date au plus tot="+this.realisations.get(i).getDateAuPlusTot()+" Date au plus tard="+this.realisations.get(i).getDateAuPlusTard()+ "\n");
 		}
 	}
-	
+
 	/**
-	 * Renvoie les taches sur le chemin critique 
-	 * cette m�thode ne peut etre appel� qu'apres l'appel
-	 * de la m�thode {@link #calculeTempsAuPlusTot()}
+	 * Renvoie les realisations sur le chemin critique 
 	 * @return
 	 */
 	public List<Realisation> calculeCheminCritique() {
@@ -244,8 +218,5 @@ public class Pert {
 		}
 		return realLaPlusTardive;
 	}
-	
-	
-	
 	
 }
