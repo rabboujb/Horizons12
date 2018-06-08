@@ -22,7 +22,14 @@ public class Pert {
 	Realisation realOmega;
 	
     public Pert(ArrayList<Realisation> realisations){
+    	this.alpha = construitAlpha(realisations);
+    	this.omega = construitOmega(realisations);
+    	
+    	realAlpha = new Realisation(alpha);
+    	realOmega = new Realisation(omega);
     	this.realisations=realisations;
+    	this.realisations.add(0, realAlpha);
+    	this.realisations.add(realOmega);
     	// on intitialise le marque et les dates au plus tot / au plus tard
     	for(Realisation real : this.realisations){
     		//real.setMarque(false);
@@ -117,6 +124,7 @@ public class Pert {
 		for(Realisation real : realisations){
 			if (real.getTACHE().getPREDECESSEUR().size()==0){
 				alpha.addSuccesseur(real.getIdTache());
+				real.getTACHE().addPredecesseur(alpha.getID());
 			}		
 		}
 		return alpha;
@@ -135,6 +143,7 @@ public class Pert {
 		for(Realisation real : realisations){
 			if (real.getTACHE().getSUCCESSEUR().size()==0){
 				real.getTACHE().addSuccesseur(omega.getID());
+				omega.addPredecesseur(real.getIdTache());
 			}		
 		}
 		return omega;	
@@ -159,30 +168,14 @@ public class Pert {
 		//On intialise le chemin critique
 		List<Realisation> cheminCritique = new ArrayList<Realisation>();
 		//on ajoute la tache initiale
-//		Tache tacheInitale = taches[0].getPredecesseurs().iterator().next();
-		cheminCritique.add(this.realAlpha);
-		Realisation realSurLeChemin = this.realAlpha;
-		while ((realSurLeChemin = getSuccesseurTempsAuPlusTotMax(realSurLeChemin))!=null){
-			cheminCritique.add(realSurLeChemin);
-		}		
+		//Tache tacheInitale = taches[0].getPredecesseurs().iterator().next();
+		for(int j = 0; j < this.realisations.size(); j++){
+			if(this.realisations.get(j).getDateAuPlusTard()-this.realisations.get(j).getDateAuPlusTot()==0)
+			{
+				cheminCritique.add(this.realisations.get(j));
+			}
+		}
 		return cheminCritique;
 	}
 
-	public Realisation getSuccesseurTempsAuPlusTotMax(Realisation Real) {
-		Realisation realLaPlusTardive = null;
-		int tempsAuPlusTot = 0;
-		for(int i=0;i<Real.getTACHE().getSUCCESSEUR().size();i++)
-		{
-			for(int j = 0; j < this.realisations.size(); j++){
-				if(this.realisations.get(j).getIdTache()==Real.getTACHE().getSUCCESSEUR().get(i))
-				{
-					if (this.realisations.get(j).getDateAuPlusTot() >= tempsAuPlusTot) {
-						realLaPlusTardive = this.realisations.get(j);
-					}					
-				}
-			}
-		}
-		return realLaPlusTardive;
-	}
-	
 }
