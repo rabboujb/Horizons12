@@ -29,11 +29,10 @@ public class EssaiAlgoOrdonnance {
      * @return ArrayList de réalisations ordonnancé
      */
     private void trieOrdonnance(ArrayList<Realisation> realisations){
-        while (realisations.size() != realisationsTriees.size()){
+        while (realisations.size() > realisationsTriees.size()){
             for (Realisation realisation : realisations){
                 if (realisation.getPredecesseurs().isEmpty() || controlePredecesseurs(realisation)){
                     realisationsTriees.add(realisation);
-                    // System.out.println(realisation.getIdTache());
                 }
             }
         }
@@ -46,19 +45,14 @@ public class EssaiAlgoOrdonnance {
      * @return un boolean
      */
     private boolean controlePredecesseurs(Realisation realisation){
-        System.out.println("Appel");
         for (Integer idPredecesseur : realisation.getPredecesseurs()){
-            System.out.println("Boucle 1");
             for (Realisation realisationTriee : realisationsTriees){
-                System.out.println("Boucle 2");
-                if (idPredecesseur.intValue() == realisation.getIdTache()){
-                    System.out.println("IF");
-                    System.out.println(idPredecesseur + "<>" + realisation.getIdTache() );
-                    return false;
+                if (idPredecesseur.intValue() == realisationTriee.getIdTache()){
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public ArrayList<Realisation> getRealisationsTriees(){
@@ -67,6 +61,7 @@ public class EssaiAlgoOrdonnance {
 
     public static void main(String[] args) {
         EssaiAlgoOrdonnance test = new EssaiAlgoOrdonnance();
+        System.out.println("\nClassement\n");
         for (Realisation realisation : test.getRealisationsTriees()){
             System.out.println(realisation.getIdTache());
         }
