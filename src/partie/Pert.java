@@ -45,8 +45,8 @@ public class Pert {
 	}
 
 	/**
-	 * Méthode qui est utile à trieOrdonnance, elle vérifie si les prédécesseurs d'une réalisation (de la tache encapsulée
-	 * à l'interieur) font parties des realisation déja traités ou non.
+	 * Méthode qui est utile à trieOrdonnance, elle vérifie si une réalisation à encore des prédécesseurs non traité, et
+     * renvoie false dans ce cas, et true si tout ces prédécesseurs ont été traités
 	 * @param realisation
 	 * @return un boolean
 	 */
