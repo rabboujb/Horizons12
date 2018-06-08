@@ -60,13 +60,12 @@ public class EssaiRealisation2 {
 		System.out.println("=== CALCUL DES CHEMINS AU PLUS TOT ===");
 		pert.calculDateAuPlusTot();
 		pert.calculDateAuPlusTard();
-		pert.afficheTemps();
+		pert.afficheDates();
 
 		//on obtient le chemin critique une fois que se calcul est fait
 		System.out.println();
 		System.out.println("=== CALCUL DU CHEMIN CRITIQUE ===");
-		for (Realisation real : pert.calculeCheminCritique()) {
-			System.out.print("tache "+real.getTACHE().getNOM()+" "+real.getIdTache() + "\n");
-		}
+		pert.afficheCheminCritique();
+		
     }
 }
