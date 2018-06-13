@@ -289,6 +289,21 @@ public class Realisation implements Serializable {
     	return jauge;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object != null && object instanceof Realisation){
+            return this.equals((Realisation)object);
+        }
+        return false;
+    }
+
+    public boolean equals(Realisation realisation){
+        if (this.getIdTache() == realisation.getIdTache()){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Méthode qui décrit l'actuel de la tache pour le joueur, avec le nombre de semaines réele et le status des aléas
      * @return une String
