@@ -262,6 +262,21 @@ public class Realisation implements Serializable {
         return applique;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object != null && object instanceof Realisation){
+            return this.equals((Realisation)object);
+        }
+        return false;
+    }
+
+    public boolean equals(Realisation realisation){
+        if (this.getIdTache() == realisation.getIdTache()){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Méthode utile au toString, elle permet de revoyer en toute lettre l'état d'un aléa
      * @param couleur
@@ -287,21 +302,6 @@ public class Realisation implements Serializable {
     		jauge += "*";
     	}
     	return jauge;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object != null && object instanceof Realisation){
-            return this.equals((Realisation)object);
-        }
-        return false;
-    }
-
-    public boolean equals(Realisation realisation){
-        if (this.getIdTache() == realisation.getIdTache()){
-            return true;
-        }
-        return false;
     }
 
     /**
