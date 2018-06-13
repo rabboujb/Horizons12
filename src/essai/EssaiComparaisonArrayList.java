@@ -37,5 +37,20 @@ public class EssaiComparaisonArrayList {
 
         System.out.println(rea2.containsAll(rea1));
         System.out.println(rea3.containsAll(rea1));
+
+        // Le même avec des Integers
+        ArrayList<Integer> list0 = new ArrayList<>();
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        for (int i = 0 ; i < 10 ; i++) {
+            list0.add(i);
+            list1.add(i);
+            if (i % 2 == 0) {
+                list2.add(i);
+            }
+        }
+
+        System.out.println(list1.containsAll(list0));
+        System.out.println(list2.containsAll(list0));
     }
 }
