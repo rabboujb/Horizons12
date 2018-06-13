@@ -147,7 +147,7 @@ public class Pert {
 	
 	/**
 	 * Construit la tache alpha celle qui sera le predecesseur de la tache 1
-	 * @param ArrayList<Realisation>
+	 * @param realisations
 	 * @return alpha
 	 */
 	public Tache construitAlpha(ArrayList<Realisation> realisations){
@@ -165,7 +165,7 @@ public class Pert {
 	/**
 	 * Construit la tache omega celle qui sera le successeur de toutes celles
 	 * qui n'ont pas de successeurs.
-	 * @param ArrayList<Realisation>
+	 * @param realisations
 	 * @return
 	 */
 	public Tache construitOmega(ArrayList<Realisation> realisations){

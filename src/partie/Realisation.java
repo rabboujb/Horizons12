@@ -267,14 +267,32 @@ public class Realisation implements Serializable {
         if (object != null && object instanceof Realisation){
             return this.equals((Realisation)object);
         }
+        else if (object != null && object instanceof Integer){
+            return this.equals((Integer)object);
+        }
         return false;
     }
 
+    /**
+     * Equals qui permet de comparer deux réalisations
+     * @param realisation
+     * @return
+     */
     public boolean equals(Realisation realisation){
         if (this.getIdTache() == realisation.getIdTache()){
             return true;
         }
         return false;
+    }
+
+    /**
+     * Méthode qui permet de comparer une réalisation via son ID, à l'ID d'une autre réalisation, ceci est utile pour
+     * comparer une réalisation à un élément de l'ArraysList de prédécesseurs
+     * @param id
+     * @return
+     */
+    public boolean equals(Integer id){
+        if (this.getIdTache() == id.intValue());
     }
 
     /**
