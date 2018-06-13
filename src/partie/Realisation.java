@@ -292,7 +292,10 @@ public class Realisation implements Serializable {
      * @return
      */
     public boolean equals(Integer id){
-        if (this.getIdTache() == id.intValue());
+        if (this.getIdTache() == id.intValue()){
+            return true;
+        }
+        return false;
     }
 
     /**
