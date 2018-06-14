@@ -64,7 +64,12 @@ public class Alea implements Serializable {
     public String toString() {
         StringBuilder chaine = new StringBuilder();
 
-        chaine.append(COULEUR).append(" : ").append(TYPE).append("\t").append(GRAVITE).append("\t").append(NOM);
+        chaine.append(COULEUR)
+        .append("\t").append(":")
+        .append("\t").append("\""+NOM+"\" ")
+        .append("\t").append(TYPE)
+        .append("\t").append("Gravité "+GRAVITE);
+
         return chaine.toString();
     }
 }
