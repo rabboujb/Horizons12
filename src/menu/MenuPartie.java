@@ -19,13 +19,15 @@ public class MenuPartie {
 		this.d = description;
 	}
 
-	
-        public void consulterPert() {
-            
-        for(int i=1;i<d.getPlateau().size()+1;i++) {
-            Realisation r = new Realisation(d.getTacheById(i));    
-            System.out.println(r);
 
+    public void consulterPert() {
+        for(int i=1;i<d.getPlateau().size()+1;i++) {
+			Tache t = d.getTacheById(i);
+		    System.out.println("TÂCHE "+t.getID());
+            System.out.println();
+            System.out.println(t);
+            System.out.println("===");
+            System.out.println();
         }
 	}
 
