@@ -101,14 +101,6 @@ public class Robot implements Strategie, Serializable {
 							.getAlea(Couleur.VERT).getGRAVITE());
 					}
 				}
-//				System.out.println();
-//				System.out.println("*"+vue.getNom()+"*Tour "+vue.getNumeroTour());
-//				System.out.println("*Tirage "+tirage);
-//				System.out.println("*Semaines réelles "+idTache+" "+vue.getRealisation(idTache).getSemainesReel());
-//				System.out.println("*Caisse Données "+vue.getDonneesEquipe().getCaisse()+" €");
-//				System.out.println("*Caisse Vue "+vue.getCaisse()+" €");
-//				System.out.println("*Qualité "+vue.getDonneesEquipe().getQualite()+" %");
-//				System.out.println();
 			}
 		}
 	}
@@ -132,6 +124,7 @@ public class Robot implements Strategie, Serializable {
 						} else
 							System.out.println("Pas d'accélération pour la tâche " + idTache);
 
+						System.out.println();
 						System.out.print("Protéger un ou plusieurs aléas pour 10€ (o/n) ? ");
 						if(getChoix(sc.nextLine(), "[on]").equals("o")) {
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
@@ -143,6 +136,7 @@ public class Robot implements Strategie, Serializable {
 							} else
 								System.out.println("Pas de protection pour l'aléa ROUGE");
 
+							System.out.println();
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
 							.getTacheById(idTache).getAlea(Couleur.ORANGE) + " (o/n) ? ");
 							if(getChoix(sc.nextLine(), "[on]").equals("o")) {
@@ -151,6 +145,7 @@ public class Robot implements Strategie, Serializable {
 							} else
 								System.out.println("Pas de protection pour l'aléa ORANGE");
 
+							System.out.println();
 							System.out.print("Protéger l'aléa " + vue.getPlateau()
 							.getTacheById(idTache).getAlea(Couleur.VERT) + " (o/n) ? ");
 							if(getChoix(sc.nextLine(), "[on]").equals("o")) {
@@ -160,6 +155,7 @@ public class Robot implements Strategie, Serializable {
 								System.out.println("Pas de protection pour l'aléa VERT");
 						} else
 						System.out.println("Pas de protection pour les aléas");
+						System.out.println();
 					}
 				}
 
