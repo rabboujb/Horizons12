@@ -15,8 +15,6 @@ import description.Tache;
 
 public class Pert {
     ArrayList<Realisation> realisations = new ArrayList<>();
-    // L'arrayList de réalisations ordonancées
-    ArrayList<Realisation> realisationsTopologiques;
 	Tache alpha;
 	Tache omega;
 	Realisation realAlpha; 
