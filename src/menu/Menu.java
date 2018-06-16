@@ -1,12 +1,10 @@
 package menu;
 import description.Couleur;
 import description.Description;
-import description.Tour;
 import description.TypeTour;
 import partie.VueEquipes;
 import partie.VueJoueur;
 import strategie.Robot;
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -61,7 +59,9 @@ public class Menu {
 		System.out.println("*                             *");
 		System.out.println("*  6 : Reprendre une partie   *");
 		System.out.println("*                             *");
-		System.out.println("*  7 : Quitter                *");
+		System.out.println("*  7 : Supprimer une partie   *");
+		System.out.println("*                             *");
+		System.out.println("*  8 : Quitter                *");
 		System.out.println("*                             *");
 		System.out.println("*******************************");
 		System.out.println("*  0 : À propos               *");
@@ -72,7 +72,7 @@ public class Menu {
 		choix = sc.nextLine();
 		System.out.println();
 
-		int choixMenu = Integer.parseInt(getChoix(choix, "^[0-7]{1}$"));
+		int choixMenu = Integer.parseInt(getChoix(choix, "^[0-8]{1}$"));
 		// Joueur v IA
         if(choixMenu == 1) {
         	mj.joueurVsIA();
@@ -109,17 +109,17 @@ public class Menu {
         }
         // Récupérer la sauvegarde
         if(choixMenu == 6) {
-            String path = "src/sauvegarde/";
+            String path = "sauvegarde/";
             File f = new File(path);
 
-            if(f.list().length == 0) {
+            if(!f.exists() || f.list().length == 0) {
                 System.out.println("Aucune sauvegarde disponible.");
 		        remonterMenu();
 		        menuLancement();
             }
             else {
 				ms.recoverSauvegarde(path);
-				setAffichageTour(equipes.getEquipes().get(0).getNumeroTour()+1);
+				setAffichageTour(equipes.getEquipes().get(0).getNumeroTour());
 				System.out.println();
 				System.out.println("La sauvegarde a bien été récupérée.");
 				System.out.println();
@@ -127,8 +127,24 @@ public class Menu {
 		        menuLancement();
             }
         }
-        // Quitter
+        // Supprimer la sauvegarde
         if(choixMenu == 7) {
+            String path = "sauvegarde/";
+            File f = new File(path);
+
+            if(!f.exists() || f.list().length == 0) {
+                System.out.println("Aucune sauvegarde.");
+		        remonterMenu();
+		        menuLancement();
+            }
+            else {
+				ms.deleteSauvegarde(path);
+		        remonterMenu();
+		        menuLancement();
+            }
+        }
+        // Quitter
+        if(choixMenu == 8) {
 			System.out.println("Merci d'avoir utilisé Horizon !");
 			System.out.println("À bientôt !");
 			System.exit(0);
@@ -209,9 +225,9 @@ public class Menu {
         if(choixMenu == 2) {
 			if(description.getTour(getAffichageTour()).getTYPE() == TypeTour.JALON) {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
-					if(getAffichageTour() != 0)
-						robot.nouveauTour(equipes.getEquipes().get(j));
+//					if(getAffichageTour() != 0)
 					robot.jouerJalon(equipes.getEquipes().get(j));
+					robot.nouveauTour(equipes.getEquipes().get(j));
 				}
 				System.out.println();
 				System.out.println("Le tour jalon est terminé pour toutes les équipes.");
@@ -219,8 +235,8 @@ public class Menu {
 			}
 			else {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
-					robot.nouveauTour(equipes.getEquipes().get(j));
 					robot.jouerEtape(equipes.getEquipes().get(j));
+					robot.nouveauTour(equipes.getEquipes().get(j));
 				}
 				System.out.println();
 				System.out.println("L'étape "+getAffichageTour()+" est terminée pour toutes les équipes.");
@@ -242,7 +258,7 @@ public class Menu {
 			choixQuitter = sc.nextLine();
 
 			if(getChoix(choixQuitter, "[on]").equals("o")) {
-				ms.sauvegarde(getAffichageTour());
+				ms.sauvegarde();
 		        remonterMenu();
 		        menuPrincipal();
 			}
@@ -262,7 +278,6 @@ public class Menu {
 			if(getChoix(choixQuitter, "[on]").equals("o")) {
 				affichageTour = 0;
 				description.getTours().get(0).setNUMERO();
-				System.out.println("GET"+getAffichageTour());
 				new Menu().menuLancement();
 			}
 			else

@@ -132,7 +132,12 @@ public class Tache implements Serializable {
 
         chaine.append("Id : ").append(ID)
                 .append("\nNom : ").append(NOM)
-                .append("\nSemaines : ").append(SEMAINES)
+                .append("\nCoût d'accélération : ").append(COUT).append(" €");
+                if(SEMAINES == 1)
+	                chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaine");
+                else
+	                chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaines");
+	            chaine.append("\nDurée totale : ").append(SEMAINES_MAX).append(" semaines")
                 .append("\n").append(ROUGE)
                 .append("\n").append(ORANGE)
                 .append("\n").append(VERT)

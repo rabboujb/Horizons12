@@ -1,11 +1,10 @@
 package menu;
-import description.Couleur;
-import description.Description;
-import description.Tache;
-import description.TypeTour;
+import description.*;
 import partie.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ public class MenuSauvegarde {
 	private VueJoueur equipes;
 	private Description description;
 	private List<Couleur> tirages;
+	private String dossierSauvegarde = "sauvegarde/";
 
 	public MenuSauvegarde(VueJoueur equipes, Description description, List<Couleur> tirages) {
 		this.equipes = equipes;
@@ -29,16 +29,14 @@ public class MenuSauvegarde {
 		this.tirages = tirages;
 	}
 
-	public void sauvegarde(int affichageTour) {
-		DateFormat df = new SimpleDateFormat("dd/MM/yy");
-		Date dateSauvegarde = new Date();
+	public void sauvegarde() {
 		String nomFichier;
 		String choixC;
 
 		System.out.println();
 		System.out.println("Choisissez un nom de dossier pour la sauvegarde.");
 		System.out.println("Rappel - les caractères suivants sont interdits :");
-		System.out.println("\\\\/?%*:|\"<>");
+		System.out.println("\\/?%*:|\"<>");
 		System.out.println();
 
 		do {
@@ -62,37 +60,46 @@ public class MenuSauvegarde {
 		} while(choixC.equals("n"));
 
         try {
-            if(new File("src/Sauvegarde/"+nomFichier).mkdir()) {
-	            new File("src/Sauvegarde/"+nomFichier+"/Pert");
-	            new File("src/Sauvegarde/"+nomFichier+"/Tirages");
-	            new File("src/Sauvegarde/"+nomFichier+"/Equipes");
+            if(!new File(dossierSauvegarde+nomFichier).mkdir())
+                System.out.println("Un dossier existe déjà sous ce nom.\n");
+            else {
+	            new File(new File(dossierSauvegarde+nomFichier)+"/Pert");
+	            new File(new File(dossierSauvegarde+nomFichier)+"/Tours");
+	            new File(new File(dossierSauvegarde+nomFichier)+"/Tirages");
+	            new File(new File(dossierSauvegarde+nomFichier)+"/Equipes");
+
+	            FileOutputStream fosPert = new FileOutputStream(dossierSauvegarde+nomFichier+"/Pert", false);
+	            ObjectOutputStream oosPert = new ObjectOutputStream(fosPert);
+	            FileOutputStream fosTours = new FileOutputStream(dossierSauvegarde+nomFichier+"/Tours", false);
+	            ObjectOutputStream oosTours = new ObjectOutputStream(fosTours);
+	            FileOutputStream fosTirages = new FileOutputStream(dossierSauvegarde+nomFichier+"/Tirages", false);
+	            ObjectOutputStream oosTirages = new ObjectOutputStream(fosTirages);
+	            FileOutputStream fosEquipes = new FileOutputStream(dossierSauvegarde+nomFichier+"/Equipes", false);
+	            ObjectOutputStream oosEquipes = new ObjectOutputStream(fosEquipes);
+
+				for(Tache d: description.getPlateau())
+					oosPert.writeObject(d);
+
+				for(Tour t: description.getTours())
+					oosTours.writeObject(t);
+
+		        for(Couleur tirage : tirages)
+		            oosTirages.writeObject(tirage);
+
+				for(VueJoueur v: equipes.getEquipes())
+					oosEquipes.writeObject(v);
+
+				fosPert.close();
+				oosPert.close();
+				fosTours.close();
+				oosTours.close();
+				fosTirages.close();
+				oosTirages.close();
+				fosEquipes.close();
+				oosEquipes.close();
+
+				System.out.println("La sauvegarde a bien été effectuée.");
             }
-            else
-                System.out.println("Fichiers non créés.");
-
-        	FileOutputStream fosPert = new FileOutputStream("src/Sauvegarde/"+nomFichier+"/Pert");
-        	ObjectOutputStream oosPert = new ObjectOutputStream(fosPert);
-        	FileOutputStream fosTirages = new FileOutputStream("src/Sauvegarde/"+nomFichier+"/Tirages");
-        	ObjectOutputStream oosTirages = new ObjectOutputStream(fosTirages);
-        	FileOutputStream fosEquipes = new FileOutputStream("src/Sauvegarde/"+nomFichier+"/Equipes");
-        	ObjectOutputStream oosEquipes = new ObjectOutputStream(fosEquipes);
-
-			for(Tache d: description.getPlateau()) {
-				oosPert.writeObject(d);
-			}
-
-			for(int i=0;i<tirages.size();i++)
-				oosTirages.writeObject(tirages.get(i));
-
-			for(VueJoueur v: equipes.getEquipes())
-				oosEquipes.writeObject(v);
-
-			fosPert.close();
-			oosPert.close();
-			fosTirages.close();
-			oosTirages.close();
-			fosEquipes.close();
-			oosEquipes.close();
 		}
 		catch(FileNotFoundException fnfe) {
 			System.out.println(fnfe);
@@ -100,9 +107,6 @@ public class MenuSauvegarde {
 		catch(IOException ioe) {
 			System.out.println(ioe);
 		}
-		finally {
-            System.out.println("La sauvegarde a bien été effectuée.");
-        }
 	}
 
 	public void recoverSauvegarde(String path) {
@@ -148,11 +152,13 @@ public class MenuSauvegarde {
 		} while(choixC.equals("n"));
 
 		try {
-        	FileInputStream fisPert = new FileInputStream("src/Sauvegarde/"+nomFichier+"/Pert");
+        	FileInputStream fisPert = new FileInputStream(dossierSauvegarde+nomFichier+"/Pert");
         	ObjectInputStream oisPert = new ObjectInputStream(fisPert);
-        	FileInputStream fisTirages = new FileInputStream("src/Sauvegarde/"+nomFichier+"/Tirages");
+        	FileInputStream fisTours = new FileInputStream(dossierSauvegarde+nomFichier+"/Tours");
+        	ObjectInputStream oisTours = new ObjectInputStream(fisTours);
+        	FileInputStream fisTirages = new FileInputStream(dossierSauvegarde+nomFichier+"/Tirages");
         	ObjectInputStream oisTirages = new ObjectInputStream(fisTirages);
-        	FileInputStream fisEquipes = new FileInputStream("src/Sauvegarde/"+nomFichier+"/Equipes");
+        	FileInputStream fisEquipes = new FileInputStream(dossierSauvegarde+nomFichier+"/Equipes");
         	ObjectInputStream oisEquipes = new ObjectInputStream(fisEquipes);
 
 			description.getPlateau().clear();
@@ -160,8 +166,12 @@ public class MenuSauvegarde {
 				description.getPlateau().add((Tache) oisPert.readObject());
 			}
 
+			description.getTours().clear();
+			while(fisTours.available() != 0) {
+				description.getTours().add((Tour) oisTours.readObject());
+			}
+
 			tirages.clear();
-			int j = 0;
 			while(fisTirages.available() != 0) {
 				tirages.add((Couleur) oisTirages.readObject());
 			}
@@ -186,6 +196,67 @@ public class MenuSauvegarde {
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void deleteSauvegarde(String path) {
+		String nomFichier;
+		String choixC;
+		int i = 0;
+		File f = new File(path);
+
+		System.out.println("Liste des sauvegardes existantes : ");
+		for(File file: f.listFiles()) {
+			System.out.println((i+1)+". "+file.getName());
+			i++;
+		}
+
+		System.out.println();
+
+		do {
+			int j = 0;
+			System.out.print("Sauvegarde à supprimer : ");
+			nomFichier = sc.nextLine();
+			System.out.println();
+
+			while(nomFichier.equals("0") || !nomFichier.matches("^[0-"+i+"\"]$")) {
+				System.out.print("Veuillez indiquer votre choix parmi ceux proposés : ");
+				nomFichier = sc.nextLine();
+			}
+
+			i = 0;
+			int nomFichierInt = Integer.parseInt(nomFichier);
+			for(File file: f.listFiles()) {
+				if(nomFichierInt-1 == i)
+					nomFichier = file.getName();
+				i++;
+			}
+
+			System.out.println("Sauvegarde choisie : "+nomFichier);
+			System.out.print("Supprimer la sauvegarde (o/n) ? ");
+			choixC = sc.nextLine();
+			while(!choixC.matches("[on]")) {
+				System.out.print("Veuillez indiquer un choix parmi ceux proposés : ");
+				choixC = sc.nextLine();
+			}
+		} while(choixC.equals("n"));
+
+		try {
+            File deletePert = new File(dossierSauvegarde+nomFichier+"/Pert");
+            File deleteTours = new File(dossierSauvegarde+nomFichier+"/Tours");
+            File deleteTirages = new File(dossierSauvegarde+nomFichier+"/Tirages");
+            File deleteEquipes = new File(dossierSauvegarde+nomFichier+"/Equipes");
+            File deleteDir = new File(dossierSauvegarde+nomFichier);
+
+            if(deletePert.delete() && deleteTours.delete() && deleteTirages.delete() && deleteEquipes.delete()) {
+                if(deleteDir.delete())
+	                System.out.println("La sauvegarde a bien été supprimée.");
+            }
+            else
+                System.out.println("La sauvegarde n'a pas été supprimée.");
+		}
+		catch(SecurityException se) {
+			System.out.println(se);
 		}
 	}
 }

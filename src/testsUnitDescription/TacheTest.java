@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,14 +42,14 @@ public class TacheTest {
 	    alea1 = new Alea(TypeAlea.DELAI, Couleur.ORANGE, 1, "L");
 	    alea2 = new Alea(TypeAlea.DELAI, Couleur.VERT, 1, "M");
 		
-        this.autreTache = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new int[]{},new int[]{2, 3, 4});
-		this.exampleTache = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new int[]{1},new int[]{5,7});
+        this.autreTache = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4)));
+		this.exampleTache = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(5,7)));
 	}
 	
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Début du test de Tache");
-		System.out.println("Tache de référence: " + new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new int[]{},new int[]{2, 3, 4}));
+		System.out.println("Tache de référence: " + new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4))));
 	}
 	
 	@AfterClass
@@ -56,7 +59,7 @@ public class TacheTest {
 	
 	@Before
 	public void setUp() {
-		this.autreTache = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new int[]{},new int[]{2, 3, 4});
+		this.autreTache = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4)));
     }
 	
 	@After
@@ -152,7 +155,7 @@ public class TacheTest {
 	@Test
 	public void testToString() {
 		System.out.println("toString");
-		Tache instance = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new int[]{},new int[]{2, 3, 4});
+		Tache instance = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4)));
 		String expResult = "Id : 18\nNom : Dire\nSemaines : 3\nROUGE : Délai	3	KKK\nORANGE : Délai	1	L\nVERT : Délai	1	M\n";
 		assertEquals(expResult, instance.toString());
 	}
@@ -165,7 +168,7 @@ public class TacheTest {
 	@Test
 	public void testEquals_True() {
 		System.out.println("equals: true");
-		Tache instance = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new int[]{1},new int[]{5,7});
+		Tache instance = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new ArrayList<Integer>(Arrays.asList(1)),new ArrayList<Integer>(Arrays.asList(5,7)));
 		assertTrue(instance.equals(exampleTache));
 	}
 	
