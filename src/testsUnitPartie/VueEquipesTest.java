@@ -1,33 +1,35 @@
 package testsUnitPartie;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-
+import org.junit.jupiter.api.Test;
 import description.Description;
 import partie.VueEquipes;
 import partie.VueJoueur;
 
 /**
- * @author Equipe Horizons12
+ * @author Ismerie
  */
 
-class VueEquipesTest {
-	
-	private final VueEquipes exampleEquipe;
+public class VueEquipesTest {
+
+	private VueEquipes exampleEquipe;
 	private VueEquipes autreEquipe;
+	private VueEquipes autreEquipe1;
+	private List<VueJoueur> equipes;
 	
-	static Description description = new Description ();
+	public static Description description = new Description ();
 	
 	public VueEquipesTest() {
 		this.exampleEquipe = new VueEquipes("Equipe 1",description);
 		this.autreEquipe = new VueEquipes("Equipe 2", description);
+		this.autreEquipe1 = new VueEquipes("Equipe 1", description);
 	}
 	
 	@BeforeClass
@@ -57,7 +59,7 @@ class VueEquipesTest {
 	@Test
 	public void testGetRealisation() {
 		System.out.println("getRealisation");
-		assertEquals(2,exampleEquipe.getRealisation(1));
+		assertEquals(2,exampleEquipe.getRealisation(2));
 	}
 	
 	/**
@@ -75,7 +77,7 @@ class VueEquipesTest {
 	@Test
 	public void testGetEquipes() {
 		System.out.println("getEquipes");
-		assertEquals(2,exampleEquipe.getEquipes());
+		assertEquals(autreEquipe.getEquipes(),exampleEquipe.getEquipes());
 	}
 	
 	/**
@@ -84,7 +86,7 @@ class VueEquipesTest {
 	@Test
 	public void testGetEquipe() {
 		System.out.println("getEquipe");
-		assertEquals(2,exampleEquipe.getEquipe("Equipe 1"));
+		assertEquals(autreEquipe1.getEquipe("Equipe 1"),exampleEquipe.getEquipe("Equipe 1"));
 	}
 	
 	/**
@@ -95,7 +97,7 @@ class VueEquipesTest {
 		VueJoueur  equipe = new VueEquipes();
 		equipe.ajouterEquipe(new VueEquipes("Equipe 2", description));
 		System.out.println("getAjouterEquipe");
-		assertEquals("Equipe 2",exampleEquipe.getEquipe("Equipe 2"));
+		assertEquals(equipe.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 2"));
 	}
 	
 	/**
@@ -120,7 +122,7 @@ class VueEquipesTest {
 	 * Test de la méthode getCurrent(String id) de la class VueEquipes
 	 */
 	@Test
-	public void testGetCurrent(String id) {
+	public void testGetCurrent() {
 		System.out.println("getCurrent(String id)");
 		assertEquals("A",exampleEquipe.getCurrent("A"));
 	}
@@ -147,7 +149,7 @@ class VueEquipesTest {
 	 * Test de la méthode getDuree(int id) de la class VueEquipes
 	 */
 	@Test
-	public void testGetDuree(int id) {
+	public void testGetDuree() {
 		System.out.println("getDuree(int id)");
 		assertEquals(1,exampleEquipe.getDuree(1));
 	}
@@ -193,19 +195,19 @@ class VueEquipesTest {
 	 * Test de la méthode baisseQualite(int delta) de la class VueEquipe
 	 */
 	@Test
-	public void testBaisseQualite(int delta) {
+	public void testBaisseQualite() {
 		System.out.println("baisseQualite");
 		autreEquipe.baisseQualite(10);
-		System.out.println(autreEquipe);
-		System.out.println(exampleEquipe);
-		assertEquals(90,exampleEquipe.getQualite());
+		System.out.println(this.autreEquipe);
+		assertEquals(autreEquipe.getQualite(),exampleEquipe.getQualite());
 	}	
 	
 	/**
 	 * Test de la méthode depense(int somme) de la class VueEquipes
 	 */
 	@Test
-	public void testdepense(int somme) {
+	public void testdepense() {
+		System.out.println(autreEquipe.getCaisse());
 		System.out.println("depense");
 		autreEquipe.depense(10);
 		assertEquals(290,exampleEquipe.getCaisse());
@@ -250,4 +252,5 @@ class VueEquipesTest {
 		String instance = "Equipe 1";
 		assertFalse(instance.equals(autreEquipe));
 	}
+
 }
