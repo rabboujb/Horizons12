@@ -42,7 +42,7 @@ public class Pert {
 	 * Méthode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre
 	 * @return ArrayList de réalisations ordonnancé
 	 */
-	public void trieTopologique(){
+	private void trieTopologique(){
 	    ArrayList<Integer> idRealisationsTraitees = new ArrayList<>();
 	    ArrayList<Integer> idRealisationsMarquees = new ArrayList<>();
 
