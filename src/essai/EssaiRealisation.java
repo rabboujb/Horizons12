@@ -1,4 +1,4 @@
-
+package essai;
 
 import description.Couleur;
 import description.Description;
@@ -42,5 +42,11 @@ public class EssaiRealisation {
         System.out.println(realisation.getOrange());
         System.out.println(realisation.getVert());
         System.out.println(realisation.getSemainesReel());
+
+        // test equal
+        Integer integer = new Integer(3);
+        Integer integer1 =  new Integer(1);
+        System.out.println(realisation.equals(integer));
+        System.out.println(realisation.equals(integer1));
     }
 }

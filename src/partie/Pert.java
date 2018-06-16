@@ -16,7 +16,7 @@ import description.Tache;
 public class Pert {
     ArrayList<Realisation> realisations = new ArrayList<>();
     // L'arrayList de réalisations ordonancées
-    ArrayList<Realisation> realisationsTriees;
+    ArrayList<Realisation> realisationsTopologiques;
 	Tache alpha;
 	Tache omega;
 	Realisation realAlpha; 
@@ -39,36 +39,57 @@ public class Pert {
 	}
 
 	/**
-	 * Méthode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre, et agit
-	 * directement sur realisationsTriees
-	 * @param realisations
+	 * Méthode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre
 	 * @return ArrayList de réalisations ordonnancé
 	 */
-	private void trieOrdonnance(ArrayList<Realisation> realisations){
-		while (realisations.size() != realisationsTriees.size()){
+	public void trieTopologique(){
+	    ArrayList<Integer> idRealisationsTraitees = new ArrayList<>();
+	    ArrayList<Integer> idRealisationsMarquees = new ArrayList<>();
+
+		while (idRealisationsTraitees.size() < realisations.size()){
 			for (Realisation realisation : realisations){
-				if (realisation.getPredecesseurs().isEmpty() || controlePredecesseurs(realisation)){
+				if (!idRealisationsTraitees.contains(Integer.valueOf(realisation.getIdTache())) &&
+						(realisation.getPredecesseurs().isEmpty() ||
+						controlePredecesseurs(idRealisationsTraitees, realisation.getPredecesseurs()))){
+                    idRealisationsMarquees.add(realisation.getIdTache());
+				}
+			}
+			idRealisationsTraitees.addAll(idRealisationsMarquees);
+			idRealisationsMarquees.clear();
+		}
+		this.reorganiserPert(idRealisationsTraitees);
+
+//		test
+//		for(Realisation  realisation : realisations) {
+//			System.out.println(realisation);
+//		}
+	}
+
+	/**
+	 * Méthode qui est utile à trieTopologique, elle vérifie si une réalisation à encore des prédécesseurs non traité, et
+     * renvoie false dans ce cas, et true si tout ces prédécesseurs ont été traités
+	 * @param realisationsTraitees
+	 * @param predecesseurs
+	 * @return un boolean
+	 */
+	private boolean controlePredecesseurs(ArrayList<Integer> realisationsTraitees, ArrayList<Integer> predecesseurs){
+    	return (realisationsTraitees.containsAll(predecesseurs));
+	}
+
+	/**
+	 * Réorganise le Pert à la fin du trie
+	 * @param realisationTraitees
+	 */
+	private void reorganiserPert(ArrayList<Integer> realisationTraitees) {
+		ArrayList<Realisation> realisationsTriees = new ArrayList<>();
+		for(Integer idRealisation : realisationTraitees) {
+			for(Realisation realisation : realisations) {
+				if(idRealisation.intValue() == realisation.getIdTache()){
 					realisationsTriees.add(realisation);
 				}
 			}
 		}
-	}
-
-	/**
-	 * Méthode qui est utile à trieOrdonnance, elle vérifie si une réalisation à encore des prédécesseurs non traité, et
-     * renvoie false dans ce cas, et true si tout ces prédécesseurs ont été traités
-	 * @param realisation
-	 * @return un boolean
-	 */
-	private boolean controlePredecesseurs(Realisation realisation){
-    	for (Integer idPredecesseur : realisation.getPredecesseurs()){
-    		for (Realisation realisationTriee : realisationsTriees){
-    			if (idPredecesseur == realisation.getIdTache()){
-    				return false;
-				}
-			}
-		}
-		return true;
+		realisations = realisationsTriees;
 	}
     
     /**

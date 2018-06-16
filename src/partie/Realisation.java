@@ -267,9 +267,6 @@ public class Realisation implements Serializable {
         if (object != null && object instanceof Realisation){
             return this.equals((Realisation)object);
         }
-        else if (object != null && object instanceof Integer){
-            return this.equals((Integer)object);
-        }
         return false;
     }
 
