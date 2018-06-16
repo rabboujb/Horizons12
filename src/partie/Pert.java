@@ -39,10 +39,10 @@ public class Pert {
 	}
 
 	/**
-	 * Méthode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre
+	 * Methode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre
 	 * @return ArrayList de réalisations ordonnancé
 	 */
-	public void trieTopologique(){
+	private void trieTopologique(){
 	    ArrayList<Integer> idRealisationsTraitees = new ArrayList<>();
 	    ArrayList<Integer> idRealisationsMarquees = new ArrayList<>();
 
@@ -96,6 +96,7 @@ public class Pert {
      * Méthode qui calcul la date au plus tot de chaque realisation
      */
     public void calculDateAuPlusTot() {
+    	this.trieTopologique();
     	// on parcourt la liste des realisations
     	for(int i = 0; i < this.realisations.size(); i++){
 			Realisation temp = this.realisations.get(i);
@@ -131,6 +132,7 @@ public class Pert {
      *
      */
     public void calculDateAuPlusTard() {
+    	this.trieTopologique();
         // On parcourt la liste des realisations de la fin au debut
         for (int i = this.realisations.size() - 1; i >= 0; i--) {
 			Realisation temp = this.realisations.get(i);

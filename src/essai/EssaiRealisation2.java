@@ -54,6 +54,7 @@ public class EssaiRealisation2 {
         }
         
         Pert pert = new Pert(realisations);
+        //pert.trieTopologique();
        // pert.construitAlpha(realisations);
         //pert.construitOmega(realisations);
 		//on calcul les temps au plus tot pour chaque tache
