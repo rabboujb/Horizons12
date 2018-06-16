@@ -10,6 +10,7 @@ public class TourFinal extends Tour{
 
 
     public TourFinal() {
+        private static
 
     }
 

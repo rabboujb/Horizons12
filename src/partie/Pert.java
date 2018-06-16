@@ -10,7 +10,7 @@ import description.Tache;
  * la date au plus tôt, la date au plus tard
  * et le chemin critique
  * 
- * @author Ismerie
+ * @author Ismerie, Mickael
  */
 
 public class Pert {
