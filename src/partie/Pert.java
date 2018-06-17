@@ -6,9 +6,10 @@ import java.util.List;
 import description.Tache;
 
 /**
- * Class de construction du pert, permettant de connaitre
- * la date au plus tôt, la date au plus tard
- * et le chemin critique
+ * Class de construction du pert permettant de
+ * connaitre la date au plus tôt, la date au plus tard
+ * le chemin critique
+ * et de mettre en ordre total le pert
  * 
  * @author Ismerie, Mickael
  */
@@ -29,7 +30,7 @@ public class Pert {
     	this.realisations=realisations;
     	this.realisations.add(0, realAlpha);
     	this.realisations.add(realOmega);
-    	// on inititialise les dates au plus tot / au plus tard
+    	// on inititialise les dates au plus tot et au plus tard
     	for(Realisation real : this.realisations){
     		real.setDateAuPlusTard(0);
     		real.setDateAuPlusTot(0);
@@ -37,8 +38,8 @@ public class Pert {
 	}
 
 	/**
-	 * Methode qui ordonnance les réalisations, elle prend une ArrayList de réalisations en paramètre
-	 * @return ArrayList de réalisations ordonnancé
+	 * Methode qui ordonnance les realisations, elle prend une ArrayList de realisations en parametre
+	 * @return ArrayList de realisations ordonnance
 	 */
 	private void trieTopologique(){
 	    ArrayList<Integer> idRealisationsTraitees = new ArrayList<>();
@@ -64,18 +65,18 @@ public class Pert {
 	}
 
 	/**
-	 * Méthode qui est utile à trieTopologique, elle vérifie si une réalisation à encore des prédécesseurs non traité, et
-     * renvoie false dans ce cas, et true si tout ces prédécesseurs ont été traités
+	 * Methode qui est utile a trieTopologique, elle verifie si une realisation a encore des predecesseurs non traite, et
+     * renvoie false dans ce cas, et true si tout ces predecesseurs ont ete traites
 	 * @param realisationsTraitees
 	 * @param predecesseurs
-	 * @return un boolean
+	 * @return boolean
 	 */
 	private boolean controlePredecesseurs(ArrayList<Integer> realisationsTraitees, ArrayList<Integer> predecesseurs){
     	return (realisationsTraitees.containsAll(predecesseurs));
 	}
 
 	/**
-	 * Réorganise le Pert à la fin du trie
+	 * Reorganise le Pert a la fin du trie
 	 * @param realisationTraitees
 	 */
 	private void reorganiserPert(ArrayList<Integer> realisationTraitees) {
@@ -91,7 +92,7 @@ public class Pert {
 	}
     
     /**
-     * Méthode qui calcul la date au plus tot de chaque realisation
+     * Methode qui calcul la date au plus tot de chaque realisation
      */
     public void calculDateAuPlusTot() {
     	this.trieTopologique();
@@ -127,7 +128,6 @@ public class Pert {
 
     /**
      * Calcul de la date au plus tard de chaque realisation
-     *
      */
     public void calculDateAuPlusTard() {
     	this.trieTopologique();
@@ -187,7 +187,7 @@ public class Pert {
 	 * Construit la tache omega celle qui sera le successeur de toutes celles
 	 * qui n'ont pas de successeurs.
 	 * @param realisations
-	 * @return
+	 * @return omega
 	 */
 	public Tache construitOmega(ArrayList<Realisation> realisations){
 		
@@ -203,7 +203,7 @@ public class Pert {
     
 	}
 	
-	/*
+	/**
 	 * Methode d'affichage des dates au plus et date au plus tard
 	 * de chaque realisation
 	 */
@@ -213,7 +213,7 @@ public class Pert {
 		}
 	}
 	
-	/*
+	/**
 	 * Methode d'affichage du chemin critique
 	 */
 	public void afficheCheminCritique() {
@@ -223,7 +223,7 @@ public class Pert {
 	}
 
 	/**
-	 * methode de calcul du chemin critique
+	 * Methode de calcul du chemin critique
 	 * Renvoie les realisations sur le chemin critique 
 	 * @return cheminCritique
 	 */
