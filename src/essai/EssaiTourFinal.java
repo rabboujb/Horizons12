@@ -2,12 +2,17 @@ package essai;
 
 import description.Description;
 import description.Tache;
-import partie.Pert;
+import description.TourFinal;
 import partie.Realisation;
 
 import java.util.ArrayList;
 
-public class EssaiAlgoOrdonnance {
+/**
+ * Classe d'essai de TourFinal
+ *
+ * @author mickael
+ */
+public class EssaiTourFinal {
 
     public static void main(String[] args) {
 //        Préparation de l'arrayList de réalisation
@@ -18,10 +23,9 @@ public class EssaiAlgoOrdonnance {
             realisations.add(new Realisation(tache));
         }
 
-//        Création du pert
-        Pert pert = new Pert(realisations);
+        TourFinal tourFinal = new TourFinal();
 
-//        Ne fonctionne plus car cette méthode est privé dans le programme final
-//        pert.trieTopologique();
+        tourFinal.calculerScore("Les ChatontonFlingeurs", realisations, 200, 70);
+        System.out.println(tourFinal);
     }
 }
