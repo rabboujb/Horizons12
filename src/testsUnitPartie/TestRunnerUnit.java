@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 import testsUnitDescription.TestsUnitSuite;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class TestRunnerUnit {

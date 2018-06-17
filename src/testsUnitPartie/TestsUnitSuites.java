@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 @RunWith(Suite.class)
@@ -14,6 +14,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
 		{
 			testsUnitPartie.VueEquipesTest.class,
+			testsUnitPartie.EquipesTest.class,
+			testsUnitPartie.RealisationTest.class,
 		}
 
 )
