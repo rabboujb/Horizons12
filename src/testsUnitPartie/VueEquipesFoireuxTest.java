@@ -18,7 +18,7 @@ import partie.VueJoueur;
  * @author Ismerie
  */
 
-public class VueEquipesTest {
+public class VueEquipesFoireuxTest {
 
 	private VueEquipes exampleEquipe;
 	private VueEquipes autreEquipe;
@@ -27,7 +27,7 @@ public class VueEquipesTest {
 	
 	public static Description description = new Description ();
 	
-	public VueEquipesTest() {
+	public VueEquipesFoireuxTest() {
 		this.exampleEquipe = new VueEquipes("Equipe 1",description);
 		this.autreEquipe = new VueEquipes("Equipe 2", description);
 		this.autreEquipe1 = new VueEquipes("Equipe 1", description);
@@ -91,7 +91,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode ajouterEquipe() de la class VueEquipes
+	 * Test de la méthode ajouterEquipe() de la class VueEquipes
 	 */
 	@Test
 	public void testAjouterEquipe() {
@@ -102,7 +102,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode finDutour() de la class VueEquipes
+	 * Test de la méthode finDutour() de la class VueEquipes
 	 */
 	@Test
 	public void testFinDuTour() {
@@ -111,7 +111,7 @@ public class VueEquipesTest {
 	}
 		
 	/**
-	 * Test de la methode getCaisse() de la class VueEquipes
+	 * Test de la méthode getCaisse() de la class VueEquipes
 	 */
 	@Test
 	public void testGetCaisse() {
@@ -129,7 +129,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode getDebutId() de la class VueEquipes
+	 * Test de la méthode getDebutId() de la class VueEquipes
 	 */
 	@Test
 	public void testGetDebutId() {
@@ -138,7 +138,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode getPlateau() de la class VueEquipes
+	 * Test de la méthode getPlateau() de la class VueEquipes
 	 */
 	@Test
 	public void testGetPlateau() {
@@ -147,7 +147,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode getDuree(int id) de la class VueEquipes
+	 * Test de la méthode getDuree(int id) de la class VueEquipes
 	 */
 	@Test
 	public void testGetDuree() {
@@ -156,7 +156,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode getFinId() de la class VueEquipes
+	 * Test de la méthode getFinId() de la class VueEquipes
 	 */
 	@Test
 	public void testGetFinId() {
@@ -165,7 +165,7 @@ public class VueEquipesTest {
 	}
 
 	/**
-	 * Test de la methode getNom() de la class VueEquipes
+	 * Test de la méthode getNom() de la class VueEquipes
 	 */
 	@Test
 	public void testGetNom() {
@@ -174,7 +174,7 @@ public class VueEquipesTest {
 	}	
 
 	/**
-	 * Test de la methode getNumeroTour() de la class VueEquipes
+	 * Test de la méthode getNumeroTour() de la class VueEquipes
 	 */
 	@Test
 	public void testGetNumeroTour() {
@@ -184,7 +184,7 @@ public class VueEquipesTest {
 
 	
 	/**
-	 * Test de la methode getQualite() de la class VueEquipes
+	 * Test de la méthode getQualite() de la class VueEquipes
 	 */
 	@Test
 	public void testGetQualite() {
@@ -193,7 +193,7 @@ public class VueEquipesTest {
 	}	
 	
 	/**
-	 * Test de la methode baisseQualite(int delta) de la class VueEquipe
+	 * Test de la méthode baisseQualite(int delta) de la class VueEquipe
 	 */
 	@Test
 	public void testBaisseQualite() {
@@ -204,7 +204,7 @@ public class VueEquipesTest {
 	}	
 	
 	/**
-	 * Test de la methode depense(int somme) de la class VueEquipes
+	 * Test de la méthode depense(int somme) de la class VueEquipes
 	 */
 	@Test
 	public void testdepense() {
@@ -216,7 +216,7 @@ public class VueEquipesTest {
 	
 	
 	/**
-	 * Test de la methode equals() de la class Description
+	 * Test de la méthode equals() de la class Description
 	 */
 	@Test
 	public void testEquals_True() {
@@ -226,7 +226,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode equals() de la class Description
+	 * Test de la méthode equals() de la class Description
 	 */
 	@Test
 	public void testEquals_False() {
@@ -235,7 +235,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode equals() de la class Description avec null
+	 * Test de la méthode equals() de la class Description avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -245,7 +245,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la methode equals() de la class Description avec un autre objet
+	 * Test de la méthode equals() de la class Description avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {

@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class AleaTest {
@@ -35,13 +35,13 @@ public class AleaTest {
 		
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Alea");
-		System.out.println("Alea de référence: " + new Alea(DELAI,ROUGE,1,"A"));
+		System.out.println("Début du test de Alea" + "\n");
+		System.out.println("Alea de référence: " + new Alea(DELAI,ROUGE,1,"A") + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Alea");
+		System.out.println("\n" + "Fin du test de Alea" + "\n");
 	}
 	
 	@Before

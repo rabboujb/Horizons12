@@ -25,12 +25,12 @@ public class TestsUnitSuite {
 
 		@BeforeClass
 		public static void setUpClass() throws Exception{
-			System.out.println("Début de la suite de tests");
+			System.out.println("Début de la suite de tests du package testsUnitDescription" + "\n");
 		}
 		
 		@AfterClass
 		public static void tearDownClass() throws Exception{
-			System.out.println("Fin de la suite de tests");
+			System.out.println("\n" + "Fin de la suite de tests du package testsUnitDescription" + "\n");
 		}
 
 }

@@ -1,24 +1,14 @@
 package testsUnitPartie;
 
-import static description.TypeTour.ALEA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import description.Alea;
-import description.Couleur;
-import description.Tache;
-import description.TourAlea;
-import description.TypeAlea;
 import partie.Equipes;
 
 /**
@@ -38,13 +28,13 @@ public class EquipesTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Equipes");
-		System.out.println("Tour de référence: " + new Equipes("Equipe 1", 300, 100));
+		System.out.println("Début du test de Equipes" + "\n");
+		System.out.println("Tour de référence: " + "\n" + new Equipes("Equipe 1", 300, 100));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Equipes");
+		System.out.println("\n" + "Fin du test de Equipes" + "\n");
 	}
 	
 	@Before

@@ -29,13 +29,13 @@ public class TourFinalTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de TourFinal");
-		System.out.println("Tour de référence: " + new TourFinal());
+		System.out.println("Début du test de TourFinal" + "\n");
+		System.out.println("Tour de référence: " + new TourFinal() + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de TourFinal");
+		System.out.println("\n" + "Fin du test de TourFinal" + "\n");
 	}
 	
 	@Before

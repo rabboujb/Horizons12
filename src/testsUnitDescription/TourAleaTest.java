@@ -28,13 +28,13 @@ public class TourAleaTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de TourAlea");
-		System.out.println("Tour de référence: " + new TourAlea(ALEA,1));
+		System.out.println("Début du test de TourAlea" + "\n");
+		System.out.println("Tour de référence: " + new TourAlea(ALEA,1) + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de TourAlea");
+		System.out.println( "\n" + "Fin du test de TourAlea" + "\n");
 	}
 	
 	@Before
