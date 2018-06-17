@@ -2,15 +2,19 @@ package testsUnitPartie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
 import description.Description;
-import partie.Equipes;
 import partie.VueEquipes;
 import partie.VueJoueur;
 
@@ -23,14 +27,13 @@ public class VueEquipesTest {
 	private VueEquipes exampleEquipe;
 	private VueEquipes autreEquipe;
 	private VueEquipes autreEquipe1;
-	private List<VueJoueur> equipes;
 	
 	public static Description description = new Description ();
 	
 	public VueEquipesTest() {
 		this.exampleEquipe = new VueEquipes("Equipe 1",description);
 		this.autreEquipe = new VueEquipes("Equipe 2", description);
-		this.autreEquipe1 = new VueEquipes("Equipe 1", description);
+		this.autreEquipe1 = new VueEquipes("Equipe 1", description); 
 	}
 	
 	@BeforeClass
@@ -55,7 +58,7 @@ public class VueEquipesTest {
 	}
 
 	/**
-	 * Test de la méthode getRealisation() de la class VueEquipes
+	 * Test de la methode getRealisation() de la class VueEquipes
 	 */
 	@Test
 	public void testGetRealisation() {
@@ -64,7 +67,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getDonneesEquipe() de la class VueEquipes
+	 * Test de la methode getDonneesEquipe() de la class VueEquipes
 	 */
 	@Test
 	public void testDonneesEquipe() {
@@ -73,7 +76,7 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getEquipes() de la class VueEquipes
+	 * Test de la methode getEquipes() de la class VueEquipes
 	 */
 	@Test
 	public void testGetEquipes() {
