@@ -22,7 +22,7 @@ import description.TypeAlea;
 import partie.Equipes;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 
@@ -58,7 +58,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getCaisse() de la class Equipes
+	 * Test de la methode getCaisse() de la class Equipes
 	 */
 	@Test
 	public void testGetCaisse() {
@@ -67,7 +67,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getNom() de la class Equipes
+	 * Test de la methode getNom() de la class Equipes
 	 */
 	@Test
 	public void testGetNom() {
@@ -76,7 +76,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getQualite() de la class Equipes
+	 * Test de la methode getQualite() de la class Equipes
 	 */
 	@Test
 	public void testGetQualite() {
@@ -85,7 +85,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getBaisseQualite() de la class Equipes
+	 * Test de la methode getBaisseQualite() de la class Equipes
 	 */
 	@Test
 	public void testGetBaisseQualite() {
@@ -94,7 +94,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode depense(int somme) de la class Equipes
+	 * Test de la methode depense(int somme) de la class Equipes
 	 */
 	@Test
 	public void testdepense() {
@@ -104,7 +104,7 @@ public class EquipesTest {
 	}	
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes
+	 * Test de la methode equals() de la class Equipes
 	 * ne sera jamais true car les id des tours sont différents
 	 */
 	@Test
@@ -115,7 +115,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes
+	 * Test de la methode equals() de la class Equipes
 	 */
 	@Test
 	public void testEquals_False() {
@@ -124,7 +124,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes avec null
+	 * Test de la methode equals() de la class Equipes avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -144,7 +144,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode toString() de la class Equipes
+	 * Test de la methode toString() de la class Equipes
 	 */
 	@Test
 	public void testToString() {

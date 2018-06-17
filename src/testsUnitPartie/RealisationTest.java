@@ -2,8 +2,11 @@ package testsUnitPartie;
 
 import partie.Equipes;
 import partie.Realisation;
+import partie.VueEquipes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,15 +20,17 @@ import org.junit.Test;
 import description.Alea;
 import description.Description;
 import description.Tache;
+import description.Couleur;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class RealisationTest {
 	
 	private final Realisation exampleRealisation;
 	private Realisation autreRealisation;
+	private Realisation autreRealisation2;
 	
 	public static Description description = new Description();
 	
@@ -33,6 +38,7 @@ public class RealisationTest {
 	public RealisationTest() {
 		this.exampleRealisation = new Realisation(description.getTacheById(3));
 		this.autreRealisation = new Realisation(description.getTacheById(2));
+		this.autreRealisation2 = new Realisation(description.getTacheById(2));
 	}
 
 	@BeforeClass
@@ -219,6 +225,90 @@ public class RealisationTest {
 		assertEquals(null,exampleRealisation.getEtat());
 	}
 	
+	/**
+	 * Test de la methode appliquerDelai() de la class Realisation
+	 */
+	@Test
+	public void testAppliquerDelai() {
+		System.out.println("appliquerDelai");
+		exampleRealisation.appliquerDelai(2);
+		assertEquals(4,exampleRealisation.getSemainesReel());
+	}
+	
+	/**
+	 * Test de la methode decrementerSemaine() de la class Realisation
+	 */
+	@Test
+	public void testDecrementerSemaine() {
+		System.out.println("decrementerSemaine");
+		assertEquals(true,exampleRealisation.decrementerSemaine());
+	}
+	
+	/**
+	 * Test de la methode appliquerAcceleration() de la class Realisation
+	 */
+	@Test
+	public void testAppliquerAcceleration() {
+		System.out.println("appliquerAcceleration");
+		assertEquals(true,exampleRealisation.appliquerAcceleration());
+	}
+	
+	/**
+	 * Test de la methode appliquerProtection() de la class Realisation
+	 */
+	@Test
+	public void testAppliquerProtection() {
+		System.out.println("appliquerProtection");
+		assertEquals(true,exampleRealisation.appliquerProtection(Couleur.ROUGE));
+	}
+	
+	/**
+	 * Test de la methode equals() de la class Realisation
+	 */
+	@Test
+	public void testEquals_True() {
+		System.out.println("equals: true");
+		Realisation instance = new Realisation(description.getTacheById(2));
+		assertTrue(instance.equals(autreRealisation));
+	}
+	
+	/**
+	 * Test de la methode equals() de la class Realisation
+	 */
+	@Test
+	public void testEquals_False() {
+		System.out.println("equals: false");
+		assertFalse(autreRealisation.equals(exampleRealisation));
+	}
+	
+	/**
+	 * Test de la methode equals() de la class Realisation avec null
+	 */
+	@Test
+	public void testEquals_Null_Object() {
+		System.out.println("equals avec null");
+		Realisation instance = null;
+		assertFalse(autreRealisation.equals(instance));
+	}
+	
+	/**
+	 * Test de la methode equals() de la class Realisation avec un autre objet
+	 */
+	@Test
+	public void testEquals_Other_Object() {
+		System.out.println("equals avec un autre objet");
+		String instance = "Equipe 1";
+		assertFalse(instance.equals(autreRealisation));
+	}
+	
+	/**
+	 * Test de la methode toString() de la class Realisation
+	 */
+	@Test
+	public void testToString() {
+		System.out.println("protege");
+		assertEquals(autreRealisation2,autreRealisation);
+	}
 	
 	
 }
