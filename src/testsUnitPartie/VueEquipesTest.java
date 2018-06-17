@@ -196,9 +196,9 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testBaisseQualite() {
-		System.out.println("baisseQualite");
+		//System.out.println("baisseQualite");
 		autreEquipe.baisseQualite(10);
-		System.out.println(this.autreEquipe);
+		//System.out.println(this.autreEquipe);
 		assertEquals(autreEquipe.getQualite(),exampleEquipe.getQualite());
 	}	
 	
