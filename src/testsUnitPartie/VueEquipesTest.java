@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import description.Description;
+import partie.Equipes;
 import partie.VueEquipes;
 import partie.VueJoueur;
 
@@ -81,12 +82,12 @@ public class VueEquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getEquipe() de la class VueEquipes
+	 * Test de la methode getEquipe() de la class VueEquipes
 	 */
 	@Test
 	public void testGetEquipe() {
 		System.out.println("getEquipe");
-		assertEquals(autreEquipe1.getEquipe("Equipe 1"),exampleEquipe.getEquipe("Equipe 1"));
+		assertEquals(autreEquipe1.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 1"));
 	}
 	
 	/**
@@ -251,6 +252,19 @@ public class VueEquipesTest {
 		System.out.println("equals avec un autre objet");
 		String instance = "Equipe 1";
 		assertFalse(instance.equals(autreEquipe));
+	}
+	
+	/**
+	 * Test de la methode toString() de la class Equipes
+	 */
+	@Test
+	public void testToString() {
+		System.out.println("toString");
+		
+		//String instance = "Equipe 1";
+		//System.out.println(autreEquipe);
+	    String chaine = "VueEquipes{, nomEquipe='Equipe 2', numeroTour=0}";
+		assertEquals(chaine, autreEquipe.toString());
 	}
 
 }
