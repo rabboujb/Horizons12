@@ -100,7 +100,7 @@ public class EquipesTest {
 	public void testdepense() {
 		System.out.println("depense");
 		autreEquipes.depense(10);
-		assertEquals(290,exampleEquipes.getCaisse());
+		assertEquals(290,autreEquipes.getCaisse());
 	}	
 	
 	/**
@@ -110,7 +110,7 @@ public class EquipesTest {
 	@Test
 	public void testEquals_True() {
 		System.out.println("equals: true");
-		Equipes instance = new Equipes("Equipe 1", 300, 100);
+		Equipes instance = new Equipes("Equipe 2", 300, 100);
 		assertTrue(instance.equals(autreEquipes));
 	}
 	
@@ -150,7 +150,7 @@ public class EquipesTest {
 	public void testToString() {
 		System.out.println("toString");
 		Equipes instance = new Equipes("Equipe 1", 300, 100);
-	    String chaine = "Equipe 2, 300, 100";
+	    String chaine = "Equipes{nomEquipe='Equipe 1', caisse=300, qualite=100}";
 		assertEquals(chaine, instance.toString());
 	}
 	
