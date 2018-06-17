@@ -53,16 +53,16 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne l'id de la tache concernée par la réalisation, cela peu facilité la selection de la
-     * réalisation (qui serra placée dans une ArrayList) en fonction du tour joué
-     * @return l'id de la tache concernée par la réalisation
+     * Methode qui retourne l'id de la tache concernee par la realisation, cela peu facilite la selection de la
+     * realisation (qui serra placee dans une ArrayList) en fonction du tour joue
+     * @return l'id de la tache concernee par la realisation
      */
     public int getIdTache() {
         return TACHE.getID();
     }
 
     /**
-     * Méthode qui retourne la liste des predecesseurs de la tache encapsulée sous forme d'ArrayList, cette méthode
+     * Methode qui retourne la liste des predecesseurs de la tache encapsulee sous forme d'ArrayList, cette methode
      * facilite la lecture du code du PERT
      * @return ArrayList
      */
@@ -71,7 +71,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne la liste des successeurs de la tache encapsulée sous forme d'ArrayList, cette méthode
+     * Methode qui retourne la liste des successeurs de la tache encapsulee sous forme d'ArrayList, cette methode
      * facilite la lecture du code du PERT
      * @return ArrayList
      */
@@ -80,23 +80,23 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le nombre réel de semaines réel que prendra la tache pour le joueur
-     * @return le nombre réel de semaines
+     * Methode qui retourne le nombre reel de semaines reel que prendra la tache pour le joueur
+     * @return le nombre reel de semaines
      */
     public int getSemainesReel() {
         return semainesReel;
     }
 
     /**
-     * Méthode qui retourne le nombre de semaines restantes
-     * @return
+     * Methode qui retourne le nombre de semaines restantes
+     * @return le nombre de semaines restantes
      */
     public int getSemainesRestantes() {
 		return semainesRestantes;
 	}
 
 	/**
-     * Méthode qui retourne la date au plus tôt
+     * Methode qui retourne la date au plus tot
      * @return la date au plus tot
      */
     public int getDateAuPlusTot() {
@@ -104,7 +104,7 @@ public class Realisation implements Serializable {
 	}
 
     /**
-     * Méthode qui permet de mettre à jour
+     * Methode qui permet de mettre a jour
      * @param dateAuPlusTot
      */
 	public void setDateAuPlusTot(int dateAuPlusTot) {
@@ -112,37 +112,38 @@ public class Realisation implements Serializable {
 	}
 
 	/**
-     * Méthode qui retourne la date au plus tard
+     * Methode qui retourne la date au plus tard
      */
 	public int getDateAuPlusTard() {
 		return dateAuPlusTard;
 	}
 
+	/**
+     * Methode qui retourne la date au plus tard
+     * @return la date au plus tard
+     */
 	public void setDateAuPlusTard(int dateAuPlusTard) {
 		this.dateAuPlusTard = dateAuPlusTard;
 	}
 
-
 	/**
-     * Méthode qui retourne la valeur de l'attribut marque
-     * Ismérie
+     * Methode qui retourne la valeur de l'attribut marque
+     * @return la valeur de marque
      */
 	public boolean getMarque() {
 		return marque;
 	}
 
-
 	/**
-     * Méthode pour marquer une réalisation
+     * Methode pour marquer une realisation
      * @param marque
-     * Ismérie
      */
 	public void setMarque(boolean marque) {
 		this.marque = marque;
 	}
 
 	/**
-     * Méthode qui retourne le status de l'aléa rouge sous forme boolean (true si l'aléa est protégé et false dans le
+     * Methode qui retourne le statut de l'alea rouge sous forme boolean (true si l'alea est protege et false dans le
      * cas contraire)
      * @return un boolean
      */
@@ -151,7 +152,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le status de l'aléa orange sous forme boolean (true si l'aléa est protégé et false dans le
+     * Methode qui retourne le statut de l'alea orange sous forme boolean (true si l'alea est protege et false dans le
      * cas contraire)
      * @return un boolean
      */
@@ -160,7 +161,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le status de l'aléa vert sous forme boolean (true si l'aléa est protégé et false dans le
+     * Methode qui retourne le statut de l'alea vert sous forme boolean (true si l'alea est protege et false dans le
      * cas contraire)
      * @return un boolean
      */
@@ -169,7 +170,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne l'état de la realisation lors du calcule de chemin critique, il peut être :
+     * Methode qui retourne l'état de la realisation lors du calcule de chemin critique, il peut etre :
      *      NON_ENTAMEE,
      *      IMMINENT,
      *      EN_COURS,
@@ -182,7 +183,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui permet de modifier l'état de la réalisation lors du calcule de chemin critique
+     * Methode qui permet de modifier l'etat de la realisation lors du calcul de chemin critique
      * @param etat
      */
     public void setEtat(Etat etat) {
