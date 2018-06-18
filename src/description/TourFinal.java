@@ -37,7 +37,7 @@ public class TourFinal extends Tour {
      * @param qualite
      */
     public void calculerScore(String nomEquipe, ArrayList<Realisation> realisations, int caisse, int qualite) {
-        System.out.println(nomEquipe + "On commence le calcule");
+        System.out.println("On commence le calcule\nnomEquipe = " + nomEquipe + "\nrealisations = " + realisations + "\ncaisse = " + caisse + "\nqualité = " + qualite);
         int score = Math.toIntExact(Math.round(((32 + (24 - dureeProjet(realisations)) * (caisse(caisse) + 20.0)) / 8000) * 100));
         System.out.println(nomEquipe + "Calcule fini1");
         score -= qualite(qualite);
