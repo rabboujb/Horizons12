@@ -28,7 +28,8 @@ public class TourFinal extends Tour {
     }
 
     /**
-     * Méthode qui contiens la formule de calcule des scores, elle arondi le score afin d'obtenir un nombre entier
+     * Méthode qui contiens la formule de calcule des scores, elle arondi le score afin d'obtenir un nombre entier.
+     * Si le score est négatif il est rammené à 0
      * @param nomEquipe
      * @param realisations
      * @param caisse
@@ -37,6 +38,11 @@ public class TourFinal extends Tour {
     public void calculerScore(String nomEquipe, ArrayList<Realisation> realisations, int caisse, int qualite) {
         int score = Math.toIntExact(Math.round(((32 + (24 - dureeProjet(realisations)) * (caisse(caisse) + 20.0)) / 8000) * 100));
         score -= qualite(qualite);
+
+        if (score < 0) {
+            score = 0;
+        }
+
         SCORES.put(nomEquipe, score);
     }
 
