@@ -69,7 +69,6 @@ public class TourFinal extends Tour {
      */
     private int caisse(int caisse) {
         if (caisse > 200) {
-            System.out.println(caisse);
             return 200;
         } else if (caisse < 0) {
             return 0;
