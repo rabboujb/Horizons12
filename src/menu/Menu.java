@@ -21,7 +21,9 @@ public class Menu {
     private Robot robot;
 	private int affichageTour;
 
-
+	/**
+	 * Constructeur de la classe Menu
+	 */
 	public Menu() {
 		robot = new Robot();
 		equipes = new VueEquipes();
@@ -33,9 +35,21 @@ public class Menu {
 		affichageTour = 0;
 	}
 
+	/**
+	 * Numéro du tour
+	 * Renvoie le numéro du tour
+	 */
 	public int getAffichageTour()   { return affichageTour;     }
+
+	/**
+	 * Incrémente le numéro du tour
+	 * @param nombre
+	 */
 	public void setAffichageTour(int nombre)    { affichageTour = affichageTour + nombre;   }
 
+	/**
+	 * Affichage du menu au lancement du jeu
+	 */
 	public void menuLancement() {
 		String choix;
 
@@ -157,6 +171,9 @@ public class Menu {
 		}
 	}
 
+	/**
+	 * Affichage du menu lors d'une partie
+	 */
 	public void menuPrincipal() {
 		String choix;
 
@@ -164,6 +181,8 @@ public class Menu {
 		System.out.println("**********  Horizon  **********");
 		System.out.println("*                             *");
 		System.out.println("*       Nouvelle partie       *");
+
+		// L'affichage change en fonction du type de partie
 		if(equipes.getEquipes().size() > 2)
 			System.out.println("*        Multijoueurs         *");
 		if(equipes.getEquipes().size() == 2 && equipes.getEquipes().get(0).getNom().equals("IA"))
@@ -174,6 +193,7 @@ public class Menu {
 		System.out.println("*******************************");
         System.out.println("*                             *");
 
+		// L'affichage change en fonction du tour
 		String infoTour;
 		if(description.getTours().get(getAffichageTour()).getTYPE() == TypeTour.ALEA) {
 			infoTour = "Tour "+description.getTours().get(getAffichageTour()).getNUMERO()+" : "+description.getTours().get
@@ -188,6 +208,8 @@ public class Menu {
 			infoTour = "Tour "+description.getTours().get(getAffichageTour()).getNUMERO()+" : "+description.getTours().get(getAffichageTour()).getTYPE();
 	        System.out.println("*       "+infoTour+"       *");
 		}
+
+		// L'affichage change en fonction du tirage
         if(description.getTours().get(getAffichageTour()).getTYPE() == TypeTour.ALEA) {
             if(robot.getTirage(getAffichageTour()) == Couleur.ROUGE)
                 System.out.println("*       Tirage : "+robot.getTirage(getAffichageTour())+"        *");
@@ -203,6 +225,8 @@ public class Menu {
         System.out.println("*                             *");
 		System.out.println("*  1 : Consulter le PERT      *");
 		System.out.println("*                             *");
+
+		// L'affichage après le tour final
 		if(getAffichageTour() > description.getTours().size())
 			System.out.println("*  2 : REVOIR LES SCORES      *");
 		else
@@ -298,6 +322,9 @@ public class Menu {
 		}
 	}
 
+	/**
+	 * Revenir au menu précédent
+	 */
 	public void remonterMenu() {
 		String choix;
 		System.out.println();
@@ -306,6 +333,12 @@ public class Menu {
 		getChoix(choix, "1");
 	}
 
+	/**
+	 * Methode qui
+	 * @param choix
+	 * @param regex
+	 * @return une String
+	 */
 	public String getChoix(String choix, String regex) {
 		while(!choix.matches(regex)) {
 			System.out.print("Veuillez indiquer un choix parmi ceux proposés : ");
