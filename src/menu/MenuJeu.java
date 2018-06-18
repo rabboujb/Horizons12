@@ -15,13 +15,27 @@ public class MenuJeu {
 	private Description d;
 	private VueJoueur equipes;
 
+	/**
+	 * Constructeur de la classe MenuJeu, gère la création des équipes en fonction du choix
+	 * @param equipes
+	 * @param description
+	 */
 	public MenuJeu(VueJoueur equipes, Description description) {
 		this.equipes = equipes;
 		this.d = description;
 	}
 
+	/**
+	 * Liste des équipes
+	 * @return La liste des équipes
+	 */
 	public List<VueJoueur> getEquipes() { return equipes.getEquipes(); }
 
+	/**
+	 * Choix du joueur : joueur VS IA
+	 * Le joueur a la possibilité de modifier le nom d'équipe
+	 * Les décisions de l'IA ne sont pas visibles
+	 */
 	public void joueurVsIA() {
 		if(equipes.getEquipes().size() != 0)
 			System.out.println("Les équipes sont déjà créées.");
@@ -52,6 +66,12 @@ public class MenuJeu {
 		}
 	}
 
+	/**
+	 * Joueur VS Joueur
+	 * Deux équipes
+	 * Les joueurs peuvent modifier leur nom d'équipe
+	 * Chaque équipe peut consulter les informations à chaque étape
+	 */
 	public void joueurVsJoueur() {
 		if(equipes.getEquipes().size() != 0)
 			System.out.println("Les équipes sont déjà créées.");
@@ -69,6 +89,12 @@ public class MenuJeu {
 		}
 	}
 
+	/**
+	 * Partie Multijoueurs
+	 * Trois équipes minimum
+	 * Le nombre d'équipes n'est pas limité
+	 * Chaque équipe peut consulter les informations à chaque étape
+	 */
 	public void multiJoueurs() {
 		if(equipes.getEquipes().size() != 0)
 			System.out.println("Les équipes sont déjà créées.");
@@ -96,6 +122,9 @@ public class MenuJeu {
 		}
 	}
 
+	/**
+	 * Ajouter une équipe
+	 */
 	public void ajouterEquipe() {
 		String nNom;
 		String choixC;
@@ -130,6 +159,9 @@ public class MenuJeu {
 		}
 	}
 
+	/**
+	 * Voir les équipes
+	 */
 	public void voirEquipes() {
 		if(equipes.getEquipes().size() == 0)
 			System.out.println("Aucune équipe créée !");

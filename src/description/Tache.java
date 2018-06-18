@@ -21,14 +21,25 @@ public class Tache implements Serializable {
     private final Alea ORANGE;
     private final Alea VERT;
 
-    private final ArrayList <Integer> PREDECESSEUR;
-    private final ArrayList <Integer> SUCCESSEUR;
+    private final ArrayList<Integer> PREDECESSEUR;
+    private final ArrayList<Integer> SUCCESSEUR;
 
-    public Tache(String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
-    		ArrayList <Integer> predecesseur, ArrayList <Integer> successeur) {
-
-        compteurId ++;
-        this.ID = compteurId;
+    /**
+     * Constructeur avec ajout de l'ID manuel, sert pour les tâche alpha et omega
+     * @param id
+     * @param nom
+     * @param cout
+     * @param semaines
+     * @param semaineMax
+     * @param rouge
+     * @param jaune
+     * @param vert
+     * @param predecesseur
+     * @param successeur
+     */
+    public Tache(int id, String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
+                 ArrayList<Integer> predecesseur, ArrayList<Integer> successeur) {
+        this.ID = id;
         this.NOM = nom;
         this.COUT = cout;
         this.SEMAINES = semaines;
@@ -41,15 +52,33 @@ public class Tache implements Serializable {
     }
 
     /**
+     * Constructeur avec id automatique.
+     * @param nom
+     * @param cout
+     * @param semaines
+     * @param semaineMax
+     * @param rouge
+     * @param jaune
+     * @param vert
+     * @param predecesseur
+     * @param successeur
+     */
+    public Tache(String nom, int cout, int semaines, int semaineMax, Alea rouge, Alea jaune, Alea vert,
+                 ArrayList<Integer> predecesseur, ArrayList<Integer> successeur) {
+
+        this(++compteurId, nom, cout, semaines, semaineMax, rouge, jaune, vert, predecesseur, successeur);
+    }
+
+    /**
      * Retourne l'Alea corespondant à la couleur passée en paramètre
+     *
      * @param couleur
      * @return un Alea
      */
     public Alea getAlea(Couleur couleur) {
         if (couleur.equals(Couleur.ROUGE)) {
             return ROUGE;
-        }
-        else if (couleur.equals(Couleur.ORANGE)) {
+        } else if (couleur.equals(Couleur.ORANGE)) {
             return ORANGE;
         }
         return VERT;
@@ -57,6 +86,7 @@ public class Tache implements Serializable {
 
     /**
      * Retourne l'Id de la tache
+     *
      * @return ID
      */
     public int getID() {
@@ -69,6 +99,7 @@ public class Tache implements Serializable {
 
     /**
      * Retourne le coute d'acceleration de la tache
+     *
      * @return COUT
      */
     public int getCOUT() {
@@ -77,6 +108,7 @@ public class Tache implements Serializable {
 
     /**
      * Retourne le nombre de semaine par défaut de la tache
+     *
      * @return SEMAINES
      */
     public int getSEMAINES() {
@@ -85,6 +117,7 @@ public class Tache implements Serializable {
 
     /**
      * Retourne le nombre de semaines maximum que peut durer la tache
+     *
      * @return SEMAINES_MAX
      */
     public int getSEMAINES_MAX() {
@@ -93,17 +126,19 @@ public class Tache implements Serializable {
 
     /**
      * Retourne l'Id de la tache précédente
+     *
      * @return PREDECESSEUR
      */
-    public ArrayList <Integer> getPREDECESSEUR() {
+    public ArrayList<Integer> getPREDECESSEUR() {
         return PREDECESSEUR;
     }
 
     /**
      * Retourne la tache suivante
+     *
      * @return SUCCESSEUR
      */
-    public ArrayList <Integer> getSUCCESSEUR() {
+    public ArrayList<Integer> getSUCCESSEUR() {
         return SUCCESSEUR;
     }
 
@@ -112,7 +147,7 @@ public class Tache implements Serializable {
      * Ismerie
      */
     public void addSuccesseur(int idTache) {
-    	SUCCESSEUR.add(idTache);
+        SUCCESSEUR.add(idTache);
     }
 
     /**
@@ -120,11 +155,12 @@ public class Tache implements Serializable {
      * Ismerie
      */
     public void addPredecesseur(int idTache) {
-    	PREDECESSEUR.add(idTache);
+        PREDECESSEUR.add(idTache);
     }
 
     /**
      * Retourne une description de la tache et de ses aléas (en se servant du toString de ceux-ci)
+     *
      * @return DescriptionObsolete de la tache
      */
     public String toString() {
@@ -133,11 +169,11 @@ public class Tache implements Serializable {
         chaine.append("Id : ").append(ID)
                 .append("\nNom : ").append(NOM)
                 .append("\nCoût d'accélération : ").append(COUT).append(" €");
-                if(SEMAINES == 1)
-	                chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaine");
-                else
-	                chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaines");
-	            chaine.append("\nDurée totale : ").append(SEMAINES_MAX).append(" semaines")
+        if (SEMAINES == 1)
+            chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaine");
+        else
+            chaine.append("\nDurée initiale : ").append(SEMAINES).append(" semaines");
+        chaine.append("\nDurée totale : ").append(SEMAINES_MAX).append(" semaines")
                 .append("\n").append(ROUGE)
                 .append("\n").append(ORANGE)
                 .append("\n").append(VERT)
@@ -148,14 +184,15 @@ public class Tache implements Serializable {
 
     @Override
     public boolean equals(Object objet) {
-        if (objet != null && objet instanceof Tache){
-            return this.equals((Tache)objet);
+        if (objet != null && objet instanceof Tache) {
+            return this.equals((Tache) objet);
         }
         return false;
     }
 
     /**
      * Méthode equals qui se sert de l'ID pour définir si il y'a égalité
+     *
      * @param tache
      * @return un boolean
      */
