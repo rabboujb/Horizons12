@@ -1,14 +1,7 @@
 package menu;
 import description.*;
 import partie.*;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,12 +16,27 @@ public class MenuSauvegarde {
 	private List<Couleur> tirages;
 	private String dossierSauvegarde = "sauvegarde/";
 
+	/**
+	 * Constructeur de la classe MenuSauvegarde
+	 * @param equipes
+	 * @param description
+	 * @param tirages
+	 */
 	public MenuSauvegarde(VueJoueur equipes, Description description, List<Couleur> tirages) {
 		this.equipes = equipes;
 		this.description = description;
 		this.tirages = tirages;
 	}
 
+	/**
+	 * Sauvegarde d'une partie en cours
+	 * Le nom de la sauvegarde est libre
+	 * Les sauvegardes sont stockées dans un dossier sauvegarde
+	 * Sauvegarde du PERT
+	 * Sauvegarde des tours
+	 * Sauvegarde des tirages
+	 * Sauvegarde des équipes
+	 */
 	public void sauvegarde() {
 		String nomFichier;
 		String choixC;
@@ -39,6 +47,7 @@ public class MenuSauvegarde {
 		System.out.println("\\/?%*:|\"<>");
 		System.out.println();
 
+		// Choix du nom du dossier de sauvegarde
 		do {
 			System.out.print("Nom du dossier de sauvegarde : ");
 			nomFichier = sc.nextLine();
@@ -59,6 +68,10 @@ public class MenuSauvegarde {
 			}
 		} while(choixC.equals("n"));
 
+		/*
+			Sauvegarde
+			Si le dossier est créé, création des fichiers de sauvegarde
+		 */
         try {
             if(!new File(dossierSauvegarde+nomFichier).mkdir())
                 System.out.println("Un dossier existe déjà sous ce nom.\n");
@@ -77,12 +90,19 @@ public class MenuSauvegarde {
 	            FileOutputStream fosEquipes = new FileOutputStream(dossierSauvegarde+nomFichier+"/Equipes", false);
 	            ObjectOutputStream oosEquipes = new ObjectOutputStream(fosEquipes);
 
+				/*
+					Ajout des données aux fichiers de sauvegarde
+				 */
 				for(Tache d: description.getPlateau())
 					oosPert.writeObject(d);
 
 				for(Tour t: description.getTours())
 					oosTours.writeObject(t);
 
+				/*
+					Problème : Tous les tirages sont sauvegardés, ils sont donc visibles et prévisibles si le joueur
+					les consulte
+				 */
 		        for(Couleur tirage : tirages)
 		            oosTirages.writeObject(tirage);
 
@@ -109,6 +129,11 @@ public class MenuSauvegarde {
 		}
 	}
 
+	/**
+	 * Récupération de la sauvegarde
+	 * Affichage d'une liste des sauvegardes existantes
+	 * Une fois choisie, reprise de la partie
+	 */
 	public void recoverSauvegarde(String path) {
 		String nomFichier;
 		String choixC;
@@ -199,6 +224,11 @@ public class MenuSauvegarde {
 		}
 	}
 
+	/**
+	 * Suppression d'une sauvegarde
+	 * Affichage d'une liste des sauvegardes existantes
+	 * Suppression après confirmation
+	 */
 	public void deleteSauvegarde(String path) {
 		String nomFichier;
 		String choixC;
@@ -213,6 +243,7 @@ public class MenuSauvegarde {
 
 		System.out.println();
 
+		// Demande de confirmation de suppression
 		do {
 			int j = 0;
 			System.out.print("Sauvegarde à supprimer : ");
@@ -241,6 +272,7 @@ public class MenuSauvegarde {
 			}
 		} while(choixC.equals("n"));
 
+		// Suppression
 		try {
             File deletePert = new File(dossierSauvegarde+nomFichier+"/Pert");
             File deleteTours = new File(dossierSauvegarde+nomFichier+"/Tours");
