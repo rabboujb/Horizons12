@@ -56,7 +56,7 @@ public class AleaTest {
 		
 	
 	/**
-	 * Test de la méthode getTYPE() de la class Alea
+	 * Test de la methode getTYPE() de la class Alea
 	 */
 	@Test
 	public void testGetTYPE() {
@@ -65,7 +65,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode getCOULEUR() de la class Alea
+	 * Test de la methode getCOULEUR() de la class Alea
 	 */
 	@Test
 	public void testGetCOULEUR() {
@@ -75,7 +75,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode getGRAVITE() de la class Alea
+	 * Test de la methode getGRAVITE() de la class Alea
 	 */
 	@Test
 	public void testGetGRAVITE() {
@@ -112,7 +112,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Alea avec null
+	 * Test de la methode equals() de la class Alea avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -122,7 +122,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Alea avec un autre objet
+	 * Test de la methode equals() de la class Alea avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {
@@ -132,7 +132,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode toString() de la class Alea
+	 * Test de la methode toString() de la class Alea
 	 */
 	@Test
 	public void testToString() {
