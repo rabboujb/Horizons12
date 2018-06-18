@@ -16,6 +16,9 @@ public class Robot implements Strategie, Serializable {
 	private List<Couleur> tirages;
 	private Couleur tirage;
 
+	/**
+	 * Constructeur de la classe Robot
+	 */
 	public Robot() {
 		this.tirages = new ArrayList<>();
 		for(int i=0;i<10;i++) {
@@ -24,16 +27,28 @@ public class Robot implements Strategie, Serializable {
 		}
 	}
 
+	/**
+	 * Liste des tirages
+	 * @return Liste de tirages (couleurs)
+	 */
 	public List<Couleur> getTirages()           { return tirages;               }
-	public Couleur getTirage(int id)            { return tirages.get(id);       }
-	public void ajouterTirage(Couleur tirage)   { tirages.add(tirage);          }
 
+	/**
+	 * Tirage
+	 * @return Tirage
+	 */
+	public Couleur getTirage(int id)            { return tirages.get(id);       }
+
+	/**
+	 * Incrémente le numéro du tour
+	 * @param vue
+	 */
 	public void nouveauTour(VueJoueur vue) {
 		vue.finDuTour();
 	}
 
 	/**
-	 * Methode qui 
+	 * Déroulement d'un tour étape
 	 * @param vue
 	 */
 	public void jouerEtape(VueJoueur vue) {
@@ -111,7 +126,7 @@ public class Robot implements Strategie, Serializable {
 	}
 
 	/**
-	 * Methode qui 
+	 * Déroulement d'un tour jalon
 	 * @param vue
 	 */
 	public void jouerJalon(VueJoueur vue) {
@@ -190,6 +205,10 @@ public class Robot implements Strategie, Serializable {
 		}
 	}
 
+	/**
+	 * Déroulement du tour final
+	 * @param vue
+	 */
 	public void jouerTourFinal(VueJoueur vue) {
 		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
 		((TourFinal) tour).calculerScore(vue.getNom(), vue.getRealisations(), vue.getDonneesEquipe().getCaisse(),
