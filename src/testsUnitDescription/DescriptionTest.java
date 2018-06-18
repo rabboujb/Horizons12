@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class DescriptionTest {
@@ -28,13 +28,13 @@ public class DescriptionTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Description");
-		System.out.println("Description de référence: " + new Description());
+		System.out.println("Début du test de la class Description" + "\n");
+		System.out.println("Description de référence: " + new Description() + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Description");
+		System.out.println("\n" + "Fin du test de Description" + "\n");
 	}
 	
 	@Before
@@ -48,16 +48,16 @@ public class DescriptionTest {
 	}
 
 	/**
-	 * Test de la méthode getPlateau() de la class Description
+	 * Test de la methode getPlateau() de la class Description
 	 */
 	@Test
 	public void testGetPlateau() {
 		System.out.println("getPlateau");
-		assertEquals(instance,exampleDescription.getPlateau());
+		assertEquals(instance.getPlateau(),exampleDescription.getPlateau());
 	}
 	
 	/**
-	 * Test de la méthode getTache() de la class Description
+	 * Test de la methode getTache() de la class Description
 	 */
 	@Test
 	public void testGetTache() {
@@ -68,7 +68,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode getTacheById() de la class Description
+	 * Test de la methode getTacheById() de la class Description
 	 */
 	@Test
 	public void testGetTacheById() {
@@ -77,7 +77,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode getTours() de la class Description
+	 * Test de la methode getTours() de la class Description
 	 */
 	@Test
 	public void testGetTours() {
@@ -86,7 +86,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode getTour() de la class Description
+	 * Test de la methode getTour() de la class Description
 	 */
 	@Test
 	public void testGetTour() {
@@ -95,7 +95,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description
+	 * Test de la methode equals() de la class Description
 	 */
 	@Test
 	public void testEquals_True() {
@@ -104,7 +104,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description
+	 * Test de la methode equals() de la class Description
 	 */
 	@Test
 	public void testEquals_False() {
@@ -113,7 +113,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description avec null
+	 * Test de la methode equals() de la class Description avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -123,7 +123,7 @@ public class DescriptionTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Description avec un autre objet
+	 * Test de la methode equals() de la class Description avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {

@@ -48,13 +48,13 @@ public class TacheTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Tache");
+		System.out.println("Début du test de Tache" + "\n");
 		System.out.println("Tache de référence: " + new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4))));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Tache");
+		System.out.println("\n" +"Fin du test de Tache" + "\n");
 	}
 	
 	@Before

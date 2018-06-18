@@ -6,10 +6,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Objet permetant d'enregistrer les action de la du jeu (Aleas) et du joueur :
+ * Objet permettant d'enregistrer les actions de la du jeu (Aleas) et du joueur :
  *      application d'alea de delai
  *      protection
- *      ecceleration
+ *      acceleration
  *
  * Il encapsule la tache à laquelle il est lié.
  *
@@ -29,7 +29,7 @@ public class Realisation implements Serializable {
     private Etat etat;
     
 	/**
-	 * Le noeud a-t-il été marqué durant le parcours ?
+	 * Le noeud a-t-il ete marque durant le parcours ?
 	 */
 	private boolean marque = false;
 
@@ -45,7 +45,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne la tache à laquelle est lié la réalisation
+     * Methode qui retourne la tache a laquelle est lie la realisation
      * @return une Tache
      */
     public Tache getTACHE() {
@@ -53,17 +53,17 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne l'id de la tache concernée par la réalisation, cela peu facilité la selection de la
-     * réalisation (qui serra placée dans une ArrayList) en fonction du tour joué
-     * @return l'id de la tache concernée par la réalisation
+     * Methode qui retourne l'id de la tache concernee par la realisation, cela peut faciliter la selection de la
+     * realisation (qui sera placee dans une ArrayList() en fonction du tour joue
+     * @return l'id de la tache concernee par la realisation
      */
     public int getIdTache() {
         return TACHE.getID();
     }
 
     /**
-     * Méthode qui retourne la liste des predecesseurs de la tache encapsulée sous forme d'ArrayList, cette méthode
-     * facilite la lecture du code du PERT
+     * Methode qui retourne la liste des predecesseurs de la tache encapsulee sous forme d'ArrayList
+     * cette methode facilite la lecture du code du PERT
      * @return ArrayList
      */
     public ArrayList<Integer> getPredecesseurs(){
@@ -71,8 +71,8 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne la liste des successeurs de la tache encapsulée sous forme d'ArrayList, cette méthode
-     * facilite la lecture du code du PERT
+     * Methode qui retourne la liste des successeurs de la tache encapsulee sous forme d'ArrayList
+     * cette methode facilite la lecture du code du PERT
      * @return ArrayList
      */
     public ArrayList<Integer> getSuccesseurs(){
@@ -80,23 +80,23 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le nombre réel de semaines réel que prendra la tache pour le joueur
-     * @return le nombre réel de semaines
+     * Methode qui retourne le nombre reel de semaines reel que prendra la tache pour le joueur
+     * @return le nombre reel de semaines
      */
     public int getSemainesReel() {
         return semainesReel;
     }
 
     /**
-     * Méthode qui retourne le nombre de semaines restantes
-     * @return
+     * Methode qui retourne le nombre de semaines restantes
+     * @return le nombre de semaines restantes
      */
     public int getSemainesRestantes() {
 		return semainesRestantes;
 	}
 
 	/**
-     * Méthode qui retourne la date au plus tôt
+     * Methode qui retourne la date au plus tot
      * @return la date au plus tot
      */
     public int getDateAuPlusTot() {
@@ -104,7 +104,7 @@ public class Realisation implements Serializable {
 	}
 
     /**
-     * Méthode qui permet de mettre à jour
+     * Methode qui permet de mettre a jour
      * @param dateAuPlusTot
      */
 	public void setDateAuPlusTot(int dateAuPlusTot) {
@@ -112,38 +112,40 @@ public class Realisation implements Serializable {
 	}
 
 	/**
-     * Méthode qui retourne la date au plus tard
+     * Methode qui retourne la date au plus tard
+     * @return la date au plus tard
      */
 	public int getDateAuPlusTard() {
 		return dateAuPlusTard;
 	}
 
+	/**
+     * Methode qui met a jour la date au plus tard
+     * @return la date au plus tard
+     */
 	public void setDateAuPlusTard(int dateAuPlusTard) {
 		this.dateAuPlusTard = dateAuPlusTard;
 	}
 
-
 	/**
-     * Méthode qui retourne la valeur de l'attribut marque
-     * Ismérie
+     * Methode qui retourne la valeur de l'attribut marque
+     * @return la valeur de marque
      */
 	public boolean getMarque() {
 		return marque;
 	}
 
-
 	/**
-     * Méthode pour marquer une réalisation
+     * Methode pour marquer une realisation
      * @param marque
-     * Ismérie
      */
 	public void setMarque(boolean marque) {
 		this.marque = marque;
 	}
 
 	/**
-     * Méthode qui retourne le status de l'aléa rouge sous forme boolean (true si l'aléa est protégé et false dans le
-     * cas contraire)
+     * Methode qui retourne le statut de l'alea rouge sous forme boolean
+     * true si l'alea est protege et false dans le cas contraire
      * @return un boolean
      */
     public boolean getRouge() {
@@ -151,8 +153,8 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le status de l'aléa orange sous forme boolean (true si l'aléa est protégé et false dans le
-     * cas contraire)
+     * Methode qui retourne le statut de l'alea orange sous forme boolean 
+     * true si l'alea est protege et false dans le cas contraire
      * @return un boolean
      */
     public boolean getOrange() {
@@ -160,8 +162,8 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne le status de l'aléa vert sous forme boolean (true si l'aléa est protégé et false dans le
-     * cas contraire)
+     * Methode qui retourne le statut de l'alea vert sous forme boolean
+     * true si l'alea est protege et false dans le cas contraire
      * @return un boolean
      */
     public boolean getVert() {
@@ -169,7 +171,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne l'état de la realisation lors du calcule de chemin critique, il peut être :
+     * Methode qui retourne l'état de la realisation lors du calcul de chemin critique, il peut etre :
      *      NON_ENTAMEE,
      *      IMMINENT,
      *      EN_COURS,
@@ -182,7 +184,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui permet de modifier l'état de la réalisation lors du calcule de chemin critique
+     * Methode qui permet de modifier l'etat de la realisation lors du calcul de chemin critique
      * @param etat
      */
     public void setEtat(Etat etat) {
@@ -190,7 +192,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui permet l'application d'un aléa de type délai
+     * Methode qui permet l'application d'un alea de type delai
      * @param gravite
      */
     public void appliquerDelai(int gravite) {
@@ -199,9 +201,10 @@ public class Realisation implements Serializable {
     }
     
     /**
-     * Méthode qui permet de décrémenter le nombre de semaines à chaque tour, elle renvoie true si cela est possible (semaines restante > 0)
-     * et false dans le cas contraire.
-     * Si le nombre de semaines passe à 0 l'état de la tâche est mis à jour vers terminée.
+     * Methode qui permet de decrementer le nombre de semaines e chaque tour
+     * elle renvoie true si cela est possible (semaines restantes > 0)
+     * et false dans le cas contraire
+     * Si le nombre de semaines passe à 0 l'etat de la tache est mis a jour vers terminee
      * @return un boolean
      */
     public boolean decrementerSemaine() {
@@ -218,8 +221,9 @@ public class Realisation implements Serializable {
     	return applique;
     }
 
-    /** Méthode qui permet d'appliquer une accélération, retourne true si l'accélération à été correctement appliquée,
-     * et false dans le cas contraire (tâche déja accéléré, car une seul accélération possible par tâche)
+    /** Methode qui permet d'appliquer une acceleration
+     * retourne true si l'acceleration a ete correctement appliquee
+     * et false dans le cas contraire (tache deja accelere, car une seule acceleration possible par tache)
      * @return un boolean
      */
     public boolean appliquerAcceleration() {
@@ -233,14 +237,15 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui retourne un boolean indiquant si la tâche à déja été accélérée ou non
+     * Methode qui retourne un boolean indiquant si la tache a deja ete acceleree ou non
      * @return un boolean
      */
 	public boolean getAccelere() { return accelere; }
 
 	/**
-     * Méthode qui permet de protéger l'aléa dont la couleur a été passée en paramètre, elle renvoie true si la
-     * protection a pus être appliquée et false dans le cas où cela est impossible (alea déja protégé)
+     * Methode qui permet de proteger l'alea dont la couleur a ete passee en parametre
+     * elle renvoie true si la protection a pu etre appliquee 
+     * et false dans le cas ou cela est impossible (alea deja protege)
      * @param couleur
      * @return un booelan
      */
@@ -271,7 +276,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Equals qui permet de comparer deux réalisations
+     * Equals qui permet de comparer deux realisations
      * @param realisation
      * @return
      */
@@ -283,8 +288,8 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui permet de comparer une réalisation via son ID, à l'ID d'une autre réalisation, ceci est utile pour
-     * comparer une réalisation à un élément de l'ArraysList de prédécesseurs
+     * Methode qui permet de comparer une realisation via son ID, à l'ID d'une autre realisation
+     * ceci est utile pour comparer une realisation a un element de l'ArraysList de predecesseurs
      * @param id
      * @return
      */
@@ -296,7 +301,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode utile au toString, elle permet de revoyer en toute lettre l'état d'un aléa
+     * Methode utile au toString, elle permet de renvoyer en toute lettre l'état d'un alea
      * @param couleur
      * @return une String
      */
@@ -313,6 +318,11 @@ public class Realisation implements Serializable {
         return "non protégé";
     }
     
+    /**
+     * Methode utile au toString, elle permet d'afficher une jauge d'etoiles
+     * en fonction du nombre de semaines restantes
+     * @return une String
+     */
     private String jaugeSemainesRestantes() {
     	String jauge = "";
     	
@@ -323,7 +333,7 @@ public class Realisation implements Serializable {
     }
 
     /**
-     * Méthode qui décrit l'actuel de la tache pour le joueur, avec le nombre de semaines réele et le status des aléas
+     * Methode qui décrit l'actuel de la tache pour le joueur, avec le nombre de semaines réele et le status des aleas
      * @return une String
      */
     public String toString() {

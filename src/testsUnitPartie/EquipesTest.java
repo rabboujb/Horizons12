@@ -1,28 +1,18 @@
 package testsUnitPartie;
 
-import static description.TypeTour.ALEA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import description.Alea;
-import description.Couleur;
-import description.Tache;
-import description.TourAlea;
-import description.TypeAlea;
 import partie.Equipes;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 
@@ -38,13 +28,13 @@ public class EquipesTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Equipes");
-		System.out.println("Tour de référence: " + new Equipes("Equipe 1", 300, 100));
+		System.out.println("Début du test de Equipes" + "\n");
+		System.out.println("Tour de référence: " + "\n" + new Equipes("Equipe 1", 300, 100));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Equipes");
+		System.out.println("\n" + "Fin du test de Equipes" + "\n");
 	}
 	
 	@Before
@@ -58,7 +48,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getCaisse() de la class Equipes
+	 * Test de la methode getCaisse() de la class Equipes
 	 */
 	@Test
 	public void testGetCaisse() {
@@ -67,7 +57,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getNom() de la class Equipes
+	 * Test de la methode getNom() de la class Equipes
 	 */
 	@Test
 	public void testGetNom() {
@@ -76,7 +66,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getQualite() de la class Equipes
+	 * Test de la methode getQualite() de la class Equipes
 	 */
 	@Test
 	public void testGetQualite() {
@@ -85,7 +75,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode getBaisseQualite() de la class Equipes
+	 * Test de la methode getBaisseQualite() de la class Equipes
 	 */
 	@Test
 	public void testGetBaisseQualite() {
@@ -94,28 +84,28 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode depense(int somme) de la class Equipes
+	 * Test de la methode depense(int somme) de la class Equipes
 	 */
 	@Test
 	public void testdepense() {
 		System.out.println("depense");
 		autreEquipes.depense(10);
-		assertEquals(290,exampleEquipes.getCaisse());
+		assertEquals(290,autreEquipes.getCaisse());
 	}	
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes
+	 * Test de la methode equals() de la class Equipes
 	 * ne sera jamais true car les id des tours sont différents
 	 */
 	@Test
 	public void testEquals_True() {
 		System.out.println("equals: true");
-		Equipes instance = new Equipes("Equipe 1", 300, 100);
+		Equipes instance = new Equipes("Equipe 2", 300, 100);
 		assertTrue(instance.equals(autreEquipes));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes
+	 * Test de la methode equals() de la class Equipes
 	 */
 	@Test
 	public void testEquals_False() {
@@ -124,7 +114,7 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes avec null
+	 * Test de la methode equals() de la class Equipes avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
@@ -144,13 +134,13 @@ public class EquipesTest {
 	}
 	
 	/**
-	 * Test de la méthode toString() de la class Equipes
+	 * Test de la methode toString() de la class Equipes
 	 */
 	@Test
 	public void testToString() {
 		System.out.println("toString");
 		Equipes instance = new Equipes("Equipe 1", 300, 100);
-	    String chaine = "Equipe 2, 300, 100";
+	    String chaine = "Equipes{nomEquipe='Equipe 1', caisse=300, qualite=100}";
 		assertEquals(chaine, instance.toString());
 	}
 	
