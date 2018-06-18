@@ -3,9 +3,17 @@ import java.io.*;
 import java.net.URL;
 
 public class MenuAbout {
+
+	/**
+	 * Constructeur de la classe MenuAbout
+	 * Affichage des auteurs, liens vers le dépôt et les ressources du projet
+	 */
 	public MenuAbout() {
 	}
 
+	/**
+	 * Crédits, auteurs
+	 */
 	public void about() {
 		StringBuilder chaine = new StringBuilder();
 
@@ -28,6 +36,9 @@ public class MenuAbout {
 		System.out.println(chaine);
 	}
 
+	/**
+	 * Liens, ressources
+	 */
 	public void presentationJeu() {
 		try {
 			URL pageProjet = new URL("http://moodle.univ-lille1.fr/course/view.php?id=6443");
