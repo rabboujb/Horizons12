@@ -2,7 +2,6 @@ package menu;
 import description.*;
 import partie.VueJoueur;
 import java.util.Scanner;
-import partie.Realisation;
 
 /**
  *
@@ -14,12 +13,20 @@ public class MenuPartie {
 	private Description d;
 	private VueJoueur equipes;
 
+	/**
+	 * Constructeur de la classe MenuPartie
+	 * Menu affichant les options lors d'une partie
+	 * @param equipes
+	 * @param description
+	 */
 	public MenuPartie(VueJoueur equipes, Description description) {
 		this.equipes = equipes;
 		this.d = description;
 	}
 
-
+	/**
+	 * Consulter le PERT (statique)
+	 */
     public void consulterPert() {
         for(int i=1;i<d.getPlateau().size()+1;i++) {
 			Tache t = d.getTacheById(i);
@@ -31,6 +38,10 @@ public class MenuPartie {
         }
 	}
 
+	/**
+	 * Informations des joueurs
+	 * Actualisation de la caisse, de la qualité et des réalisations après chaque tour
+	 */
 	public void infosJoueurs() {
 		String oui = "";
 
@@ -57,17 +68,19 @@ public class MenuPartie {
 			VueJoueur joueur = equipes.getEquipe(equipes.getEquipes().get(Integer.parseInt(numJoueur)-1).getNom());
 
 			if(!joueur.getNom().equals("IA")) {
+				System.out.println();
 				System.out.println("Informations de l'équipe "+joueur.getNom()
 					+"\nTour "+joueur.getNumeroTour()
 					+"\n"
 					+"\nCaisse : "+joueur.getDonneesEquipe().getCaisse()+" €"
 					+"\nQualité : "+joueur.getDonneesEquipe().getQualite()+" %");
 				if(joueur.getNumeroTour() > 0)
-					System.out.println("\nSemaines jouées : "+joueur.getRealisation(joueur.getNumeroTour()).getSemainesReel());
+					System.out.println(joueur.getRealisation(joueur.getNumeroTour()));
 			}
 			else
 				System.out.println("Les informations de l'IA ne sont pas visualisables.");
 
+	        System.out.println();
 	        System.out.println("===");
 	        System.out.println();
 
