@@ -17,7 +17,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	private int current;
 	private List<VueJoueur> equipes;
 	private Equipes donneesEquipe;
-	private List<Realisation> realisations;
+	private ArrayList<Realisation> realisations;
 
 	public VueEquipes() {
 		this.equipes = new ArrayList<>();
@@ -35,7 +35,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 		this.numeroTour = 0;
 	}
 
-	public List<Realisation> getRealisations() { return realisations; }
+	public ArrayList<Realisation> getRealisations() { return realisations; }
 	public Realisation getRealisation(int idTache) {
 		for(Realisation r: realisations)
 			if(r.getIdTache() == idTache)

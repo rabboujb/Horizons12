@@ -2,6 +2,7 @@ package partie;
 import description.Couleur;
 import description.Description;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
