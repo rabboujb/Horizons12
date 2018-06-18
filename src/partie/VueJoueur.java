@@ -83,4 +83,6 @@ public interface VueJoueur {
 	DonneesJoueur getDonneesEquipe();
 
 	Realisation getRealisation(int idTache);
+	
+	ArrayList<Realisation> getRealisations();
 }
