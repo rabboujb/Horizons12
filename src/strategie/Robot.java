@@ -32,6 +32,10 @@ public class Robot implements Strategie, Serializable {
 		vue.finDuTour();
 	}
 
+	/**
+	 * Methode qui 
+	 * @param vue
+	 */
 	public void jouerEtape(VueJoueur vue) {
 		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
 		if(tour.getTYPE() == TypeTour.ALEA && vue.getNumeroTour() == tour.getNUMERO()) {
@@ -105,6 +109,10 @@ public class Robot implements Strategie, Serializable {
 		}
 	}
 
+	/**
+	 * Methode qui 
+	 * @param vue
+	 */
 	public void jouerJalon(VueJoueur vue) {
 		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
 		if(vue.getNumeroTour() == tour.getNUMERO()) {
@@ -181,6 +189,12 @@ public class Robot implements Strategie, Serializable {
 		}
 	}
 
+	/**
+	 * Methode qui 
+	 * @param choix
+	 * @param regex
+	 * @return une String
+	 */
 	public String getChoix(String choix, String regex) {
 		while(!choix.matches(regex)) {
 			System.out.print("Veuillez indiquer un choix parmi ceux proposés : ");
