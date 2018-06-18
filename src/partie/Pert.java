@@ -172,7 +172,7 @@ public class Pert {
 	 * @return alpha
 	 */
 	public Tache construitAlpha(ArrayList<Realisation> realisations){
-		Tache alpha = new Tache("Alpha",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
+		Tache alpha = new Tache(realisations.size()+1,"Alpha",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
 		for(Realisation real : realisations){
 			if (real.getTACHE().getPREDECESSEUR().size()==0){
@@ -191,7 +191,7 @@ public class Pert {
 	 */
 	public Tache construitOmega(ArrayList<Realisation> realisations){
 		
-		Tache omega = new Tache("Omega",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
+		Tache omega = new Tache(realisations.size()+2,"Omega",0,0,0,null,null,null, new ArrayList <Integer>(),new ArrayList <Integer>());
 		
 		for(Realisation real : realisations){
 			if (real.getTACHE().getSUCCESSEUR().size()==0){
