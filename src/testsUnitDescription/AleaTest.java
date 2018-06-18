@@ -106,7 +106,7 @@ public class AleaTest {
 	 * Test de la méthode equals() de la class Alea
 	 */
 	@Test
-	public void testEquals_False() {
+	public void testEquals_False(){
 		System.out.println("equals: false");
 		assertFalse(autreAlea.equals(exampleAlea));
 	}
@@ -138,7 +138,7 @@ public class AleaTest {
 	public void testToString() {
 		System.out.println("toString");
 		Alea instance = new Alea(TypeAlea.DELAI, Couleur.ROUGE, 1, "A");
-		String expResult = "ROUGE : Délai\t1\tA";
+		String expResult = "ROUGE	:	\"A\" 	Délai	Gravité 1";
 		assertEquals(expResult, instance.toString());
 	}
 	
