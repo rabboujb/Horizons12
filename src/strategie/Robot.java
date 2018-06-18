@@ -41,7 +41,7 @@ public class Robot implements Strategie, Serializable {
 		if(tour.getTYPE() == TypeTour.ALEA && vue.getNumeroTour() == tour.getNUMERO()) {
 			// Equipe Horizons12
 			if(tour instanceof TourAlea) {
-				int idTache = tour.getNUMERO();
+			int idTache = vue.getNumeroTache();
 				// Accélération
 				if(vue.getRealisation(idTache).getAccelere())
 				// Baisse de la caisse de 10 euros
@@ -105,6 +105,7 @@ public class Robot implements Strategie, Serializable {
 							.getAlea(Couleur.VERT).getGRAVITE());
 					}
 				}
+			vue.finDeTache();
 			}
 		}
 	}

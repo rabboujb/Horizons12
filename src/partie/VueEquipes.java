@@ -13,6 +13,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	private Description plateau;
 	private String nomEquipe;
 	private int numeroTour;
+	private int numeroTache;
 	private int qualite;
 	private int current;
 	private List<VueJoueur> equipes;
@@ -33,6 +34,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 			realisations.add(new Realisation(tache));
 		this.donneesEquipe = new Equipes(nomEquipe, caisse, qualite);
 		this.numeroTour = 0;
+		this.numeroTache = 1;
 	}
 
 	public ArrayList<Realisation> getRealisations() { return realisations; }
@@ -57,6 +59,7 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	public void ajouterEquipe(VueJoueur equipe)     { equipes.add(equipe);  }
 
 	public void finDuTour()             { numeroTour++;         }
+	public void finDeTache()            { numeroTache++;        }
 	public int getCaisse()              { return caisse;        }
 	public int getCurrent(String id)    { return 0;             }
 	public String getDebutId()          { return getPlateau().getTacheById(1).getNOM(); }
@@ -65,12 +68,11 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	public String getFinId()            { return getPlateau().getTacheById(8).getNOM();             }
 	public String getNom()              { return nomEquipe;     }
 	public int getNumeroTour()          { return numeroTour;    }
+	public int getNumeroTache()         { return numeroTache; }
 	public int getQualite()             { return qualite;       }
 
 	public void baisseQualite(int delta)    { qualite = qualite - delta;}
 	public void depense(int somme)          { caisse = caisse - somme;  }
-	public void actualisation(int temps)    {
-	}
 
 	public String toString() {
 		return "VueEquipes{" +

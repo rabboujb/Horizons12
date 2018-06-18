@@ -86,4 +86,8 @@ public interface VueJoueur {
 	Realisation getRealisation(int idTache);
 	
 	ArrayList<Realisation> getRealisations();
+
+	int getNumeroTache();
+
+    void finDeTache();
 }
