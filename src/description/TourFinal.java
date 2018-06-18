@@ -22,8 +22,8 @@ public class TourFinal extends Tour {
     /**
      * Constructeur de TourFinal
      */
-    public TourFinal() {
-        super(TypeTour.FINAL);
+    public TourFinal(TypeTour type) {
+        super(type);
         SCORES = new HashMap<>();
     }
 
