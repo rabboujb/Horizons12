@@ -28,5 +28,6 @@ public class EssaiTourFinal {
 
         tourFinal.calculerScore("Les ChatontonFlingeurs", realisations, 200, 100);
         System.out.println(tourFinal);
+        System.out.println(tourFinal.toString("Les ChatontonFlingeurs"));
     }
 }
