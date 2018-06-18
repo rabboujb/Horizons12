@@ -58,8 +58,12 @@ public class TourFinal extends Tour {
      * @return Le temps mis par le joueur pour terminer le projet
      */
     private int dureeProjet(ArrayList<Realisation> realisations) {
+        System.out.println("dureeProjet commencé");
         Pert pert = new Pert(realisations);
+        System.out.println("création du Pert fini");
         pert.calculDateAuPlusTot();
+        System.out.println("Date au plus tot fini");
+        System.out.println("dureeProjet fini");
 
         return realisations.get(realisations.size() - 1).getDateAuPlusTot();
     }
@@ -71,12 +75,14 @@ public class TourFinal extends Tour {
      * @return montant compris entre 0 et 200
      */
     private int caisse(int caisse) {
+        System.out.println("Caisse commencé");
         if (caisse > 200) {
             System.out.println(caisse);
             return 200;
         } else if (caisse < 0) {
             return 0;
         }
+        System.out.println("caisse fini");
         return caisse;
     }
 
@@ -87,6 +93,7 @@ public class TourFinal extends Tour {
      * @return le pourcentage de malus de qualité
      */
     private int qualite(int qualite) {
+        System.out.println("qualite commence");
         return 100 - qualite;
     }
 
