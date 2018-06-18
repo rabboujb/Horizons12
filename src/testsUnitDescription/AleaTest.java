@@ -35,13 +35,13 @@ public class AleaTest {
 		
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Alea" + "\n");
+		System.out.println("***** Début du test de Alea *****" + "\n");
 		System.out.println("Alea de référence: " + new Alea(DELAI,ROUGE,1,"A") + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("\n" + "Fin du test de Alea" + "\n");
+		System.out.println("\n" + "***** Fin du test de Alea *****" + "\n");
 	}
 	
 	@Before
@@ -60,7 +60,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testGetTYPE() {
-		System.out.println("getTYPE");
+		System.out.println("Test méthode : getTYPE");
 		assertEquals(TypeAlea.DELAI,autreAlea.getTYPE());
 	}
 	
@@ -69,7 +69,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testGetCOULEUR() {
-		System.out.println("getCOULEUR");
+		System.out.println("Test méthode : getCOULEUR");
 		System.out.println(autreAlea);
 		assertEquals(Couleur.ROUGE,autreAlea.getCOULEUR());
 	}
@@ -79,7 +79,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testGetGRAVITE() {
-		System.out.println("getGRAVITE");
+		System.out.println("Test méthode : getGRAVITE");
 		assertEquals(1,autreAlea.getGRAVITE());
 	}
 	
@@ -88,7 +88,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testGetNOM() {
-		System.out.println("getNOM");
+		System.out.println("Test méthode : getNOM");
 		assertEquals("A",autreAlea.getNOM());
 	}
 	
@@ -97,7 +97,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		Alea instance = new Alea(TypeAlea.DELAI, Couleur.ROUGE, 1, "A");
 		assertTrue(instance.equals(exampleAlea));
 	}
@@ -107,7 +107,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testEquals_False(){
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreAlea.equals(exampleAlea));
 	}
 	
@@ -116,7 +116,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		Alea instance = null;
 		assertFalse(exampleAlea.equals(instance));
 	}
@@ -126,7 +126,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "DELAI,ROUGE,1,A";
 		assertFalse(instance.equals(exampleAlea));
 	}
@@ -136,7 +136,7 @@ public class AleaTest {
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("toString");
+		System.out.println("Test méthode : toString");
 		Alea instance = new Alea(TypeAlea.DELAI, Couleur.ROUGE, 1, "A");
 		String expResult = "ROUGE	:	\"A\" 	Délai	Gravité 1";
 		assertEquals(expResult, instance.toString());

@@ -38,13 +38,13 @@ public class VueEquipesTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de VueEquipes");
+		System.out.println("***** Début du test de la class VueEquipes *****" + "\n");
 		System.out.println("VueEquipe de référence: " + new VueEquipes("Equipe 1",description));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de VueEquipes");
+		System.out.println("\n" + "***** Fin du test de la class VueEquipes *****" + "\n");
 	}
 	
 	@Before
@@ -62,7 +62,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetRealisation() {
-		System.out.println("getRealisation");
+		System.out.println("Test méthode : getRealisation");
 		assertEquals(2,exampleEquipe.getRealisation(2));
 	}
 	
@@ -71,8 +71,10 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testDonneesEquipe() {
-		System.out.println("getDonneesEquipe");
-		assertEquals(2,exampleEquipe.getDonneesEquipe());
+		System.out.println("Test méthode : getDonneesEquipe");
+		//System.out.println(exampleEquipe.getDonneesEquipe());
+		String chaine = "Equipes{nomEquipe='Equipe 1', caisse=300, qualite=100}";
+		assertEquals(chaine,exampleEquipe.getDonneesEquipe());
 	}
 	
 	/**
@@ -80,7 +82,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetEquipes() {
-		System.out.println("getEquipes");
+		System.out.println("Test méthode : getEquipes");
 		assertEquals(autreEquipe.getEquipes(),exampleEquipe.getEquipes());
 	}
 	
@@ -89,7 +91,8 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetEquipe() {
-		System.out.println("getEquipe");
+		System.out.println("Test méthode : getEquipe");
+		System.out.println(exampleEquipe.getEquipe("Equipe 1"));
 		assertEquals(autreEquipe1.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 1"));
 	}
 	
@@ -100,7 +103,7 @@ public class VueEquipesTest {
 	public void testAjouterEquipe() {
 		VueJoueur  equipe = new VueEquipes();
 		equipe.ajouterEquipe(new VueEquipes("Equipe 2", description));
-		System.out.println("getAjouterEquipe");
+		System.out.println("Test méthode : getAjouterEquipe");
 		assertEquals(equipe.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 2"));
 	}
 	
@@ -109,7 +112,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testFinDuTour() {
-		System.out.println("finDuTour()");
+		System.out.println("Test méthode : finDuTour()");
 		assertEquals(1,exampleEquipe.getNumeroTour());
 	}
 		
@@ -136,7 +139,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetDebutId() {
-		System.out.println("getDebutId()");
+		System.out.println("Test méthode : getDebutId()");
 		assertEquals("A",exampleEquipe.getDebutId());
 	}
 	
@@ -145,7 +148,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetPlateau() {
-		System.out.println("getPlateau()");
+		System.out.println("Test méthode : getPlateau()");
 		assertEquals("A",exampleEquipe.getPlateau());
 	}
 	
@@ -154,7 +157,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetDuree() {
-		System.out.println("getDuree(int id)");
+		System.out.println("Test méthode : getDuree(int id)");
 		assertEquals(1,exampleEquipe.getDuree(1));
 	}
 	
@@ -163,7 +166,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetFinId() {
-		System.out.println("getFinId()");
+		System.out.println("Test méthode : getFinId()");
 		assertEquals(1,exampleEquipe.getFinId());
 	}
 
@@ -172,7 +175,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetNom() {
-		System.out.println("getNom");
+		System.out.println("Test méthode : getNom");
 		assertEquals("Equipe 2",exampleEquipe.getNom());
 	}	
 
@@ -181,7 +184,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetNumeroTour() {
-		System.out.println("getNumeroTour");
+		System.out.println("Test méthode : getNumeroTour");
 		assertEquals(2,exampleEquipe.getNumeroTour());
 	}	
 
@@ -191,7 +194,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testGetQualite() {
-		System.out.println("getQualite");
+		System.out.println("Test méthode : getQualite");
 		assertEquals(100,exampleEquipe.getQualite());
 	}	
 	
@@ -200,7 +203,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testBaisseQualite() {
-		//System.out.println("baisseQualite");
+		System.out.println("Test méthode : baisseQualite");
 		autreEquipe.baisseQualite(10);
 		//System.out.println(this.autreEquipe);
 		assertEquals(autreEquipe.getQualite(),exampleEquipe.getQualite());
@@ -212,7 +215,7 @@ public class VueEquipesTest {
 	@Test
 	public void testdepense() {
 		System.out.println(autreEquipe.getCaisse());
-		System.out.println("depense");
+		System.out.println("Test méthode : depense");
 		autreEquipe.depense(10);
 		assertEquals(290,exampleEquipe.getCaisse());
 	}	
@@ -223,7 +226,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		VueEquipes instance = new VueEquipes("Equipe 1", description);
 		assertTrue(instance.equals(autreEquipe));
 	}
@@ -233,7 +236,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreEquipe.equals(exampleEquipe));
 	}
 	
@@ -242,7 +245,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		VueEquipes instance = null;
 		assertFalse(autreEquipe.equals(instance));
 	}
@@ -252,7 +255,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "Equipe 1";
 		assertFalse(instance.equals(autreEquipe));
 	}
@@ -262,7 +265,7 @@ public class VueEquipesTest {
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("toString");
+		System.out.println("Test méthode : toString");
 		
 		//String instance = "Equipe 1";
 		//System.out.println(autreEquipe);

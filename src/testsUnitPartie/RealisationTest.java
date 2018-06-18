@@ -43,13 +43,13 @@ public class RealisationTest {
 
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Realisation");
+		System.out.println("***** Début du test de la class Realisation *****" + "\n");
 		System.out.println("Tour de référence: " + new Realisation(description.getTacheById(3)));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("Fin du test de Realisation");
+		System.out.println("\n" + "***** Fin du test de la class Realisation *****" + "\n");
 	}
 	
 	@Before
@@ -67,7 +67,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetTACHE() {
-		System.out.println("getTACHE");
+		System.out.println("Test méthode : getTACHE");
 		Realisation instance = new Realisation(description.getTacheById(3));
 		assertEquals(instance.getTACHE(),exampleRealisation.getTACHE());
 	}
@@ -77,7 +77,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetIdTache() {
-		System.out.println("getIdTache");
+		System.out.println("Test méthode : getIdTache");
 		Realisation instance = new Realisation(description.getTacheById(3));
 		assertEquals(instance.getIdTache(),exampleRealisation.getIdTache());
 	}
@@ -87,7 +87,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetPredecesseurs() {
-		System.out.println("getPredecesseurs");
+		System.out.println("Test méthode : getPredecesseurs");
 		Realisation instance = new Realisation(description.getTacheById(3));
 		assertEquals(instance.getTACHE().getPREDECESSEUR(),exampleRealisation.getTACHE().getPREDECESSEUR());
 	}
@@ -97,7 +97,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetSuccesseurs() {
-		System.out.println("getSuccesseurs");
+		System.out.println("Test méthode : getSuccesseurs");
 		Realisation instance = new Realisation(description.getTacheById(3));
 		assertEquals(instance.getTACHE().getSUCCESSEUR(),exampleRealisation.getTACHE().getSUCCESSEUR());
 	}
@@ -117,7 +117,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetSemainesRestantes() {
-		System.out.println("getSemainesRestantes");
+		System.out.println("Test méthode : getSemainesRestantes");
 		Realisation instance = new Realisation(description.getTacheById(3));
 		assertEquals(instance.getSemainesRestantes(),exampleRealisation.getSemainesRestantes());
 	}
@@ -127,7 +127,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetDateAuPlusTot() {
-		System.out.println("getDateAuPlusTot");
+		System.out.println("Test méthode : getDateAuPlusTot");
 		assertEquals(autreRealisation.getDateAuPlusTot(),exampleRealisation.getDateAuPlusTot());
 	}
 	
@@ -136,7 +136,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testSetDateAuPlusTot() {
-		System.out.println("setDateAuPlusTot");
+		System.out.println("Test méthode : setDateAuPlusTot");
 		exampleRealisation.setDateAuPlusTot(2);
 		assertEquals(2,exampleRealisation.getDateAuPlusTot());
 	}
@@ -146,7 +146,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetDateAuPlusTard() {
-		System.out.println("getDateAuPlusTard");
+		System.out.println("Test méthode : getDateAuPlusTard");
 		assertEquals(autreRealisation.getDateAuPlusTard(),exampleRealisation.getDateAuPlusTard());
 	}
 	
@@ -155,7 +155,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testSetDateAuPlusTard() {
-		System.out.println("setDateAuPlusTard");
+		System.out.println("Test méthode : setDateAuPlusTard");
 		exampleRealisation.setDateAuPlusTard(4);
 		assertEquals(4,exampleRealisation.getDateAuPlusTard());
 	}
@@ -165,7 +165,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetMarque() {
-		System.out.println("getMarque");
+		System.out.println("Test méthode : getMarque");
 		assertEquals(autreRealisation.getMarque(),exampleRealisation.getMarque());
 	}
 	
@@ -174,7 +174,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testSetMarque() {
-		System.out.println("setMarque");
+		System.out.println("Test méthode : setMarque");
 		exampleRealisation.setMarque(true);
 		assertEquals(true,exampleRealisation.getMarque());
 	}
@@ -184,7 +184,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetRouge() {
-		System.out.println("getRouge");
+		System.out.println("Test méthode : getRouge");
 		assertEquals(autreRealisation.getRouge(),exampleRealisation.getRouge());
 	}
 	
@@ -193,7 +193,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetOrange() {
-		System.out.println("getOrange");
+		System.out.println("Test méthode : getOrange");
 		assertEquals(autreRealisation.getOrange(),exampleRealisation.getOrange());
 	}
 	
@@ -202,7 +202,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetvert() {
-		System.out.println("getVert");
+		System.out.println("Test méthode : getVert");
 		assertEquals(autreRealisation.getVert(),exampleRealisation.getVert());
 	}
 	
@@ -211,7 +211,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testGetEtat() {
-		System.out.println("getEtat");
+		System.out.println("Test méthode : getEtat");
 		assertEquals(autreRealisation.getEtat(),exampleRealisation.getEtat());
 	}
 	
@@ -220,7 +220,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testSetEtat() {
-		System.out.println("setEtat");
+		System.out.println("Test méthode : setEtat");
 		exampleRealisation.setEtat(null);
 		assertEquals(null,exampleRealisation.getEtat());
 	}
@@ -230,7 +230,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testAppliquerDelai() {
-		System.out.println("appliquerDelai");
+		System.out.println("Test méthode : appliquerDelai");
 		exampleRealisation.appliquerDelai(2);
 		assertEquals(4,exampleRealisation.getSemainesReel());
 	}
@@ -240,7 +240,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testDecrementerSemaine() {
-		System.out.println("decrementerSemaine");
+		System.out.println("Test méthode : decrementerSemaine");
 		assertEquals(true,exampleRealisation.decrementerSemaine());
 	}
 	
@@ -249,7 +249,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testAppliquerAcceleration() {
-		System.out.println("appliquerAcceleration");
+		System.out.println("Test méthode : appliquerAcceleration");
 		assertEquals(true,exampleRealisation.appliquerAcceleration());
 	}
 	
@@ -258,7 +258,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testAppliquerProtection() {
-		System.out.println("appliquerProtection");
+		System.out.println("Test méthode : appliquerProtection");
 		assertEquals(true,exampleRealisation.appliquerProtection(Couleur.ROUGE));
 	}
 	
@@ -267,7 +267,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		Realisation instance = new Realisation(description.getTacheById(2));
 		assertTrue(instance.equals(autreRealisation));
 	}
@@ -277,7 +277,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreRealisation.equals(exampleRealisation));
 	}
 	
@@ -286,7 +286,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		Realisation instance = null;
 		assertFalse(autreRealisation.equals(instance));
 	}
@@ -296,7 +296,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "Equipe 1";
 		assertFalse(instance.equals(autreRealisation));
 	}
@@ -306,7 +306,7 @@ public class RealisationTest {
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("protege");
+		System.out.println("Test méthode : protege");
 		assertEquals(autreRealisation2,autreRealisation);
 	}
 	

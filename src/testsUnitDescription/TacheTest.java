@@ -6,6 +6,7 @@ import description.Couleur;
 
 import description.Tache;
 import description.TypeAlea;
+import partie.Realisation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -22,13 +23,15 @@ import org.junit.BeforeClass;
 
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class TacheTest {
 	
 	private final Tache exampleTache;
+	private final Tache instance;
 	private Tache autreTache;
+	
 	
 	private static Alea alea0;
 	private static Alea alea1;
@@ -44,17 +47,18 @@ public class TacheTest {
 		
         this.autreTache = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4)));
 		this.exampleTache = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(5,7)));
+		this.instance = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(5,7)));
 	}
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Tache" + "\n");
+		System.out.println("***** Début du test de Tache *****" + "\n");
 		System.out.println("Tache de référence: " + new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4))));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("\n" +"Fin du test de Tache" + "\n");
+		System.out.println("\n" +"***** Fin du test de Tache *****" + "\n");
 	}
 	
 	@Before
@@ -69,20 +73,20 @@ public class TacheTest {
 	
 	
 	/**
-	 * Test de la méthode getAlea() de la class Tache
+	 * Test de la methode getAlea() de la class Tache
 	 */
 	@Test
 	public void testGetAlea() {
-		System.out.println("getAlea");
+		System.out.println("Test méthode : getAlea");
 		assertEquals(alea0,autreTache.getAlea(ROUGE));
 	}
 	
 	/**
-	 * Test de la méthode getID() de la class Tache
+	 * Test de la methode getID() de la class Tache
 	 */
 	@Test
 	public void testGetID() {
-		System.out.println("getID");
+		System.out.println("Test méthode : getID");
 		//à revoir pourquoi ça démarre à 8 ????
 		System.out.println(autreTache.getID());
 		assertEquals(8,autreTache.getID());
@@ -90,115 +94,113 @@ public class TacheTest {
 	
 	
 	/**
-	 * Test de la méthode getNOM() de la class Tache
+	 * Test de la methode getNOM() de la class Tache
 	 */
 	@Test
 	public void testGetNOM() {
-		System.out.println("getNOM");
+		System.out.println("Test méthode : getNOM");
 		assertEquals("Dire",autreTache.getNOM());
 	}
 	
 	/**
-	 * Test de la méthode getCOUT() de la class Tache
+	 * Test de la methode getCOUT() de la class Tache
 	 */
 	@Test
 	public void testGetCOUT() {
-		System.out.println("getCOUT");
+		System.out.println("Test méthode : getCOUT");
 		assertEquals(20,autreTache.getCOUT());
 	}
 	
 	/**
-	 * Test de la méthode getSEMAINES() de la class Tache
+	 * Test de la methode getSEMAINES() de la class Tache
 	 */
 	@Test
 	public void testGetSEMAINES() {
-		System.out.println("getSEMAINES");
+		System.out.println("Test méthode : getSEMAINES");
 		assertEquals(3,autreTache.getSEMAINES());
 	}
 	
 	/**
-	 * Test de la méthode getSEMAINES_MAX() de la class Tache
+	 * Test de la methode getSEMAINES_MAX() de la class Tache
 	 */
 	@Test
 	public void testGetSEMAINES_MAX() {
-		System.out.println("getSEMAINES_MAX");
+		System.out.println("Test méthode : getSEMAINES_MAX");
 		assertEquals(4,autreTache.getSEMAINES_MAX());
 	}
 	
 	/**
-	 * Test de la méthode getPREDECESSEUR() de la class Tache
-	 * Méthode en attente car le predecesseur n'est pas encore utilisé
+	 * Test de la methode getPREDECESSEUR() de la class Tache
 	 */
-	/*
 	@Test
 	public void testGetPREDECESSEUR() {
-		System.out.println("getPREDECESSEUR");
-		System.out.println(autreTache.getPREDECESSEUR());
-		assertEquals(new int[]{},autreTache.getPREDECESSEUR());
-	}*/
+		System.out.println("Test méthode : getPREDECESSEUR");
+		//System.out.println(instance.getPREDECESSEUR());
+		assertEquals(instance.getPREDECESSEUR(),autreTache.getPREDECESSEUR());
+	}
 	
 	/**
-	 * Test de la méthode getPREDECESSEUR() de la class Tache
-	 * Méthode en attente car le predecesseur n'est pas encore utilisé
+	 * Test de la methode getSUCCESSEUR() de la class Tache
 	 */
-	/*
 	@Test
 	public void testGetSUCCESSEUR() {
-		System.out.println("getSUCCESSEUR");
+		System.out.println("Test méthode : getSUCCESSEUR");
+		System.out.println(autreTache.getSUCCESSEUR());
 		System.out.println(autreTache.getSUCCESSEUR());
 		assertEquals(new int[]{2, 3, 4},autreTache.getSUCCESSEUR());
-	}*/
+	}
 	
 	/**
-	 * Test de la méthode toString() de la class Tache
+	 * Test de la methode toString() de la class Tache
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("toString");
+		System.out.println("Test méthode : toString");
+		
 		Tache instance = new Tache("Dire", 20, 3, 4, alea0, alea1, alea2, new ArrayList<Integer>(),new ArrayList<Integer>(Arrays.asList(2,3,4)));
 		String expResult = "Id : 18\nNom : Dire\nSemaines : 3\nROUGE : Délai	3	KKK\nORANGE : Délai	1	L\nVERT : Délai	1	M\n";
+		System.out.println(instance);
+		System.out.println(expResult);
 		assertEquals(expResult, instance.toString());
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Tache
+	 * Test de la methode equals() de la class Tache
 	 * ne pourra jamais tester 2 objets alea du fait
-	 * de l'ID différent pour chaque alea
+	 * de l'ID different pour chaque alea
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		Tache instance = new Tache("Réfléchir", 10, 2, 4, alea0, alea1, alea2,new ArrayList<Integer>(Arrays.asList(1)),new ArrayList<Integer>(Arrays.asList(5,7)));
 		assertTrue(instance.equals(exampleTache));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Tache
+	 * Test de la methode equals() de la class Tache
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreTache.equals(exampleTache));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Tache avec null
+	 * Test de la methode equals() de la class Tache avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		Tache instance = null;
-		System.out.println(instance);
-		System.out.println(exampleTache);
 		assertFalse(exampleTache.equals(instance));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Tache avec un autre objet
+	 * Test de la methode equals() de la class Tache avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "Réfléchir, 10, 2, 4, alea0, alea1, alea2,new int[]{1},new int[]{5,7}";
 		assertFalse(instance.equals(exampleTache));
 	}

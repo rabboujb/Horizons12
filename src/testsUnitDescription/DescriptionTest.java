@@ -19,22 +19,23 @@ public class DescriptionTest {
     private Description exampleDescription;
     private Description autreDescription;
 
-    Description instance = new Description();
+    private Description instance;
     	
 	public DescriptionTest() {
 		this.exampleDescription = new Description();
+		this.instance = new Description();
 		this.autreDescription = new Description();
 	}
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de la class Description" + "\n");
+		System.out.println("***** Début du test de la class Description ***** " + "\n");
 		System.out.println("Description de référence: " + new Description() + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("\n" + "Fin du test de Description" + "\n");
+		System.out.println("\n" + "***** Fin du test de Description *****" + "\n");
 	}
 	
 	@Before
@@ -52,7 +53,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testGetPlateau() {
-		System.out.println("getPlateau");
+		System.out.println("Test méthode : getPlateau");
 		assertEquals(instance.getPlateau(),exampleDescription.getPlateau());
 	}
 	
@@ -61,9 +62,9 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testGetTache() {
-		System.out.println("getTache");
-		System.out.println(instance.getTache(1));
-		System.out.println(exampleDescription.getTache(1));
+		System.out.println("Test méthode : getTache");
+		//System.out.println(instance.getTache(1));
+		//System.out.println(exampleDescription.getTache(1));
 		assertEquals(instance.getTache(1),exampleDescription.getTache(1));
 	}
 	
@@ -72,7 +73,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testGetTacheById() {
-		System.out.println("getTacheById");
+		System.out.println("Test méthode : getTacheById");
 		assertEquals(instance.getTacheById(1),exampleDescription.getTacheById(1));
 	}
 	
@@ -81,7 +82,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testGetTours() {
-		System.out.println("getTours");
+		System.out.println("Test méthode : getTours");
 		assertEquals(instance,exampleDescription.getTours());
 	}
 	
@@ -90,7 +91,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testGetTour() {
-		System.out.println("getTour");
+		System.out.println("Test méthode : getTour");
 		assertEquals(instance.getTour(1),exampleDescription.getTour(1));
 	}
 	
@@ -99,7 +100,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		assertTrue(instance.equals(autreDescription));
 	}
 	
@@ -108,7 +109,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(instance.equals(autreDescription));
 	}
 	
@@ -117,7 +118,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		Description instance = null;
 		assertFalse(autreDescription.equals(instance));
 	}
@@ -127,7 +128,7 @@ public class DescriptionTest {
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "ROUGE,A,DELAI,1";
 		assertFalse(instance.equals(autreDescription));
 	}

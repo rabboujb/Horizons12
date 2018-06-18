@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
- * @author Ismérie
+ * @author Ismerie
  */
 
 public class TourAleaTest {
@@ -28,13 +28,13 @@ public class TourAleaTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de TourAlea" + "\n");
+		System.out.println("***** Début du test de TourAlea *****" + "\n");
 		System.out.println("Tour de référence: " + new TourAlea(ALEA,1) + "\n");
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println( "\n" + "Fin du test de TourAlea" + "\n");
+		System.out.println( "\n" + "***** Fin du test de TourAlea *****" + "\n");
 	}
 	
 	@Before
@@ -52,7 +52,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testGetIDTache() {
-		System.out.println("getIDTache");
+		System.out.println("Test méthode : getIDTache");
 		assertEquals(1,exampleTourAlea.getIdTache());
 	}
 	
@@ -61,7 +61,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testTirage() {
-		System.out.println("tirage");
+		System.out.println("Test méthode : tirage");
 		Couleur coul = exampleTourAlea.tirage();
 		assertTrue(coul.equals(Couleur.ROUGE)||coul.equals(Couleur.ORANGE)||coul.equals(Couleur.VERT));
 	}
@@ -72,7 +72,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		TourAlea instance = new TourAlea(ALEA,1);
 		assertTrue(instance.equals(autreTourAlea));
 	}
@@ -82,7 +82,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreTourAlea.equals(exampleTourAlea));
 	}
 	
@@ -91,7 +91,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		TourAlea instance = null;
 		assertFalse(autreTourAlea.equals(instance));
 	}
@@ -111,7 +111,7 @@ public class TourAleaTest {
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("toString");
+		System.out.println("Test méthode : toString");
 		TourAlea instance = new TourAlea(ALEA,1);
 	    String chaine = "Tour 14 : Aléa concernant la tâche 1";
 		assertEquals(chaine, instance.toString());

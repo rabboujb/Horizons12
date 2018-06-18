@@ -18,6 +18,7 @@ import partie.Equipes;
 
 public class EquipesTest {
 	
+	private static final Class<? extends Throwable> instanceException = null;
 	private final Equipes exampleEquipes;
 	private Equipes autreEquipes;
 	
@@ -28,13 +29,13 @@ public class EquipesTest {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		System.out.println("Début du test de Equipes" + "\n");
+		System.out.println("***** Début du test de la class Equipes *****" + "\n");
 		System.out.println("Tour de référence: " + "\n" + new Equipes("Equipe 1", 300, 100));
 	}
 	
 	@AfterClass
 	public static void tearDownClass() {
-		System.out.println("\n" + "Fin du test de Equipes" + "\n");
+		System.out.println("\n" + "***** Fin du test de la class Equipes *****" + "\n");
 	}
 	
 	@Before
@@ -52,7 +53,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testGetCaisse() {
-		System.out.println("getCaisse");
+		System.out.println("Test méthode : getCaisse");
 		assertEquals(300,exampleEquipes.getCaisse());
 	}
 	
@@ -61,7 +62,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testGetNom() {
-		System.out.println("getNom");
+		System.out.println("Test méthode : getNom");
 		assertEquals("Equipe 1",exampleEquipes.getNom());
 	}
 	
@@ -70,7 +71,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testGetQualite() {
-		System.out.println("getQualite");
+		System.out.println("Test méthode : getQualite");
 		assertEquals(100,exampleEquipes.getQualite());
 	}
 	
@@ -79,7 +80,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testGetBaisseQualite() {
-		System.out.println("getBaisseQualite");
+		System.out.println("Test méthode : getBaisseQualite");
 		assertEquals(autreEquipes.getQualite(),exampleEquipes.getQualite());
 	}
 	
@@ -88,19 +89,21 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testdepense() {
-		System.out.println("depense");
+		System.out.println("Test méthode : depense");
 		autreEquipes.depense(10);
 		assertEquals(290,autreEquipes.getCaisse());
 	}	
 	
 	/**
 	 * Test de la methode equals() de la class Equipes
-	 * ne sera jamais true car les id des tours sont différents
+	 * ne sera jamais true car les id des tours sont differents
 	 */
 	@Test
 	public void testEquals_True() {
-		System.out.println("equals: true");
+		System.out.println("Test equals: true");
 		Equipes instance = new Equipes("Equipe 2", 300, 100);
+		System.out.println(instance);
+		System.out.println(autreEquipes);
 		assertTrue(instance.equals(autreEquipes));
 	}
 	
@@ -109,7 +112,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testEquals_False() {
-		System.out.println("equals: false");
+		System.out.println("Test equals: false");
 		assertFalse(autreEquipes.equals(exampleEquipes));
 	}
 	
@@ -118,17 +121,17 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testEquals_Null_Object() {
-		System.out.println("equals avec null");
+		System.out.println("Test equals avec null");
 		Equipes instance = null;
 		assertFalse(autreEquipes.equals(instance));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Equipes avec un autre objet
+	 * Test de la methode equals() de la class Equipes avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {
-		System.out.println("equals avec un autre objet");
+		System.out.println("Test equals avec un autre objet");
 		String instance = "Equipe 1, 300, 100";
 		assertFalse(instance.equals(autreEquipes));
 	}
@@ -138,7 +141,7 @@ public class EquipesTest {
 	 */
 	@Test
 	public void testToString() {
-		System.out.println("toString");
+		System.out.println("Test méthode : toString");
 		Equipes instance = new Equipes("Equipe 1", 300, 100);
 	    String chaine = "Equipes{nomEquipe='Equipe 1', caisse=300, qualite=100}";
 		assertEquals(chaine, instance.toString());
