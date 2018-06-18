@@ -42,6 +42,7 @@ public class Pert {
 	 * @return ArrayList de realisations ordonnance
 	 */
 	private void trieTopologique(){
+		System.out.println("Trie commencé");
 	    ArrayList<Integer> idRealisationsTraitees = new ArrayList<>();
 	    ArrayList<Integer> idRealisationsMarquees = new ArrayList<>();
 
@@ -57,6 +58,7 @@ public class Pert {
 			idRealisationsMarquees.clear();
 		}
 		this.reorganiserPert(idRealisationsTraitees);
+		System.out.println("Trie fini");
 
 //		test
 //		for(Realisation  realisation : realisations) {
@@ -95,6 +97,7 @@ public class Pert {
      * Methode qui calcul la date au plus tot de chaque realisation
      */
     public void calculDateAuPlusTot() {
+		System.out.println("date au plus tot commencée");
     	this.trieTopologique();
     	// on parcourt la liste des realisations
     	for(int i = 0; i < this.realisations.size(); i++){
@@ -124,6 +127,7 @@ public class Pert {
 				this.realisations.get(i).setDateAuPlusTot(max);
 			}
     	}
+		System.out.println("date au plus tot commencée");
     }
 
     /**
