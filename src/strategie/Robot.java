@@ -189,6 +189,13 @@ public class Robot implements Strategie, Serializable {
 		}
 	}
 
+	public void jouerTourFinal(VueJoueur vue) {
+		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
+		((TourFinal) tour).calculerScore(vue.getNom(), vue.getRealisations(), vue.getDonneesEquipe().getCaisse(),
+		vue.getDonneesEquipe().getQualite());
+		System.out.println(((TourFinal)tour).toString(vue.getNom()));
+	}
+
 	/**
 	 * Methode qui 
 	 * @param choix
