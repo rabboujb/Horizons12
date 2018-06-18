@@ -13,10 +13,11 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses(
 		{
-			testsUnitDescription.DescriptionTest.class,
 			testsUnitDescription.AleaTest.class,
+			testsUnitDescription.DescriptionTest.class,
 			testsUnitDescription.TacheTest.class,
 			testsUnitDescription.TourAleaTest.class,
+			testsUnitDescription.TourFinalTest.class,
 			testsUnitDescription.TourJalonTest.class,
 		}
 )

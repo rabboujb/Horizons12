@@ -25,14 +25,20 @@ import partie.VueJoueur;
 public class VueEquipesTest {
 
 	private VueEquipes exampleEquipe;
+	private VueEquipes exampleEquipeListe;
 	private VueEquipes autreEquipe;
+	private VueEquipes autreEquipeListe;
 	private VueEquipes autreEquipe1;
 	
 	public static Description description = new Description ();
 	
 	public VueEquipesTest() {
+		this.exampleEquipeListe = new VueEquipes();
 		this.exampleEquipe = new VueEquipes("Equipe 1",description);
-		this.autreEquipe = new VueEquipes("Equipe 2", description);
+		this.exampleEquipeListe.ajouterEquipe(this.exampleEquipe);
+		this.autreEquipeListe = new VueEquipes();
+		this.autreEquipe = new VueEquipes("Equipe 1", description);
+		this.autreEquipeListe.ajouterEquipe(this.autreEquipe);
 		this.autreEquipe1 = new VueEquipes("Equipe 1", description); 
 	}
 	
@@ -63,7 +69,13 @@ public class VueEquipesTest {
 	@Test
 	public void testGetRealisation() {
 		System.out.println("Test méthode : getRealisation");
-		assertEquals(2,exampleEquipe.getRealisation(2));
+		String chaine="Id : 2\n" + 
+				"Nom : Dire\n" + 
+				"Semaines : 3	semaines restantes : ***\n" + 
+				"ROUGE	:	\"C\" 	Délai	Gravité 1	status : non protégé\n" + 
+				"ORANGE	:	\"D\" 	Délai	Gravité 1	status : non protégé\n" + 
+				"VERT	:	\"bb\" 	Coût	Gravité 2	status : non protégé\n";
+		assertEquals(chaine,exampleEquipe.getRealisation(2));
 	}
 	
 	/**
@@ -92,8 +104,8 @@ public class VueEquipesTest {
 	@Test
 	public void testGetEquipe() {
 		System.out.println("Test méthode : getEquipe");
-		System.out.println(exampleEquipe.getEquipe("Equipe 1"));
-		assertEquals(autreEquipe1.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 1"));
+		//System.out.println(exampleEquipe.getEquipe("Equipe 1"));
+		assertEquals(autreEquipeListe.getEquipe("Equipe 1"),exampleEquipeListe.getEquipe("Equipe 1"));
 	}
 	
 	/**
@@ -103,8 +115,10 @@ public class VueEquipesTest {
 	public void testAjouterEquipe() {
 		VueJoueur  equipe = new VueEquipes();
 		equipe.ajouterEquipe(new VueEquipes("Equipe 2", description));
+		this.exampleEquipeListe.ajouterEquipe(new VueEquipes("Equipe 2", description));
+
 		System.out.println("Test méthode : getAjouterEquipe");
-		assertEquals(equipe.getEquipe("Equipe 2"),exampleEquipe.getEquipe("Equipe 2"));
+		assertEquals(equipe.getEquipe("Equipe 2"),exampleEquipeListe.getEquipe("Equipe 2"));
 	}
 	
 	/**
@@ -113,7 +127,7 @@ public class VueEquipesTest {
 	@Test
 	public void testFinDuTour() {
 		System.out.println("Test méthode : finDuTour()");
-		assertEquals(1,exampleEquipe.getNumeroTour());
+		assertEquals(0,exampleEquipe.getNumeroTour());
 	}
 		
 	/**
@@ -131,7 +145,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetCurrent() {
 		System.out.println("getCurrent(String id)");
-		assertEquals("A",exampleEquipe.getCurrent("A"));
+		assertEquals(0,exampleEquipe.getCurrent("A"));
 	}
 	
 	/**
@@ -140,7 +154,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetDebutId() {
 		System.out.println("Test méthode : getDebutId()");
-		assertEquals("A",exampleEquipe.getDebutId());
+		assertEquals("Réfléchir",exampleEquipe.getDebutId());
 	}
 	
 	/**
@@ -149,7 +163,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetPlateau() {
 		System.out.println("Test méthode : getPlateau()");
-		assertEquals("A",exampleEquipe.getPlateau());
+		assertEquals(autreEquipe.getPlateau(),exampleEquipe.getPlateau());
 	}
 	
 	/**
@@ -158,7 +172,8 @@ public class VueEquipesTest {
 	@Test
 	public void testGetDuree() {
 		System.out.println("Test méthode : getDuree(int id)");
-		assertEquals(1,exampleEquipe.getDuree(1));
+		//System.out.println(exampleEquipe.getDuree(1));
+		assertEquals(4,exampleEquipe.getDuree(1));
 	}
 	
 	/**
@@ -167,7 +182,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetFinId() {
 		System.out.println("Test méthode : getFinId()");
-		assertEquals(1,exampleEquipe.getFinId());
+		assertEquals("Présenter",exampleEquipe.getFinId());
 	}
 
 	/**
@@ -176,7 +191,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetNom() {
 		System.out.println("Test méthode : getNom");
-		assertEquals("Equipe 2",exampleEquipe.getNom());
+		assertEquals("Equipe 1",exampleEquipe.getNom());
 	}	
 
 	/**
@@ -185,7 +200,7 @@ public class VueEquipesTest {
 	@Test
 	public void testGetNumeroTour() {
 		System.out.println("Test méthode : getNumeroTour");
-		assertEquals(2,exampleEquipe.getNumeroTour());
+		assertEquals(0,exampleEquipe.getNumeroTour());
 	}	
 
 	
@@ -205,6 +220,7 @@ public class VueEquipesTest {
 	public void testBaisseQualite() {
 		System.out.println("Test méthode : baisseQualite");
 		autreEquipe.baisseQualite(10);
+		exampleEquipe.baisseQualite(10);
 		//System.out.println(this.autreEquipe);
 		assertEquals(autreEquipe.getQualite(),exampleEquipe.getQualite());
 	}	
@@ -217,6 +233,7 @@ public class VueEquipesTest {
 		System.out.println(autreEquipe.getCaisse());
 		System.out.println("Test méthode : depense");
 		autreEquipe.depense(10);
+		exampleEquipe.depense(10);
 		assertEquals(290,exampleEquipe.getCaisse());
 	}	
 	

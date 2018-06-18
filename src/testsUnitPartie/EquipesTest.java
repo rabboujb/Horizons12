@@ -8,7 +8,10 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import partie.Equipes;
 
 /**
@@ -21,6 +24,8 @@ public class EquipesTest {
 	private static final Class<? extends Throwable> instanceException = null;
 	private final Equipes exampleEquipes;
 	private Equipes autreEquipes;
+	
+
 	
 	public EquipesTest() {
 		this.exampleEquipes = new Equipes("Equipe 1", 300, 100);
@@ -47,6 +52,7 @@ public class EquipesTest {
 	public void tearDown() {
 		autreEquipes = null;
 	}
+	
 	
 	/**
 	 * Test de la methode getCaisse() de la class Equipes

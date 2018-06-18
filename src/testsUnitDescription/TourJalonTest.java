@@ -111,7 +111,7 @@ public class TourJalonTest {
 	public void testToString() {
 		System.out.println("Test méthode : toString");
 		TourJalon instance = new TourJalon(JALON,new int[]{1, 2, 3, 4});
-	    String chaine = "Tour 17 : Jalon concernant les tâches : 1 2 3 4 ";
+	    String chaine = "Tour 448 : Jalon concernant les tâches : 1 2 3 4";
 	    System.out.println(instance.toString());
 	    System.out.println(chaine);
 	    assertEquals(chaine, instance.toString());

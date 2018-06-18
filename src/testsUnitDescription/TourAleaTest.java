@@ -48,7 +48,7 @@ public class TourAleaTest {
 	}
 
 	/**
-	 * Test de la méthode getIDTache() de la class TourALea
+	 * Test de la methode getIDTache() de la class TourALea
 	 */
 	@Test
 	public void testGetIDTache() {
@@ -57,7 +57,7 @@ public class TourAleaTest {
 	}
 	
 	/**
-	 * Test de la méthode tirage() de la class TourALea
+	 * Test de la methode tirage() de la class TourALea
 	 */
 	@Test
 	public void testTirage() {
@@ -67,7 +67,7 @@ public class TourAleaTest {
 	}
 
 	/**
-	 * Test de la méthode equals() de la class TourAlea
+	 * Test de la methode equals() de la class TourAlea
 	 * ne sera jamais true car les id des tours sont différents
 	 */
 	@Test
@@ -78,7 +78,7 @@ public class TourAleaTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class TourAlea
+	 * Test de la methode equals() de la class TourAlea
 	 */
 	@Test
 	public void testEquals_False() {
@@ -87,17 +87,19 @@ public class TourAleaTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class TourAlea avec null
+	 * Test de la methode equals() de la class TourAlea avec null
 	 */
 	@Test
 	public void testEquals_Null_Object() {
 		System.out.println("Test equals avec null");
 		TourAlea instance = null;
+		System.out.println(instance);
+		System.out.println(autreTourAlea);
 		assertFalse(autreTourAlea.equals(instance));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class TourAlea avec un autre objet
+	 * Test de la methode equals() de la class TourAlea avec un autre objet
 	 */
 	@Test
 	public void testEquals_Other_Object() {
@@ -107,7 +109,7 @@ public class TourAleaTest {
 	}
 	
 	/**
-	 * Test de la méthode toString() de la class TourAlea
+	 * Test de la methode toString() de la class TourAlea
 	 */
 	@Test
 	public void testToString() {

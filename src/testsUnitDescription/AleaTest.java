@@ -84,7 +84,7 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode getNOM() de la class Alea
+	 * Test de la methode getNOM() de la class Alea
 	 */
 	@Test
 	public void testGetNOM() {
@@ -93,17 +93,19 @@ public class AleaTest {
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Alea
+	 * Test de la methode equals() de la class Alea
 	 */
 	@Test
 	public void testEquals_True() {
 		System.out.println("Test equals: true");
 		Alea instance = new Alea(TypeAlea.DELAI, Couleur.ROUGE, 1, "A");
+		//System.out.println(instance);
+		//System.out.println(exampleAlea);
 		assertTrue(instance.equals(exampleAlea));
 	}
 	
 	/**
-	 * Test de la méthode equals() de la class Alea
+	 * Test de la methode equals() de la class Alea
 	 */
 	@Test
 	public void testEquals_False(){

@@ -112,7 +112,8 @@ public class TourFinalTest {
 		TourFinal chaine = new TourFinal(TypeTour.FINAL);
 		
 	    instance.calculerScore("test1", realisations, 200, 100);
-	    chaine.calculerScore("test2", realisations, 200, 100);
+	    chaine.calculerScore("test1", realisations, 200, 100);
+
 	    assertEquals(chaine, instance.toString());
 	}
 	
