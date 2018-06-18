@@ -1,7 +1,6 @@
 package strategie;
 import description.*;
 import partie.VueJoueur;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -12,21 +11,18 @@ import java.util.*;
 public class Robot implements Strategie, Serializable {
 	private Scanner sc = new Scanner(System.in);
 	private Random rand = new Random();
-
 	private List<Couleur> tirages;
-	private Couleur tirage;
 
 	public Robot() {
 		this.tirages = new ArrayList<>();
 		for(int i=0;i<10;i++) {
-			tirage = Couleur.tirage();
+			Couleur tirage = Couleur.tirage();
 			tirages.add(tirage);
 		}
 	}
 
-	public List<Couleur> getTirages()           { return tirages;               }
-	public Couleur getTirage(int id)            { return tirages.get(id);       }
-	public void ajouterTirage(Couleur tirage)   { tirages.add(tirage);          }
+	public List<Couleur> getTirages()   { return tirages;                   }
+	public Couleur getTirage(int id)    { return tirages.get(id);           }
 
 	public void nouveauTour(VueJoueur vue) {
 		vue.finDuTour();
@@ -34,10 +30,10 @@ public class Robot implements Strategie, Serializable {
 
 	public void jouerEtape(VueJoueur vue) {
 		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
-		if(tour.getTYPE() == TypeTour.ALEA && vue.getNumeroTour() == tour.getNUMERO()) {
+		if(tour.getTYPE() == TypeTour.ALEA) {
 			// Equipe Horizons12
 			if(tour instanceof TourAlea) {
-				int idTache = tour.getNUMERO();
+				int idTache = vue.getNumeroTache();
 				// Accélération
 				if(vue.getRealisation(idTache).getAccelere())
 				// Baisse de la caisse de 10 euros
@@ -101,6 +97,7 @@ public class Robot implements Strategie, Serializable {
 							.getAlea(Couleur.VERT).getGRAVITE());
 					}
 				}
+				vue.finDeTache();
 			}
 		}
 	}
@@ -180,6 +177,14 @@ public class Robot implements Strategie, Serializable {
 			}
 		}
 	}
+
+	public void jouerTourFinal(VueJoueur vue) {
+		Tour tour = vue.getPlateau().getTours().get(vue.getNumeroTour());
+		((TourFinal) tour).calculerScore(vue.getNom(), vue.getRealisations(), vue.getDonneesEquipe().getCaisse(), vue.getDonneesEquipe().getQualite());
+//		System.out.println(((TourFinal) tour).toString(vue.getNom()));
+	}
+
+
 
 	public String getChoix(String choix, String regex) {
 		while(!choix.matches(regex)) {

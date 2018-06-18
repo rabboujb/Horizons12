@@ -197,6 +197,8 @@ public class Description implements Serializable {
         tours.add(new TourAlea(TypeTour.ALEA, 7));
         tours.add(new TourAlea(TypeTour.ALEA, 8));
 
+        tours.add(new TourFinal(TypeTour.FINAL));
+
         return tours;
     }
 

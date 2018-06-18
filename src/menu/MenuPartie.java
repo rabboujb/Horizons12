@@ -2,7 +2,6 @@ package menu;
 import description.*;
 import partie.VueJoueur;
 import java.util.Scanner;
-import partie.Realisation;
 
 /**
  *
@@ -57,17 +56,23 @@ public class MenuPartie {
 			VueJoueur joueur = equipes.getEquipe(equipes.getEquipes().get(Integer.parseInt(numJoueur)-1).getNom());
 
 			if(!joueur.getNom().equals("IA")) {
+				System.out.println();
 				System.out.println("Informations de l'équipe "+joueur.getNom()
 					+"\nTour "+joueur.getNumeroTour()
 					+"\n"
 					+"\nCaisse : "+joueur.getDonneesEquipe().getCaisse()+" €"
 					+"\nQualité : "+joueur.getDonneesEquipe().getQualite()+" %");
 				if(joueur.getNumeroTour() > 0)
-					System.out.println("\nSemaines jouées : "+joueur.getRealisation(joueur.getNumeroTour()).getSemainesReel());
+					System.out.println(joueur.getRealisation(joueur.getNumeroTour()));
 			}
 			else
 				System.out.println("Les informations de l'IA ne sont pas visualisables.");
 
+	        System.out.println();
+
+
+
+	        System.out.println();
 	        System.out.println("===");
 	        System.out.println();
 

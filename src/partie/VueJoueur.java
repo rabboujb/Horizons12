@@ -1,7 +1,7 @@
 package partie;
-import description.Couleur;
 import description.Description;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,4 +83,10 @@ public interface VueJoueur {
 	DonneesJoueur getDonneesEquipe();
 
 	Realisation getRealisation(int idTache);
+
+	ArrayList<Realisation> getRealisations();
+
+	int getNumeroTache();
+
+	void finDeTache();
 }

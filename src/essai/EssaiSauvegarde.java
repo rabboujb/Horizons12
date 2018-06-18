@@ -16,7 +16,7 @@ public class EssaiSauvegarde {
     public static void main(String [] args)
     {
 		try {
-			FileInputStream fis = new FileInputStream("src/Sauvegarde/");
+			FileInputStream fis = new FileInputStream("src/Sauvegarde/Partie_IA/Tirages");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			while(fis.available() != 0) {

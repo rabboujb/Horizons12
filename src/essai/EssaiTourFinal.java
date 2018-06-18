@@ -3,6 +3,7 @@ package essai;
 import description.Description;
 import description.Tache;
 import description.TourFinal;
+import description.TypeTour;
 import partie.Realisation;
 
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ public class EssaiTourFinal {
             realisations.add(new Realisation(tache));
         }
 
-        TourFinal tourFinal = new TourFinal();
+        TourFinal tourFinal = new TourFinal(TypeTour.FINAL);
 
         tourFinal.calculerScore("Les ChatontonFlingeurs", realisations, 200, 70);
-        System.out.println(tourFinal);
+        tourFinal.calculerScore("Les ChatontonFlingeurs 2", realisations, 150, 90);
+//        System.out.println(tourFinal.toString("Les ChatontonFlingeurs"));
+//        System.out.println(tourFinal.toString("Les ChatontonFlingeurs 2"));
     }
 }

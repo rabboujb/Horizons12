@@ -22,13 +22,15 @@ public class TourFinal extends Tour {
     /**
      * Constructeur de TourFinal
      */
-    public TourFinal() {
-        super(TypeTour.FINAL);
+    public TourFinal(TypeTour type) {
+        super(type);
         SCORES = new HashMap<>();
     }
 
     /**
-     * Méthode qui contiens la formule de calcule des scores, elle arondi le score afin d'obtenir un nombre entier
+     * Méthode qui contiens la formule de calcule des scores, elle arondi le score afin d'obtenir un nombre entier.
+     * Si le score est négatif il est rammené à 0
+     *
      * @param nomEquipe
      * @param realisations
      * @param caisse
@@ -37,12 +39,18 @@ public class TourFinal extends Tour {
     public void calculerScore(String nomEquipe, ArrayList<Realisation> realisations, int caisse, int qualite) {
         int score = Math.toIntExact(Math.round(((32 + (24 - dureeProjet(realisations)) * (caisse(caisse) + 20.0)) / 8000) * 100));
         score -= qualite(qualite);
+
+        if (score < 0) {
+            score = 0;
+        }
+
         SCORES.put(nomEquipe, score);
     }
 
     /**
      * Méthode privé qui se sert du calcule de date au plus tot du Pert afin d'obtenir le temps mis par le joueur pour
      * réaliser le projet.
+     *
      * @param realisations
      * @return Le temps mis par le joueur pour terminer le projet
      */
@@ -55,6 +63,7 @@ public class TourFinal extends Tour {
 
     /**
      * Méthode qui se charge de retournmer un montant de caisse compris entre 0 et 200
+     *
      * @param caisse
      * @return montant compris entre 0 et 200
      */
@@ -62,8 +71,7 @@ public class TourFinal extends Tour {
         if (caisse > 200) {
             System.out.println(caisse);
             return 200;
-        }
-        else if(caisse < 0){
+        } else if (caisse < 0) {
             return 0;
         }
         return caisse;
@@ -71,6 +79,7 @@ public class TourFinal extends Tour {
 
     /**
      * Méthode qui calcule le pourcentage de baisse de qualité
+     *
      * @param qualite
      * @return le pourcentage de malus de qualité
      */
@@ -78,16 +87,34 @@ public class TourFinal extends Tour {
         return 100 - qualite;
     }
 
-    /**
+	public static HashMap<String, Integer> getSCORES() {
+		return SCORES;
+	}
+
+	/**
      * Méthode toString qui retourne une chaine contenant le nom et le score de chaque équipe
-     * @return
+     *
+     * @return String
      */
     public String toString() {
         StringBuilder chaine = new StringBuilder();
 
-        for (Map.Entry<String, Integer> entree : SCORES.entrySet()){
+        for (Map.Entry<String, Integer> entree : SCORES.entrySet()) {
             chaine.append("Equipe : ").append(entree.getKey()).append("\tScore : ").append(entree.getValue()).append("%\n");
         }
+
+        return chaine.toString();
+    }
+
+    /**
+     * Méthode toString qui retourne le score de l'équipe passée en paramètre
+     * @param equipe
+     * @return String
+     */
+    public String toString(String equipe) {
+        StringBuilder chaine = new StringBuilder();
+
+        chaine.append("Equipe : ").append(equipe).append("\tScore : ").append(SCORES.get(equipe)).append("%\n");
 
         return chaine.toString();
     }

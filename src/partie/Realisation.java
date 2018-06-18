@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * @author Mickael, Ismerie
  */
 public class Realisation implements Serializable {
-
     private final Tache TACHE;
     private int semainesReel;
     private int semainesRestantes;
@@ -332,7 +331,8 @@ public class Realisation implements Serializable {
 
         chaine.append("Id : ").append(TACHE.getID())
                 .append("\nNom : ").append(TACHE.getNOM())
-                .append("\nSemaines : ").append(semainesReel).append("\tsemaines restantes : ").append(jaugeSemainesRestantes())
+                .append("\nSemaines : ").append(semainesReel)
+                .append("\nsemaines restantes : ").append(jaugeSemainesRestantes().length())
                 .append("\n").append(TACHE.getAlea(Couleur.ROUGE))
                 .append("\tstatus : ").append(this.protege(Couleur.ROUGE))
                 .append("\n").append(TACHE.getAlea(Couleur.ORANGE))

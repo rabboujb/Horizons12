@@ -13,15 +13,13 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	private Description plateau;
 	private String nomEquipe;
 	private int numeroTour;
+	private int numeroTache;
 	private int qualite;
-	private int current;
 	private List<VueJoueur> equipes;
 	private Equipes donneesEquipe;
-	private List<Realisation> realisations;
+	private ArrayList<Realisation> realisations;
 
-	public VueEquipes() {
-		this.equipes = new ArrayList<>();
-	}
+	public VueEquipes() { this.equipes = new ArrayList<>(); }
 
 	public VueEquipes(String nomEquipe, Description description) {
 		this.nomEquipe = nomEquipe;
@@ -33,10 +31,11 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 			realisations.add(new Realisation(tache));
 		this.donneesEquipe = new Equipes(nomEquipe, caisse, qualite);
 		this.numeroTour = 0;
+		this.numeroTache = 1;
 	}
 
-	public List<Realisation> getRealisations() { return realisations; }
-	public Realisation getRealisation(int idTache) {
+	public ArrayList<Realisation> getRealisations() { return realisations; }
+	public Realisation getRealisation(int idTache)  {
 		for(Realisation r: realisations)
 			if(r.getIdTache() == idTache)
 				return r;
@@ -54,9 +53,10 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 		return null;
 	}
 
-	public void ajouterEquipe(VueJoueur equipe)     { equipes.add(equipe);  }
+	public void ajouterEquipe(VueJoueur equipe) { equipes.add(equipe);  }
 
 	public void finDuTour()             { numeroTour++;         }
+	public void finDeTache()            { numeroTache++;        }
 	public int getCaisse()              { return caisse;        }
 	public int getCurrent(String id)    { return 0;             }
 	public String getDebutId()          { return getPlateau().getTacheById(1).getNOM(); }
@@ -65,12 +65,11 @@ public class VueEquipes implements VueJoueur, DonneesJoueur, Serializable {
 	public String getFinId()            { return getPlateau().getTacheById(8).getNOM();             }
 	public String getNom()              { return nomEquipe;     }
 	public int getNumeroTour()          { return numeroTour;    }
+	public int getNumeroTache()         { return numeroTache;   }
 	public int getQualite()             { return qualite;       }
 
 	public void baisseQualite(int delta)    { qualite = qualite - delta;}
 	public void depense(int somme)          { caisse = caisse - somme;  }
-	public void actualisation(int temps)    {
-	}
 
 	public String toString() {
 		return "VueEquipes{" +
