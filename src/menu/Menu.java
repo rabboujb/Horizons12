@@ -20,7 +20,7 @@ public class Menu {
     private MenuAbout ma;
     private Robot robot;
 	private int affichageTour;
-	private int affichageTache;
+
 
 	public Menu() {
 		robot = new Robot();
@@ -31,13 +31,10 @@ public class Menu {
 		ms = new MenuSauvegarde(equipes, description, robot.getTirages());
 		ma = new MenuAbout();
 		affichageTour = 0;
-		affichageTache = 1;
 	}
 
 	public int getAffichageTour()   { return affichageTour;     }
-	public int getAffichageTache()  { return affichageTache;    }
 	public void setAffichageTour(int nombre)    { affichageTour = affichageTour + nombre;   }
-	public void setAffichageTache(int nombre)   { affichageTache = affichageTache + nombre; }
 
 	public void menuLancement() {
 		String choix;
@@ -248,6 +245,7 @@ public class Menu {
 				}
 				System.out.println();
 				System.out.println("L'étape "+getAffichageTour()+" est terminée pour toutes les équipes.");
+				System.out.println("Vous pouvez consulter les modifications dans les informations joueurs.");
 			}
 			if(description.getTour(getAffichageTour()).getTYPE() == TypeTour.FINAL) {
 				for(int j=0;j<equipes.getEquipes().size();j++) {
